@@ -837,6 +837,7 @@
     .form-row { grid-template-columns: 1fr; }
   }
 </style>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
 
@@ -1317,6 +1318,21 @@
     });
   }, { threshold: 0.5 });
   statNums.forEach(el => countObserver.observe(el));
+</script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+  // Handle recovery and invite tokens
+  if (window.location.hash && (window.location.hash.includes('recovery_token') || window.location.hash.includes('invite_token'))) {
+    window.netlifyIdentity && window.netlifyIdentity.open();
+  }
 </script>
 </body>
 </html>
