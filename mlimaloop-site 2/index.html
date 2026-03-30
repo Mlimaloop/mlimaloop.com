@@ -1,1338 +1,205 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MlimaLoop — Closing the Loop on Plastic in East Africa</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --black: #0a0a0a;
-    --white: #f5f2eb;
-    --green: #2d6a4f;
-    --green-bright: #52b788;
-    --green-pale: #b7e4c7;
-    --amber: #e9c46a;
-    --rust: #c05a2a;
-    --mid: #1a1a1a;
-    --grey: #3a3a3a;
-    --grey-light: #888;
-    --border: rgba(255,255,255,0.08);
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; font-size: 16px; }
-
-  body {
-    background: var(--black);
-    color: var(--white);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.2rem 3rem;
-    background: rgba(10,10,10,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .nav-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.8rem;
-    letter-spacing: 0.12em;
-    color: var(--green-bright);
-    text-decoration: none;
-  }
-
-  .nav-logo span { color: var(--amber); }
-
-  .nav-links {
-    display: flex; gap: 2.5rem; list-style: none;
-  }
-
-  .nav-links a {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--grey-light);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--green-bright); }
-
-  .nav-cta {
-    background: var(--green);
-    color: var(--white) !important;
-    padding: 0.5rem 1.2rem;
-    border-radius: 2px;
-    transition: background 0.2s !important;
-  }
-
-  .nav-cta:hover { background: var(--green-bright) !important; color: var(--black) !important; }
-
-  /* ── HERO ── */
-  #hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-left {
-    display: flex; flex-direction: column; justify-content: center;
-    padding: 8rem 3rem 6rem 3rem;
-    position: relative; z-index: 2;
-  }
-
-  .hero-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--green-bright);
-    margin-bottom: 1.5rem;
-    display: flex; align-items: center; gap: 0.8rem;
-  }
-
-  .hero-tag::before {
-    content: '';
-    display: inline-block; width: 2rem; height: 1px;
-    background: var(--green-bright);
-  }
-
-  h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(3.5rem, 7vw, 6.5rem);
-    line-height: 0.95;
-    letter-spacing: 0.02em;
-    margin-bottom: 1.5rem;
-  }
-
-  h1 .accent { color: var(--green-bright); }
-  h1 .accent2 { color: var(--amber); }
-
-  .hero-sub {
-    font-size: 1.1rem;
-    font-weight: 300;
-    color: rgba(245,242,235,0.7);
-    max-width: 480px;
-    margin-bottom: 3rem;
-    line-height: 1.75;
-  }
-
-  .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
-
-  .btn-primary {
-    background: var(--green-bright);
-    color: var(--black);
-    padding: 0.9rem 2rem;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 2px;
-    font-weight: 500;
-    transition: background 0.2s, transform 0.15s;
-  }
-
-  .btn-primary:hover { background: var(--green-pale); transform: translateY(-1px); }
-
-  .btn-secondary {
-    border: 1px solid rgba(255,255,255,0.25);
-    color: var(--white);
-    padding: 0.9rem 2rem;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 2px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-
-  .btn-secondary:hover { border-color: var(--green-bright); color: var(--green-bright); }
-
-  .hero-right {
-    position: relative;
-    display: flex; align-items: center; justify-content: center;
-  }
-
-  .hero-graphic {
-    position: relative; width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-  }
-
-  .loop-svg {
-    width: min(500px, 90%);
-    animation: slowspin 30s linear infinite;
-    opacity: 0.15;
-    position: absolute;
-  }
-
-  @keyframes slowspin { to { transform: rotate(360deg); } }
-
-  .stat-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    position: relative; z-index: 2;
-    width: min(380px, 90%);
-  }
-
-  .stat-cell {
-    background: var(--mid);
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .stat-cell::before {
-    content: '';
-    position: absolute; top: 0; left: 0;
-    width: 2px; height: 100%;
-    background: var(--green-bright);
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: transform 0.4s ease;
-  }
-
-  .stat-cell:hover::before { transform: scaleY(1); }
-
-  .stat-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 3rem;
-    color: var(--green-bright);
-    line-height: 1;
-    margin-bottom: 0.4rem;
-  }
-
-  .stat-num.amber { color: var(--amber); }
-
-  .stat-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--grey-light);
-    line-height: 1.4;
-  }
-
-  .hero-scroll {
-    position: absolute; bottom: 2rem; left: 3rem;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--grey-light);
-    display: flex; align-items: center; gap: 1rem;
-  }
-
-  .hero-scroll::after {
-    content: '';
-    display: block; width: 4rem; height: 1px;
-    background: var(--grey-light);
-    animation: scrollline 2s ease-in-out infinite;
-  }
-
-  @keyframes scrollline {
-    0%, 100% { transform: scaleX(1); }
-    50% { transform: scaleX(0.4); transform-origin: left; }
-  }
-
-  /* ── TICKER ── */
-  .ticker {
-    background: var(--green);
-    padding: 0.7rem 0;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-
-  .ticker-inner {
-    display: inline-flex; gap: 0;
-    animation: ticker 40s linear infinite;
-  }
-
-  @keyframes ticker { to { transform: translateX(-50%); } }
-
-  .ticker-item {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 0 3rem;
-    color: var(--green-pale);
-  }
-
-  .ticker-item span { color: var(--amber); margin-right: 2rem; }
-
-  /* ── SECTIONS COMMON ── */
-  section { padding: 7rem 3rem; }
-
-  .section-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--green-bright);
-    margin-bottom: 1rem;
-    display: flex; align-items: center; gap: 0.8rem;
-  }
-
-  .section-tag::before {
-    content: '';
-    display: inline-block; width: 1.5rem; height: 1px;
-    background: var(--green-bright);
-  }
-
-  h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    line-height: 1;
-    letter-spacing: 0.02em;
-    margin-bottom: 1.5rem;
-  }
-
-  h3 {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 500;
-    margin-bottom: 0.8rem;
-  }
-
-  p { color: rgba(245,242,235,0.72); line-height: 1.8; }
-
-  /* ── MISSION ── */
-  #mission {
-    background: var(--mid);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: center;
-  }
-
-  .mission-text p { margin-bottom: 1.2rem; font-size: 1.05rem; }
-
-  .mission-pull {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(1.8rem, 3vw, 2.8rem);
-    line-height: 1.1;
-    color: var(--green-bright);
-    border-left: 3px solid var(--green-bright);
-    padding-left: 1.5rem;
-    margin: 2rem 0;
-  }
-
-  .problem-cards {
-    display: flex; flex-direction: column; gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-  }
-
-  .problem-card {
-    background: var(--black);
-    padding: 1.8rem 2rem;
-    display: flex; gap: 1.5rem; align-items: flex-start;
-    transition: background 0.2s;
-  }
-
-  .problem-card:hover { background: #111; }
-
-  .problem-icon {
-    font-size: 1.8rem;
-    flex-shrink: 0;
-    margin-top: 0.1rem;
-  }
-
-  .problem-card h3 { color: var(--white); margin-bottom: 0.3rem; font-size: 1rem; }
-  .problem-card p { font-size: 0.9rem; }
-
-  /* ── PROCESS ── */
-  #process { background: var(--black); }
-
-  .process-header { max-width: 600px; margin-bottom: 5rem; }
-
-  .process-flow {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 0;
-    position: relative;
-  }
-
-  .process-flow::before {
-    content: '';
-    position: absolute;
-    top: 3rem; left: 10%; right: 10%;
-    height: 1px;
-    background: linear-gradient(to right, var(--green), var(--green-bright), var(--amber));
-  }
-
-  .process-step {
-    display: flex; flex-direction: column; align-items: center;
-    text-align: center;
-    padding: 0 1rem;
-    position: relative;
-  }
-
-  .step-num {
-    width: 3.5rem; height: 3.5rem;
-    border-radius: 50%;
-    background: var(--black);
-    border: 2px solid var(--green-bright);
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.8rem;
-    color: var(--green-bright);
-    margin-bottom: 1.5rem;
-    position: relative; z-index: 1;
-    transition: background 0.2s, color 0.2s;
-  }
-
-  .process-step:hover .step-num {
-    background: var(--green-bright);
-    color: var(--black);
-  }
-
-  .step-icon { font-size: 1.5rem; margin-bottom: 0.8rem; }
-
-  .step-title {
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 500;
-    font-size: 0.9rem;
-    color: var(--white);
-    margin-bottom: 0.5rem;
-  }
-
-  .step-desc {
-    font-size: 0.8rem;
-    color: var(--grey-light);
-    line-height: 1.5;
-  }
-
-  /* ── IMPACT ── */
-  #impact {
-    background: var(--green);
-    color: var(--white);
-  }
-
-  .impact-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: rgba(0,0,0,0.2);
-    border: 1px solid rgba(0,0,0,0.2);
-    margin-top: 4rem;
-  }
-
-  .impact-cell {
-    background: rgba(0,0,0,0.15);
-    padding: 3rem 2.5rem;
-    position: relative;
-    overflow: hidden;
-    transition: background 0.3s;
-  }
-
-  .impact-cell:hover { background: rgba(0,0,0,0.3); }
-
-  .impact-big {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 4.5rem;
-    line-height: 1;
-    color: var(--amber);
-    margin-bottom: 0.3rem;
-  }
-
-  .impact-unit {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--green-pale);
-    margin-bottom: 0.8rem;
-  }
-
-  .impact-cell p {
-    font-size: 0.9rem;
-    color: rgba(183, 228, 199, 0.85);
-  }
-
-  .impact-bottom {
-    margin-top: 4rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-  }
-
-  .impact-quote {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(1.8rem, 3vw, 3rem);
-    line-height: 1.1;
-    color: var(--white);
-  }
-
-  .sdg-badges {
-    display: flex; flex-wrap: wrap; gap: 0.8rem;
-  }
-
-  .sdg-badge {
-    background: rgba(0,0,0,0.25);
-    border: 1px solid rgba(255,255,255,0.2);
-    padding: 0.5rem 1rem;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--green-pale);
-    border-radius: 2px;
-  }
-
-  /* ── WHY MLIMALOOP ── */
-  #why {
-    background: var(--mid);
-  }
-
-  .why-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    margin-top: 4rem;
-  }
-
-  .why-card {
-    background: var(--black);
-    padding: 2.5rem;
-    transition: background 0.2s;
-    position: relative;
-  }
-
-  .why-card::after {
-    content: '';
-    position: absolute; bottom: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--green-bright);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
-  }
-
-  .why-card:hover { background: #0f0f0f; }
-  .why-card:hover::after { transform: scaleX(1); }
-
-  .why-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 5rem;
-    line-height: 1;
-    color: rgba(82, 183, 136, 0.12);
-    margin-bottom: -1rem;
-  }
-
-  .why-card h3 { color: var(--white); font-size: 1.05rem; margin-bottom: 0.8rem; }
-  .why-card p { font-size: 0.9rem; }
-
-  /* ── PARTNERS / CERTIFICATION ── */
-  #credentials {
-    background: var(--black);
-    border-top: 1px solid var(--border);
-  }
-
-  .cred-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: start;
-    margin-top: 4rem;
-  }
-
-  .cred-list {
-    display: flex; flex-direction: column; gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-  }
-
-  .cred-item {
-    background: var(--mid);
-    padding: 1.5rem 2rem;
-    display: flex; align-items: center; gap: 1.5rem;
-  }
-
-  .cred-dot {
-    width: 0.5rem; height: 0.5rem;
-    border-radius: 50%;
-    background: var(--green-bright);
-    flex-shrink: 0;
-  }
-
-  .cred-item h3 { font-size: 0.95rem; color: var(--white); margin-bottom: 0.2rem; }
-  .cred-item p { font-size: 0.82rem; }
-
-  .timeline {
-    display: flex; flex-direction: column;
-    position: relative;
-  }
-
-  .timeline::before {
-    content: '';
-    position: absolute; left: 0.6rem; top: 0; bottom: 0;
-    width: 1px; background: var(--border);
-  }
-
-  .timeline-item {
-    display: flex; gap: 1.5rem;
-    padding-bottom: 2.5rem;
-    position: relative;
-  }
-
-  .tl-dot {
-    width: 1.3rem; height: 1.3rem;
-    border-radius: 50%;
-    background: var(--black);
-    border: 2px solid var(--green-bright);
-    flex-shrink: 0;
-    margin-top: 0.2rem;
-    position: relative; z-index: 1;
-  }
-
-  .tl-content {}
-  .tl-date {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.12em;
-    color: var(--green-bright);
-    text-transform: uppercase;
-    margin-bottom: 0.4rem;
-  }
-
-  .tl-content h3 { font-size: 0.95rem; color: var(--white); margin-bottom: 0.3rem; }
-  .tl-content p { font-size: 0.85rem; }
-
-  /* ── CONTACT ── */
-  #contact {
-    background: var(--mid);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: center;
-  }
-
-  .contact-left h2 { margin-bottom: 1rem; }
-  .contact-left p { margin-bottom: 2rem; font-size: 1.05rem; }
-
-  .contact-details {
-    display: flex; flex-direction: column; gap: 1.2rem;
-  }
-
-  .contact-detail {
-    display: flex; gap: 1rem; align-items: flex-start;
-  }
-
-  .contact-detail-icon {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--green-bright);
-    min-width: 5rem;
-    padding-top: 0.2rem;
-  }
-
-  .contact-detail-val {
-    font-size: 0.95rem;
-    color: var(--white);
-  }
-
-  .contact-form {
-    display: flex; flex-direction: column; gap: 1rem;
-  }
-
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
-
-  .form-group label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--grey-light);
-  }
-
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    background: var(--black);
-    border: 1px solid var(--border);
-    color: var(--white);
-    padding: 0.8rem 1rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 300;
-    border-radius: 2px;
-    outline: none;
-    transition: border-color 0.2s;
-    resize: vertical;
-  }
-
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
-    border-color: var(--green-bright);
-  }
-
-  .form-group select option { background: var(--black); }
-
-  .form-submit {
-    background: var(--green-bright);
-    color: var(--black);
-    border: none;
-    padding: 1rem 2rem;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    font-weight: 500;
-    cursor: pointer;
-    border-radius: 2px;
-    transition: background 0.2s;
-    align-self: flex-start;
-  }
-
-  .form-submit:hover { background: var(--green-pale); }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--black);
-    border-top: 1px solid var(--border);
-    padding: 3rem;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 3rem;
-  }
-
-  .footer-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2rem;
-    letter-spacing: 0.1em;
-    color: var(--green-bright);
-    margin-bottom: 0.8rem;
-  }
-
-  .footer-logo span { color: var(--amber); }
-
-  .footer-tagline {
-    font-size: 0.85rem;
-    color: var(--grey-light);
-    max-width: 240px;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-  }
-
-  .footer-socials {
-    display: flex; gap: 0.8rem;
-  }
-
-  .social-pill {
-    border: 1px solid var(--border);
-    padding: 0.4rem 0.9rem;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--grey-light);
-    text-decoration: none;
-    border-radius: 2px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-
-  .social-pill:hover { border-color: var(--green-bright); color: var(--green-bright); }
-
-  .footer-col h4 {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--green-bright);
-    margin-bottom: 1.2rem;
-  }
-
-  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
-
-  .footer-col a {
-    font-size: 0.85rem;
-    color: var(--grey-light);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .footer-col a:hover { color: var(--white); }
-
-  .footer-bottom {
-    background: var(--black);
-    border-top: 1px solid var(--border);
-    padding: 1.2rem 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .footer-bottom p {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.1em;
-    color: var(--grey-light);
-  }
-
-  /* ── REVEAL ANIMATIONS ── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(2rem);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ── NOISE OVERLAY ── */
-  body::after {
-    content: '';
-    position: fixed; inset: 0;
-    pointer-events: none;
-    z-index: 999;
-    opacity: 0.025;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  }
-
-  /* ── MOBILE ── */
-  @media (max-width: 900px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
-    #hero { grid-template-columns: 1fr; }
-    .hero-right { display: none; }
-    .hero-left { padding: 7rem 1.5rem 4rem; }
-    #mission, #contact { grid-template-columns: 1fr; gap: 3rem; }
-    section { padding: 5rem 1.5rem; }
-    .process-flow { grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .process-flow::before { display: none; }
-    .impact-grid { grid-template-columns: 1fr; }
-    .impact-bottom { grid-template-columns: 1fr; gap: 2rem; }
-    .why-grid { grid-template-columns: 1fr; }
-    .cred-grid { grid-template-columns: 1fr; gap: 3rem; }
-    footer { grid-template-columns: 1fr 1fr; }
-    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
-    .form-row { grid-template-columns: 1fr; }
-  }
-</style>
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-</head>
-<body>
-
-<!-- NAV -->
-<nav>
-  <a href="#hero" class="nav-logo">Mlima<span>Loop</span></a>
-  <ul class="nav-links">
-    <li><a href="#mission">Mission</a></li>
-    <li><a href="#process">Process</a></li>
-    <li><a href="#impact">Impact</a></li>
-    <li><a href="#why">Why Us</a></li>
-    <li><a href="#credentials">Roadmap</a></li>
-    <li><a href="#contact" class="nav-cta">Partner With Us</a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-left">
-    <div class="hero-tag">Arusha, Tanzania · Est. 2026</div>
-    <h1>
-      Closing<br>
-      the <span class="accent">Loop</span><br>
-      on <span class="accent2">Plastic</span>
-    </h1>
-    <p class="hero-sub">
-      MlimaLoop is East Africa's pioneering rPET recycling venture — based in Arusha, Tanzania, collecting post-consumer plastic bottles across the country and transforming them into certified recycled polyester fibre for global supply chains.
-    </p>
-    <div class="hero-buttons">
-      <a href="#contact" class="btn-primary">Partner With Us</a>
-      <a href="#mission" class="btn-secondary">Our Story</a>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-graphic">
-      <svg class="loop-svg" viewBox="0 0 400 400" fill="none">
-        <circle cx="200" cy="200" r="180" stroke="#52b788" stroke-width="1"/>
-        <circle cx="200" cy="200" r="140" stroke="#52b788" stroke-width="0.5" stroke-dasharray="4 4"/>
-        <circle cx="200" cy="200" r="100" stroke="#e9c46a" stroke-width="1"/>
-        <path d="M200 20 L220 60 L180 60 Z" fill="#52b788"/>
-        <path d="M380 200 L340 180 L340 220 Z" fill="#52b788"/>
-        <path d="M200 380 L180 340 L220 340 Z" fill="#52b788"/>
-        <path d="M20 200 L60 220 L60 180 Z" fill="#e9c46a"/>
-      </svg>
-      <div class="stat-grid">
-        <div class="stat-cell">
-          <div class="stat-num">16B</div>
-          <div class="stat-label">Plastic bottles<br>discarded in Africa<br>annually</div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-num amber">3%</div>
-          <div class="stat-label">Currently<br>recycled in<br>East Africa</div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-num">520<span style="font-size:1.5rem">m²</span></div>
-          <div class="stat-label">Pilot facility<br>Arusha, Tanzania</div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-num amber">GRS</div>
-          <div class="stat-label">Global Recycled<br>Standard<br>pathway</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="hero-scroll">Scroll to explore</div>
-</section>
-
-<!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-inner">
-    <span class="ticker-item"><span>◆</span> rPET Recycling</span>
-    <span class="ticker-item"><span>◆</span> East Africa's First</span>
-    <span class="ticker-item"><span>◆</span> GRS Certified Pathway</span>
-    <span class="ticker-item"><span>◆</span> Circular Economy</span>
-    <span class="ticker-item"><span>◆</span> ESG Compliant Supply Chain</span>
-    <span class="ticker-item"><span>◆</span> Impact Investment</span>
-    <span class="ticker-item"><span>◆</span> Arusha, Tanzania</span>
-    <span class="ticker-item"><span>◆</span> rPET Recycling</span>
-    <span class="ticker-item"><span>◆</span> East Africa's First</span>
-    <span class="ticker-item"><span>◆</span> GRS Certified Pathway</span>
-    <span class="ticker-item"><span>◆</span> Circular Economy</span>
-    <span class="ticker-item"><span>◆</span> ESG Compliant Supply Chain</span>
-    <span class="ticker-item"><span>◆</span> Impact Investment</span>
-    <span class="ticker-item"><span>◆</span> Arusha, Tanzania</span>
-  </div>
-</div>
-
-<!-- MISSION -->
-<section id="mission" class="reveal">
-  <div class="mission-text">
-    <div class="section-tag">Mission</div>
-    <h2>The Problem<br>Is Clear</h2>
-    <p>East Africa generates millions of tonnes of plastic waste every year. Less than 3% is recycled. The rest enters waterways, communities, and soil — destroying ecosystems and livelihoods while the world's demand for recycled materials grows.</p>
-    <div class="mission-pull">"The infrastructure gap is the opportunity."</div>
-    <p>MlimaLoop exists to close that gap. We collect post-consumer PET bottles, process them into food-grade rPET flake and recycled polyester fibre, and supply verified, GRS-certified material to global brands demanding traceable, sustainable inputs.</p>
-    <p>This is not charity. This is industry — built on precision, data, and the economics of scarcity.</p>
-  </div>
-  <div class="problem-cards">
-    <div class="problem-card">
-      <div class="problem-icon">🌊</div>
-      <div>
-        <h3>Ocean & Waterway Pollution</h3>
-        <p>8 million tonnes of plastic enter the world's oceans annually. East Africa's coastline and Lake Victoria basin bear a disproportionate burden.</p>
-      </div>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">🏭</div>
-      <div>
-        <h3>No Local Processing Infrastructure</h3>
-        <p>Despite vast collection potential, East Africa lacks the industrial recycling capacity to process PET at scale. Bottles are landfilled or exported raw.</p>
-      </div>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">📦</div>
-      <div>
-        <h3>Global Brand Demand is Surging</h3>
-        <p>EU legislation now mandates recycled content targets. Global fashion and packaging brands urgently need verified, traceable rPET supply chains.</p>
-      </div>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">💼</div>
-      <div>
-        <h3>No Formal Waste Economy</h3>
-        <p>Thousands of informal collectors operate with no structure, no fair pricing, and no protection. MlimaLoop formalises and rewards the collection chain.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section id="process" class="reveal">
-  <div class="process-header">
-    <div class="section-tag">How It Works</div>
-    <h2>From Bottle<br>to Fibre</h2>
-    <p>Our end-to-end processing pipeline transforms post-consumer PET bottles into certified rPET flake and recycled polyester fibre — traceable at every stage, auditable at every step.</p>
-  </div>
-  <div class="process-flow">
-    <div class="process-step">
-      <div class="step-num">01</div>
-      <div class="step-icon">🗂</div>
-      <div class="step-title">Collection</div>
-      <div class="step-desc">Formalised networks of community collectors, buying stations, and municipal partnerships across Tanzania.</div>
-    </div>
-    <div class="process-step">
-      <div class="step-num">02</div>
-      <div class="step-icon">🔍</div>
-      <div class="step-title">Sorting & Grading</div>
-      <div class="step-desc">Manual and mechanical sorting by resin type, colour, and contamination level. Only PET-1 proceeds.</div>
-    </div>
-    <div class="process-step">
-      <div class="step-num">03</div>
-      <div class="step-icon">⚙️</div>
-      <div class="step-title">Washing & Processing</div>
-      <div class="step-desc">Industrial hot-wash line removes labels, caps, adhesives, and contaminants to food-contact standards.</div>
-    </div>
-    <div class="process-step">
-      <div class="step-num">04</div>
-      <div class="step-icon">🧵</div>
-      <div class="step-title">Flake & Fibre</div>
-      <div class="step-desc">Washed PET is extruded into certified rPET flake or spun into recycled polyester staple fibre.</div>
-    </div>
-    <div class="process-step">
-      <div class="step-num">05</div>
-      <div class="step-icon">✅</div>
-      <div class="step-title">Certified Supply</div>
-      <div class="step-desc">GRS-certified output supplied to global textile, packaging, and manufacturing brands with full traceability.</div>
-    </div>
-  </div>
-</section>
-
-<!-- IMPACT -->
-<section id="impact" class="reveal">
-  <div class="section-tag" style="color:var(--green-pale)">Impact</div>
-  <h2>The Numbers<br>That Matter</h2>
-  <div class="impact-grid">
-    <div class="impact-cell">
-      <div class="impact-big">500T</div>
-      <div class="impact-unit">per month — Year 1 capacity target</div>
-      <p>Pilot facility targeting 500 tonnes of post-consumer PET processed monthly, scaling to 2,000T as operations grow.</p>
-    </div>
-    <div class="impact-cell">
-      <div class="impact-big">100s</div>
-      <div class="impact-unit">Livelihoods supported in the collection chain at pilot scale</div>
-      <p>Formalising and fairly compensating collectors across Tanzania — growing significantly as operations scale beyond the pilot.</p>
-    </div>
-    <div class="impact-cell">
-      <div class="impact-big">75%</div>
-      <div class="impact-unit">Lower carbon vs virgin polyester</div>
-      <p>rPET production uses significantly less energy and water than virgin PET, with measurable Scope 3 reduction for brand partners.</p>
-    </div>
-    <div class="impact-cell">
-      <div class="impact-big">$0</div>
-      <div class="impact-unit">plastic to landfill — our target</div>
-      <p>Every bottle diverted is revenue earned. Our business model aligns financial returns with environmental outcomes.</p>
-    </div>
-    <div class="impact-cell">
-      <div class="impact-big">GRS</div>
-      <div class="impact-unit">Global Recycled Standard certification</div>
-      <p>Full GRS certification pathway underway — giving brand partners verified, auditable, compliant supply chain credentials.</p>
-    </div>
-    <div class="impact-cell">
-      <div class="impact-big">1st</div>
-      <div class="impact-unit">Integrated rPET facility in East Africa</div>
-      <p>No comparable end-to-end rPET processing and fibre spinning operation exists in the region. First mover. First to scale.</p>
-    </div>
-  </div>
-  <div class="impact-bottom">
-    <div class="impact-quote">"Every bottle is a resource.<br>Every loop closed is a profit."</div>
-    <div>
-      <p style="color:var(--green-pale); margin-bottom:1.2rem; font-size:0.9rem; text-transform:uppercase; letter-spacing:0.1em; font-family:'DM Mono',monospace;">UN Sustainable Development Goals Aligned</p>
-      <div class="sdg-badges">
-        <span class="sdg-badge">SDG 8 — Decent Work</span>
-        <span class="sdg-badge">SDG 12 — Responsible Production</span>
-        <span class="sdg-badge">SDG 13 — Climate Action</span>
-        <span class="sdg-badge">SDG 14 — Life Below Water</span>
-        <span class="sdg-badge">SDG 17 — Partnerships</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHY MLIMALOOP -->
-<section id="why" class="reveal">
-  <div class="section-tag">Why MlimaLoop</div>
-  <h2>The Competitive<br>Advantage</h2>
-  <div class="why-grid">
-    <div class="why-card">
-      <div class="why-num">01</div>
-      <h3>First-Mover Infrastructure</h3>
-      <p>No integrated rPET washing line and fibre spinning facility exists in East Africa. We are building the infrastructure that the region's circular economy depends on.</p>
-    </div>
-    <div class="why-card">
-      <div class="why-num">02</div>
-      <h3>GRS-Certified Output</h3>
-      <p>Brand partners increasingly require certified recycled content. Our GRS certification pathway is in progress, positioning MlimaLoop as an auditable, compliant supplier from day one of certification.</p>
-    </div>
-    <div class="why-card">
-      <div class="why-num">03</div>
-      <h3>Embedded Supply Chain</h3>
-      <p>We are building formal collector networks, not depending on spot purchasing. This means cost-controlled, reliable feedstock — a fundamental operational advantage.</p>
-    </div>
-    <div class="why-card">
-      <div class="why-num">04</div>
-      <h3>Regulatory Tailwinds</h3>
-      <p>EU mandatory recycled content legislation is driving unprecedented global demand for verified rPET. African supply is under-explored and undersupplied. Timing is everything.</p>
-    </div>
-    <div class="why-card">
-      <div class="why-num">05</div>
-      <h3>Founder-Led & Capital Efficient</h3>
-      <p>Lean, self-funded pilot model. Founder in-country, operational, and accountable. Capital deployed directly into physical infrastructure — not overhead.</p>
-    </div>
-    <div class="why-card">
-      <div class="why-num">06</div>
-      <h3>Dual Revenue Streams</h3>
-      <p>rPET flake for packaging and food-grade applications, plus recycled polyester fibre for the textile supply chain. Two markets. Diversified risk. Scalable margin.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CREDENTIALS / ROADMAP -->
-<section id="credentials" class="reveal">
-  <div class="section-tag">Credentials & Roadmap</div>
-  <h2>Built on<br>Evidence</h2>
-  <div class="cred-grid">
-    <div>
-      <p style="margin-bottom:2rem;">MlimaLoop is developed against rigorous operational standards. Our supplier relationships, facility design, and certification pathway are all based on validated industry practice.</p>
-      <div class="cred-list">
-        <div class="cred-item">
-          <div class="cred-dot"></div>
-          <div>
-            <h3>GRS Certification Pathway</h3>
-            <p>Global Recycled Standard — the internationally recognised benchmark for recycled content claims.</p>
-          </div>
-        </div>
-        <div class="cred-item">
-          <div class="cred-dot"></div>
-          <div>
-            <h3>Validated Equipment Suppliers</h3>
-            <p>Washing line and spinning equipment sourced from audited international suppliers including Boretech and specialist fibre machinery manufacturers.</p>
-          </div>
-        </div>
-        <div class="cred-item">
-          <div class="cred-dot"></div>
-          <div>
-            <h3>QC Laboratory</h3>
-            <p>In-house quality control capability for IV testing, contamination analysis, and batch certification to international standards.</p>
-          </div>
-        </div>
-        <div class="cred-item">
-          <div class="cred-dot"></div>
-          <div>
-            <h3>Tanzania Registered Entity</h3>
-            <p>MlimaLoop Ltd. is a registered Tanzanian company, operating within the national regulatory framework.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <h3 style="color:var(--green-bright); font-family:'DM Mono',monospace; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:2rem;">Development Roadmap</h3>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="tl-dot"></div>
-          <div class="tl-content">
-            <div class="tl-date">Phase 1 — 2026</div>
-            <h3>Foundation & Design</h3>
-            <p>Company registration, facility site identification, equipment specification, supplier shortlisting, financial modelling.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="tl-dot"></div>
-          <div class="tl-content">
-            <div class="tl-date">Phase 2 — 2026/27</div>
-            <h3>Pilot Build-Out</h3>
-            <p>Equipment procurement and installation, facility fit-out (520m²), collection network establishment, first production runs.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="tl-dot"></div>
-          <div class="tl-content">
-            <div class="tl-date">Phase 3 — 2027</div>
-            <h3>GRS Certification & Commercial Sales</h3>
-            <p>GRS audit, first certified output, commercial supply agreements with international brand partners.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="tl-dot"></div>
-          <div class="tl-content">
-            <div class="tl-date">Phase 4 — 2028+</div>
-            <h3>Scale & Expansion</h3>
-            <p>Capacity expansion to 2,000T/month, regional network development across East Africa, Series A raise.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="reveal">
-  <div class="contact-left">
-    <div class="section-tag">Contact</div>
-    <h2>Partner<br>With Us</h2>
-    <p>We are actively seeking impact investors, ESG-aligned funds, NGO partners, and global brands looking to verify their recycled material supply chains. If you are serious about the circular economy in Africa, we want to hear from you.</p>
-    <div class="contact-details">
-      <div class="contact-detail">
-        <span class="contact-detail-icon">Location</span>
-        <span class="contact-detail-val">Arusha, Tanzania</span>
-      </div>
-      <div class="contact-detail">
-        <span class="contact-detail-icon">Entity</span>
-        <span class="contact-detail-val">MlimaLoop Ltd. — Registered in Tanzania, Est. 2026</span>
-      </div>
-      <div class="contact-detail">
-        <span class="contact-detail-icon">Focus</span>
-        <span class="contact-detail-val">rPET Recycling · Circular Economy · East Africa</span>
-      </div>
-    </div>
-  </div>
-  <form class="contact-form" name="contact" method="POST" data-netlify="true" action="mailto:graham@mlimaloop.com">
-    <div class="form-row">
-      <div class="form-group">
-        <label>First Name</label>
-        <input type="text" placeholder="Jane">
-      </div>
-      <div class="form-group">
-        <label>Last Name</label>
-        <input type="text" placeholder="Smith">
-      </div>
-    </div>
-    <div class="form-group">
-      <label>Organisation</label>
-      <input type="text" placeholder="Company / Fund / NGO">
-    </div>
-    <div class="form-group">
-      <label>Email</label>
-      <input type="email" placeholder="jane@organisation.com">
-    </div>
-    <div class="form-group">
-      <label>Enquiry Type</label>
-      <select>
-        <option value="">Select one</option>
-        <option>Impact Investment</option>
-        <option>ESG / Supply Chain Partnership</option>
-        <option>NGO / Development Partner</option>
-        <option>Media Enquiry</option>
-        <option>Other</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>Message</label>
-      <textarea rows="4" placeholder="Tell us about your interest in MlimaLoop..."></textarea>
-    </div>
-    <button type="submit" class="form-submit">Send Enquiry →</button>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div>
-    <div class="footer-logo">Mlima<span>Loop</span></div>
-    <p class="footer-tagline">Closing the loop on plastic in East Africa. rPET recycling built for the circular economy.</p>
-    <div class="footer-socials">
-      <a href="https://www.linkedin.com/company/mlimaloop" target="_blank" class="social-pill">LinkedIn</a>
-      <a href="https://www.instagram.com/mlimaloop" target="_blank" class="social-pill">Instagram</a>
-      <a href="https://www.facebook.com/mlimaloop" target="_blank" class="social-pill">Facebook</a>
-    </div>
-  </div>
-  <div class="footer-col">
-    <h4>Company</h4>
-    <ul>
-      <li><a href="#mission">Mission</a></li>
-      <li><a href="#process">Process</a></li>
-      <li><a href="#impact">Impact</a></li>
-      <li><a href="#why">Why Us</a></li>
-    </ul>
-  </div>
-  <div class="footer-col">
-    <h4>Partners</h4>
-    <ul>
-      <li><a href="#contact">Investors</a></li>
-      <li><a href="#contact">Brand Partners</a></li>
-      <li><a href="#contact">NGOs</a></li>
-      <li><a href="#contact">Media</a></li>
-    </ul>
-  </div>
-  <div class="footer-col">
-    <h4>Standards</h4>
-    <ul>
-      <li><a href="#">GRS Certification</a></li>
-      <li><a href="#">SDG Alignment</a></li>
-      <li><a href="#">ESG Reporting</a></li>
-      <li><a href="#">Traceability</a></li>
-    </ul>
-  </div>
-</footer>
-
-<div class="footer-bottom">
-  <p>© 2026 MlimaLoop Ltd. — Arusha, Tanzania</p>
-  <p>Registered in Tanzania · All rights reserved</p>
-</div>
-
-<script>
-  // Reveal on scroll
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
-
-  // Smooth nav highlight
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 200) current = s.id;
-    });
-    navLinks.forEach(a => {
-      a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--green-bright)' : '';
-    });
-  });
-
-  // Stat counter animation
-  const statNums = document.querySelectorAll('.stat-num, .impact-big');
-  const countObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '0';
-        setTimeout(() => {
-          entry.target.style.transition = 'opacity 0.5s ease';
-          entry.target.style.opacity = '1';
-        }, 100);
-      }
-    });
-  }, { threshold: 0.5 });
-  statNums.forEach(el => countObserver.observe(el));
-</script>
-<script>
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", user => {
-      if (!user) {
-        window.netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
-        });
-      }
-    });
-  }
-  // Handle recovery and invite tokens
-  if (window.location.hash && (window.location.hash.includes('recovery_token') || window.location.hash.includes('invite_token'))) {
-    window.netlifyIdentity && window.netlifyIdentity.open();
-  }
-</script>
-</body>
-</html>
+MlimaLoop
+ARUSHA, TANZANIA · EST. 2026
+Closing the Loop on Plastic
+MlimaLoop is East Africa's pioneering rPET recycling venture — based in Arusha, Tanzania, collecting post-consumer plastic bottles across the country and transforming them into certified recycled polyester fibre for global supply chains.
+PARTNER WITH US
+OUR STORY
+SCROLL TO EXPLORE
+◆ RPET RECYCLING
+◆ EAST AFRICA'S FIRST
+◆ GRS CERTIFIED PATHWAY
+◆ CIRCULAR ECONOMY
+◆ ESG COMPLIANT SUPPLY CHAIN
+◆ IMPACT INVESTMENT
+◆ ARUSHA, TANZANIA
+◆ RPET RECYCLING
+◆ EAST AFRICA'S FIRST
+◆ GRS CERTIFIED PATHWAY
+◆ CIRCULAR ECONOMY
+◆ ESG COMPLIANT SUPPLY CHAIN
+◆ IMPACT INVESTMENT
+◆ ARUSHA, TANZANIA
+MISSION
+The Problem Is Clear
+East Africa generates millions of tonnes of plastic waste every year. Less than 3% is recycled. The rest enters waterways, communities, and soil — destroying ecosystems and livelihoods while the world's demand for recycled materials grows.
+"The infrastructure gap is the opportunity."
+MlimaLoop exists to close that gap. We collect post-consumer PET bottles, process them into food-grade rPET flake and recycled polyester fibre, and supply verified, GRS-certified material to global brands demanding traceable, sustainable inputs.
+This is not charity. This is industry — built on precision, data, and the economics of scarcity.
+🌊
+Ocean & Waterway Pollution
+8 million tonnes of plastic enter the world's oceans annually. East Africa's coastline and Lake Victoria basin bear a disproportionate burden.
+🏭
+No Local Processing Infrastructure
+Despite vast collection potential, East Africa lacks the industrial recycling capacity to process PET at scale. Bottles are landfilled or exported raw.
+📦
+Global Brand Demand is Surging
+EU legislation now mandates recycled content targets. Global fashion and packaging brands urgently need verified, traceable rPET supply chains.
+💼
+No Formal Waste Economy
+Thousands of informal collectors operate with no structure, no fair pricing, and no protection. MlimaLoop formalises and rewards the collection chain.
+HOW IT WORKS
+From Bottle to Fibre
+Our end-to-end processing pipeline transforms post-consumer PET bottles into certified rPET flake and recycled polyester fibre — traceable at every stage, auditable at every step.
+01
+🗂
+Collection
+Formalised networks of community collectors, buying stations, and municipal partnerships across Tanzania.
+02
+🔍
+Sorting & Grading
+Manual and mechanical sorting by resin type, colour, and contamination level. Only PET-1 proceeds.
+03
+⚙️
+Washing & Processing
+Industrial hot-wash line removes labels, caps, adhesives, and contaminants to food-contact standards.
+04
+🧵
+Flake & Fibre
+Washed PET is extruded into certified rPET flake or spun into recycled polyester staple fibre.
+05
+✅
+Certified Supply
+GRS-certified output supplied to global textile, packaging, and manufacturing brands with full traceability.
+IMPACT
+The Numbers That Matter
+500T
+PER MONTH — YEAR 1 CAPACITY TARGET
+Pilot facility targeting 500 tonnes of post-consumer PET processed monthly, scaling to 2,000T as operations grow.
+100s
+LIVELIHOODS SUPPORTED IN THE COLLECTION CHAIN AT PILOT SCALE
+Formalising and fairly compensating collectors across Tanzania — growing significantly as operations scale beyond the pilot.
+75%
+LOWER CARBON VS VIRGIN POLYESTER
+rPET production uses significantly less energy and water than virgin PET, with measurable Scope 3 reduction for brand partners.
+$0
+PLASTIC TO LANDFILL — OUR TARGET
+Every bottle diverted is revenue earned. Our business model aligns financial returns with environmental outcomes.
+GRS
+GLOBAL RECYCLED STANDARD CERTIFICATION
+Full GRS certification pathway underway — giving brand partners verified, auditable, compliant supply chain credentials.
+1st
+INTEGRATED RPET FACILITY IN EAST AFRICA
+No comparable end-to-end rPET processing and fibre spinning operation exists in the region. First mover. First to scale.
+"Every bottle is a resource.
+Every loop closed is a profit."
+UN SUSTAINABLE DEVELOPMENT GOALS ALIGNED
+SDG 8 — DECENT WORK
+SDG 12 — RESPONSIBLE PRODUCTION
+SDG 13 — CLIMATE ACTION
+SDG 14 — LIFE BELOW WATER
+SDG 17 — PARTNERSHIPS
+WHY MLIMALOOP
+The Competitive Advantage
+01
+First-Mover Infrastructure
+No integrated rPET washing line and fibre spinning facility exists in East Africa. We are building the infrastructure that the region's circular economy depends on.
+02
+GRS-Certified Output
+Brand partners increasingly require certified recycled content. Our GRS certification pathway is in progress, positioning MlimaLoop as an auditable, compliant supplier from day one of certification.
+03
+Embedded Supply Chain
+We are building formal collector networks, not depending on spot purchasing. This means cost-controlled, reliable feedstock — a fundamental operational advantage.
+04
+Regulatory Tailwinds
+EU mandatory recycled content legislation is driving unprecedented global demand for verified rPET. African supply is under-explored and undersupplied. Timing is everything.
+05
+Founder-Led & Capital Efficient
+Lean, self-funded pilot model. Founder in-country, operational, and accountable. Capital deployed directly into physical infrastructure — not overhead.
+06
+Dual Revenue Streams
+rPET flake for packaging and food-grade applications, plus recycled polyester fibre for the textile supply chain. Two markets. Diversified risk. Scalable margin.
+CREDENTIALS & ROADMAP
+Built on Evidence
+MlimaLoop is developed against rigorous operational standards. Our supplier relationships, facility design, and certification pathway are all based on validated industry practice.
+
+GRS Certification Pathway
+Global Recycled Standard — the internationally recognised benchmark for recycled content claims.
+
+Validated Equipment Suppliers
+Washing line and spinning equipment sourced from audited international suppliers including Boretech and specialist fibre machinery manufacturers.
+
+QC Laboratory
+In-house quality control capability for IV testing, contamination analysis, and batch certification to international standards.
+
+Tanzania Registered Entity
+MlimaLoop Ltd. is a registered Tanzanian company, operating within the national regulatory framework.
+DEVELOPMENT ROADMAP
+
+PHASE 1 — 2026
+Foundation & Design
+Company registration, facility site identification, equipment specification, supplier shortlisting, financial modelling.
+
+PHASE 2 — 2026/27
+Pilot Build-Out
+Equipment procurement and installation, facility fit-out (520m²), collection network establishment, first production runs.
+
+PHASE 3 — 2027
+GRS Certification & Commercial Sales
+GRS audit, first certified output, commercial supply agreements with international brand partners.
+
+PHASE 4 — 2028+
+Scale & Expansion
+Capacity expansion to 2,000T/month, regional network development across East Africa, Series A raise.
+CONTACT
+Partner With Us
+We are actively seeking impact investors, ESG-aligned funds, NGO partners, and global brands looking to verify their recycled material supply chains. If you are serious about the circular economy in Africa, we want to hear from you.
+LOCATION
+Arusha, Tanzania
+ENTITY
+MlimaLoop Ltd. — Registered in Tanzania, Est. 2026
+FOCUS
+rPET Recycling · Circular Economy · East Africa
+FIRST NAME
+
+LAST NAME
+
+ORGANISATION
+
+EMAIL
+
+ENQUIRY TYPE
+        Select one
+        Impact Investment
+        ESG / Supply Chain Partnership
+        NGO / Development Partner
+        Media Enquiry
+        Other
+      
+MESSAGE
+SEND ENQUIRY →
+NEWS & INSIGHTS
+Latest from MlimaLoop
+Updates, milestones, and thinking from the team building East Africa's circular economy — published directly from Arusha.
+INSIGHT
+Why East Africa is the next frontier for the circular economy
+The infrastructure gap, the regulatory tailwinds, and why 2026 is the moment to build.
+READ ARTICLE →
+COMING SOON
+From bottle to fibre: what rPET processing actually looks like
+A behind-the-scenes look at the five stages of our processing pipeline.
+COMING SOON
+The collectors: the people who make the loop possible
+Formalising the collection economy and why it matters commercially and socially.
+READ ALL ARTICLES →
+MlimaLoop
+Closing the loop on plastic in East Africa. rPET recycling built for the circular economy.
+LINKEDIN
+INSTAGRAM
+FACEBOOK
+COMPANY
+		Mission
+		Process
+		Impact
+		Why Us
+PARTNERS
+		Investors
+		Brand Partners
+		NGOs
+		Media
+STANDARDS
+		GRS Certification
+		SDG Alignment
+		ESG Reporting
+		Traceability
+© 2026 MlimaLoop Ltd. — Arusha, Tanzania
+Registered in Tanzania · All rights reserved
