@@ -7,6 +7,7 @@ excerpt: >
   ambulance at the bottom of the cliff. The plastic in the ocean got there
   because nobody caught it at the top. Here is the case for fixing the source,
   and why waste, all of it, has value.
+image: /images/uploads/insight-instagram-post-45-13.png
 author: MlimaLoop Team
 ---
 Every year, thousands of volunteers wade into oceans, walk beaches, and pull plastic from rivers across the world. Companies deploy fleets of collection vessels. Charities raise millions. Celebrities post photographs. Governments make pledges.
