@@ -225,6 +225,187 @@ footer{padding:34px 0;text-align:center;color:var(--mut);font-size:12px;border-t
   </div>
 </section>
 
+<!-- THE APP -->
+<style>
+.mlapp-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:48px;align-items:center}
+.phonewrap{display:flex;justify-content:center}
+.phone{width:300px;height:616px;background:#081711;border-radius:44px;border:2px solid rgba(216,174,58,.32);padding:11px;position:relative;box-shadow:0 44px 90px -34px rgba(0,0,0,.85)}
+.phone .notch{position:absolute;top:13px;left:50%;transform:translateX(-50%);width:118px;height:19px;background:#081711;border-radius:0 0 14px 14px;z-index:6}
+.mlscreen-outer{background:linear-gradient(180deg,#0f3521,#0a2216);height:100%;border-radius:34px;overflow:hidden;display:flex;flex-direction:column;position:relative}
+.mlstatus{display:flex;justify-content:space-between;align-items:center;padding:13px 20px 5px;font-size:10.5px;color:#cfe0d5;font-weight:500}
+.mlbrand{padding:2px 20px 8px;font-family:'Space Grotesk';font-weight:700;font-size:13px;color:#f5f2eb}
+.mlbrand b{color:var(--gold)}
+.mlbody{flex:1;position:relative;overflow:hidden}
+.mlscreen{position:absolute;inset:0;padding:6px 15px 74px;overflow:auto;opacity:0;transform:translateY(8px);pointer-events:none;transition:.35s}
+.mlscreen.on{opacity:1;transform:none;pointer-events:auto}
+.mlscreen::-webkit-scrollbar{width:0}
+.mlgreet{font-family:'Space Grotesk';font-weight:600;font-size:17px;color:#f5f2eb;margin:6px 0 12px}
+.mlcard{background:rgba(216,174,58,.09);border:1px solid rgba(216,174,58,.2);border-radius:15px;padding:15px;margin-bottom:11px}
+.mlcard .lab{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#9db4a6}
+.mlbig{font-family:'Space Grotesk';font-weight:700;color:var(--gold);font-size:30px;line-height:1.05;margin-top:3px}
+.mlsub{font-size:11.5px;color:#b9ccc0;margin-top:3px}
+.mlscan{width:100%;background:var(--gold);color:#081711;border:0;border-radius:15px;padding:15px;font-family:'Space Grotesk';font-weight:700;font-size:15px;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.mlscan:active{transform:scale(.97)}
+.mlscan.sec{background:transparent;color:var(--gold);border:1px solid rgba(216,174,58,.4)}
+.mlrow{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid rgba(216,174,58,.12);font-size:12.5px;color:#d7e4da}
+.mlrow:last-child{border:0}
+.mlrow .amt{font-family:'Space Grotesk';color:var(--gold);font-weight:600}
+.mlchiplab{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#9db4a6;margin:14px 0 6px}
+.mlview{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center;gap:14px}
+.mlviewfinder{width:150px;height:150px;border-radius:20px;position:relative;background:rgba(0,0,0,.25);display:grid;place-items:center;font-size:44px}
+.mlviewfinder .corner{position:absolute;width:26px;height:26px;border:3px solid var(--gold)}
+.mlviewfinder .c1{top:8px;left:8px;border-right:0;border-bottom:0;border-radius:8px 0 0 0}
+.mlviewfinder .c2{top:8px;right:8px;border-left:0;border-bottom:0;border-radius:0 8px 0 0}
+.mlviewfinder .c3{bottom:8px;left:8px;border-right:0;border-top:0;border-radius:0 0 0 8px}
+.mlviewfinder .c4{bottom:8px;right:8px;border-left:0;border-top:0;border-radius:0 0 8px 0}
+.mlscanline{position:absolute;left:8px;right:8px;height:2px;background:var(--gold);box-shadow:0 0 8px var(--gold);top:10%;animation:mlscanmove 2s ease-in-out infinite}
+@keyframes mlscanmove{0%,100%{top:12%}50%{top:86%}}
+.mltabbar{position:absolute;bottom:0;left:0;right:0;height:62px;background:rgba(6,22,15,.96);border-top:1px solid rgba(216,174,58,.22);display:flex;z-index:5}
+.mltabbar button{flex:1;background:none;border:0;color:#7f978a;font-size:9.5px;font-family:'Space Grotesk';font-weight:600;display:flex;flex-direction:column;align-items:center;gap:3px;padding-top:9px;cursor:pointer;transition:.2s}
+.mltabbar button .i{font-size:17px}
+.mltabbar button.on{color:var(--gold)}
+.mltoast{position:absolute;top:54px;left:50%;transform:translateX(-50%) translateY(-6px);background:var(--gold);color:#081711;padding:9px 17px;border-radius:100px;font-size:12px;font-weight:700;font-family:'Space Grotesk';opacity:0;transition:.35s;z-index:8;pointer-events:none;white-space:nowrap}
+.mltoast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.mlroles{display:flex;gap:8px;margin-top:20px;flex-wrap:wrap}
+.mlrole{border:1px solid rgba(216,174,58,.28);border-radius:100px;padding:6px 14px;font-size:11.5px;color:var(--gold-l);font-family:'Space Grotesk';font-weight:600}
+.mltaphint{display:inline-block;margin-top:14px;font-size:12px;color:#9db4a6}
+@media(max-width:860px){.mlapp-grid{grid-template-columns:1fr;gap:30px}}
+</style>
+<section id="app" class="panel" data-name="The app">
+  <div class="wrap">
+    <div class="mlapp-grid">
+      <div>
+        <div class="chip rv"><span class="num">◎</span> The technology</div>
+        <h2 class="big rv d1" style="margin-top:18px">The app that makes<br>the loop <em>traceable.</em></h2>
+        <p class="lead rv d2">Every kilo, every collector, every payment, captured live. The MlimaLoop app is the chain of custody that turns loose plastic into a bankable, certifiable asset, and pays collectors on the spot.</p>
+        <ul class="pts rv d3">
+          <li>Scan and weigh at the buying station, collector <b>paid instantly</b> to mobile money.</li>
+          <li>GPS, weight, timestamp and named collector logged for <b>every batch</b>.</li>
+          <li>Three connected views: <b>collector</b>, buying-station <b>officer</b>, and <b>investor</b> dashboard.</li>
+        </ul>
+        <div class="mlroles rv d3">
+          <div class="mlrole">Collector</div><div class="mlrole">Officer</div><div class="mlrole">Investor view</div>
+        </div>
+        <div class="rv d4" style="margin-top:22px">
+          <a class="btn p" href="https://mlimaloop-loop.netlify.app" target="_blank" rel="noopener">Open the live app →</a>
+          <span class="mltaphint">or tap the phone to try the collector flow →</span>
+        </div>
+      </div>
+      <div class="phonewrap rv d2">
+        <div class="phone">
+          <div class="notch"></div>
+          <div class="mlscreen-outer">
+            <div class="mlstatus"><span>08:42</span><span>Vodacom TZ · 5G · 96%</span></div>
+            <div class="mlbrand">THE <b>LOOP</b> · MlimaLoop</div>
+            <div class="mltoast" id="ml-toast">Paid!</div>
+            <div class="mlbody">
+              <!-- HOME -->
+              <div class="mlscreen on" data-scr="home">
+                <div class="mlgreet">Habari, Amina 👋</div>
+                <div class="mlcard">
+                  <div class="lab">Today's earnings</div>
+                  <div class="mlbig" id="ml-tzs">TZS 33,900</div>
+                  <div class="mlsub" id="ml-usd">≈ $13.85 · <span id="ml-coll">21</span> collections today</div>
+                </div>
+                <button class="mlscan" id="ml-scan"><span>＋</span> Scan a bottle</button>
+                <div class="mlchiplab">Recent</div>
+                <div id="ml-recent">
+                  <div class="mlrow"><span>PET · 0.7 kg</span><span class="amt">+TZS 283</span></div>
+                  <div class="mlrow"><span>PET · 0.5 kg</span><span class="amt">+TZS 202</span></div>
+                  <div class="mlrow"><span>HDPE · 0.9 kg</span><span class="amt">+TZS 364</span></div>
+                </div>
+              </div>
+              <!-- COLLECT -->
+              <div class="mlscreen" data-scr="collect">
+                <div class="mlview">
+                  <div class="mlgreet" style="margin-bottom:0">Weigh &amp; pay</div>
+                  <div class="mlviewfinder"><span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span><span class="mlscanline"></span>♻️</div>
+                  <div class="mlsub" style="max-width:200px">Place material on the scale and scan the collector's QR. Payment is automatic.</div>
+                  <button class="mlscan" id="ml-scan2" style="max-width:220px"><span>⚖️</span> Weigh &amp; pay</button>
+                </div>
+              </div>
+              <!-- MY LOOP -->
+              <div class="mlscreen" data-scr="loop">
+                <div class="mlgreet">My Loop</div>
+                <div class="mlcard">
+                  <div class="lab">Diverted this month</div>
+                  <div class="mlbig" id="ml-month">214 kg</div>
+                  <div class="mlsub">Ocean-bound plastic · Pangani basin</div>
+                </div>
+                <div class="mlcard">
+                  <div class="lab">Loop points</div>
+                  <div class="mlbig" id="ml-points" style="font-size:26px">1,840</div>
+                  <div class="mlsub">Redeemable for airtime, tools &amp; bonuses</div>
+                </div>
+                <div class="mlchiplab">Batches</div>
+                <div class="mlrow"><span>Batch #A-2291 · sealed</span><span class="amt">18.4 kg</span></div>
+                <div class="mlrow"><span>Batch #A-2288 · sealed</span><span class="amt">22.1 kg</span></div>
+                <div class="mlrow"><span>Batch #A-2285 · sealed</span><span class="amt">19.7 kg</span></div>
+              </div>
+              <!-- WALLET -->
+              <div class="mlscreen" data-scr="wallet">
+                <div class="mlgreet">Wallet</div>
+                <div class="mlcard" style="text-align:center;padding:22px 15px">
+                  <div class="lab">Balance</div>
+                  <div class="mlbig" id="ml-balance" style="font-size:34px">TZS 214,500</div>
+                  <div class="mlsub" id="ml-balusd">≈ $87.55</div>
+                </div>
+                <button class="mlscan" id="ml-cashout">Cash out to M-Pesa</button>
+                <div class="mlchiplab">Payments</div>
+                <div id="ml-tx">
+                  <div class="mlrow"><span>Collection payout</span><span class="amt">+TZS 283</span></div>
+                  <div class="mlrow"><span>Collection payout</span><span class="amt">+TZS 202</span></div>
+                  <div class="mlrow"><span>Cash out · M-Pesa</span><span class="amt" style="color:#e39">−TZS 50,000</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="mltabbar" id="ml-tabs">
+              <button class="on" data-go="home"><span class="i">🏠</span>Home</button>
+              <button data-go="collect"><span class="i">📷</span>Collect</button>
+              <button data-go="loop"><span class="i">♻️</span>My Loop</button>
+              <button data-go="wallet"><span class="i">👛</span>Wallet</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  var RATE=2450, PPKG=0.165; // TZS per USD, USD per kg
+  var todayTZS=33900, coll=21, monthKg=214, points=1840, balTZS=214500;
+  var toast=document.getElementById('ml-toast');
+  function tzs(n){return 'TZS '+Math.round(n).toLocaleString();}
+  function usd(n){return '$'+(Math.round(n*100)/100).toFixed(2);}
+  function show(name){
+    document.querySelectorAll('#app .mlscreen').forEach(function(s){s.classList.toggle('on',s.dataset.scr===name);});
+    document.querySelectorAll('#ml-tabs button').forEach(function(b){b.classList.toggle('on',b.dataset.go===name);});
+  }
+  document.querySelectorAll('#ml-tabs button').forEach(function(b){b.addEventListener('click',function(){show(b.dataset.go);});});
+  var tHandle;
+  function pop(msg){toast.textContent=msg;toast.classList.add('on');clearTimeout(tHandle);tHandle=setTimeout(function(){toast.classList.remove('on');},1500);}
+  function scan(){
+    var w=Math.round((0.4+Math.random()*0.9)*10)/10;         // 0.4–1.3 kg
+    var pay=w*PPKG*RATE;                                       // TZS
+    todayTZS+=pay; coll++; monthKg+=w; points+=Math.round(w*10); balTZS+=pay;
+    document.getElementById('ml-tzs').textContent=tzs(todayTZS);
+    document.getElementById('ml-usd').innerHTML='≈ '+usd(todayTZS/RATE)+' · <span id="ml-coll">'+coll+'</span> collections today';
+    document.getElementById('ml-month').textContent=Math.round(monthKg)+' kg';
+    document.getElementById('ml-points').textContent=points.toLocaleString();
+    document.getElementById('ml-balance').textContent=tzs(balTZS);
+    document.getElementById('ml-balusd').textContent='≈ '+usd(balTZS/RATE);
+    var r='<div class="mlrow"><span>PET · '+w.toFixed(1)+' kg</span><span class="amt">+'+tzs(pay)+'</span></div>';
+    var rec=document.getElementById('ml-recent'); rec.innerHTML=r+rec.innerHTML;
+    var tx=document.getElementById('ml-tx'); tx.innerHTML='<div class="mlrow"><span>Collection payout</span><span class="amt">+'+tzs(pay)+'</span></div>'+tx.innerHTML;
+    pop('Paid '+tzs(pay)+' instantly');
+  }
+  document.getElementById('ml-scan').addEventListener('click',scan);
+  document.getElementById('ml-scan2').addEventListener('click',function(){scan();});
+  document.getElementById('ml-cashout').addEventListener('click',function(){pop('Sent to M-Pesa 📲');});
+})();
+</script>
+
 <!-- JOURNEY 2: FLEET -->
 <section id="fleet" class="panel" data-name="The fleet">
   <div class="wrap">
