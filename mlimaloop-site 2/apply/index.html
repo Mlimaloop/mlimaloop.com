@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MlimaLoop · Investor Application</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+:root{--ground:#2C0A05;--oxblood:#4E1710;--flake:#F6F7F5;--ink:#1A1C1B;--bone:#F6EFE8;--bottle:#79B2BD;--bottle-d:#3E7885;--machine:#131614;--err:#A8321C;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',system-ui,sans-serif;font-weight:300;background:var(--flake);color:var(--ink);line-height:1.6;padding:0 0 4rem}
+.fig{font-family:'Playfair Display',serif}
+.wrap{width:min(760px,92vw);margin:0 auto}
+header{background:var(--ground);color:var(--bone);padding:1.4rem 0}
+.brand{font-family:'Lato';font-weight:900;font-size:1.2rem;letter-spacing:.02em}
+.brand .l{font-weight:300;color:var(--bottle)}
+.riskfoot{font-size:.72rem;font-weight:300;color:#8a8a86;line-height:1.55;margin:2.4rem 0 0}
+h1{font-family:'Lato';font-weight:900;letter-spacing:-.02em;font-size:2rem;margin:2rem 0 .4rem}
+.sub{color:#555;max-width:60ch;margin-bottom:.6rem}
+.label{font-family:'Lato';font-weight:700;text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;color:var(--bottle-d)}
+fieldset{border:1px solid #d8cfc4;border-radius:2px;padding:1.4rem 1.5rem 1.6rem;margin-top:1.6rem}
+legend{font-family:'Lato';font-weight:900;font-size:1.05rem;padding:0 .5rem;color:var(--oxblood)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fg{display:flex;flex-direction:column;gap:.35rem;margin-top:1rem}
+.fg>label{font-size:.78rem;font-weight:700;color:#3a3f40}
+.fg .req{color:var(--err)}
+input,select,textarea{font-family:'Lato';font-weight:300;font-size:.95rem;padding:.7rem .8rem;border:1px solid #cfc7bc;background:#fff;color:var(--ink);border-radius:2px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--bottle-d)}
+input[type=file]{padding:.5rem;font-size:.85rem}
+.hint{font-size:.76rem;color:#777}
+.choice{border:1px solid #d8cfc4;border-radius:2px;padding:1rem 1.1rem;margin-top:.8rem;cursor:pointer;transition:.15s;background:#fff}
+.choice:hover{border-color:var(--bottle-d)}
+.choice.sel{border-color:var(--oxblood);box-shadow:0 0 0 1px var(--oxblood) inset}
+.choice .t{font-weight:700}
+.choice p{font-size:.85rem;color:#555;margin-top:.3rem}
+.choice input[type=radio]{margin-right:.5rem}
+.subconds{margin-top:.7rem;padding-left:1.6rem;display:block}
+.subconds label{display:block;font-size:.85rem;margin:.35rem 0;font-weight:300}
+.ack{display:flex;gap:.7rem;align-items:flex-start;margin-top:.9rem;font-size:.88rem}
+.ack input{margin-top:.25rem;width:16px;height:16px}
+.sigwrap{margin-top:1rem}
+#sigpad{border:1px dashed #b9b0a4;border-radius:2px;background:#fff;width:100%;height:180px;touch-action:none;display:block}
+.sigrow{display:flex;justify-content:space-between;align-items:center;margin-top:.5rem}
+.linkbtn{background:none;border:0;color:var(--bottle-d);font-family:'Lato';font-weight:700;font-size:.8rem;cursor:pointer;text-decoration:underline}
+.submit{margin-top:2rem;background:var(--oxblood);color:#fff;border:0;font-family:'Lato';font-weight:700;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase;padding:1.1rem 2.4rem;border-radius:2px;cursor:pointer}
+.submit:hover{background:#61201a}
+.err-msg{color:var(--err);font-size:.78rem;display:none;margin-top:.2rem}
+.err input,.err select,.err textarea,.err #sigpad{border-color:var(--err)!important}
+#done{display:none;text-align:center;padding:3rem 1rem}
+#done .fig{font-size:2.4rem;color:var(--oxblood)}
+.note{background:#f0e9e2;border-left:3px solid var(--oxblood);padding:1rem 1.2rem;font-size:.85rem;margin-top:1.4rem;color:#4a4038}
+@media(max-width:640px){.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><span class="brand">MLIMA<span class="l">LOOP</span></span> &nbsp; · &nbsp; Investor Application &amp; Subscription</div></header>
+
+<div class="wrap" id="formzone">
+  <h1>Application &amp; Subscription</h1>
+  <p class="sub">Secured Convertible Placement Notes, issued by Vitpi - FZCO (the MlimaLoop group holding company). Please complete every required field, then sign at the bottom. You will receive a signed PDF copy of your application.</p>
+
+  <form id="appform" novalidate>
+    <fieldset>
+      <legend>1 · About you</legend>
+      <div class="grid2">
+        <div class="fg"><label>Full legal name <span class="req">*</span></label><input name="fullname" required></div>
+        <div class="fg"><label>Date of birth <span class="req">*</span></label><input name="dob" type="date" required></div>
+      </div>
+      <div class="grid2">
+        <div class="fg"><label>Nationality <span class="req">*</span></label><input name="nationality" required></div>
+        <div class="fg"><label>Country of residence <span class="req">*</span></label><input name="country" required></div>
+      </div>
+      <div class="fg"><label>Residential address <span class="req">*</span></label><textarea name="address" rows="2" required></textarea></div>
+      <div class="grid2">
+        <div class="fg"><label>Email <span class="req">*</span></label><input name="email" type="email" required></div>
+        <div class="fg"><label>Phone <span class="req">*</span></label><input name="phone" required></div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>2 · Your investment</legend>
+      <div class="grid2">
+        <div class="fg"><label>Amount <span class="req">*</span></label><input name="amount" type="number" min="25000" step="1000" placeholder="Minimum 25,000" required><span class="hint">Minimum US$25,000 (or currency equivalent).</span></div>
+        <div class="fg"><label>Currency <span class="req">*</span></label><select name="currency" required><option value="">Select</option><option>USD</option><option>GBP</option><option>EUR</option><option>AED</option><option>Other</option></select></div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>3 · Investor eligibility (self-certification)</legend>
+      <p class="hint">This placement is available only to the following investors. Select the one that applies to you. This is required for the offer to be lawfully made to you.</p>
+      <div class="choice" data-elig="hnw">
+        <div class="t"><input type="radio" name="eligibility" value="High-net-worth individual" required>Certified / self-certified high-net-worth individual</div>
+        <p>I declare that in the last financial year I had either an annual income of £100,000 or more, or net assets of £250,000 or more (excluding my primary residence and any loan secured on it, qualifying insurance contracts, and pension/retirement benefits).</p>
+      </div>
+      <div class="choice" data-elig="soph">
+        <div class="t"><input type="radio" name="eligibility" value="Self-certified sophisticated investor">Self-certified sophisticated investor</div>
+        <p>I meet at least one of the conditions below (tick which applies):</p>
+        <div class="subconds" id="sophconds">
+          <label><input type="checkbox" name="soph_cond" value="business-angel-network"> Member of a network/syndicate of business angels for 6+ months</label>
+          <label><input type="checkbox" name="soph_cond" value="multiple-investments"> Made more than one investment in an unlisted company in the last 2 years</label>
+          <label><input type="checkbox" name="soph_cond" value="finance-professional"> Work / worked in the last 2 years in private equity or SME finance</label>
+          <label><input type="checkbox" name="soph_cond" value="company-director"> Director in the last 2 years of a company with £1.6m+ turnover</label>
+        </div>
+      </div>
+      <div class="choice" data-elig="prof">
+        <div class="t"><input type="radio" name="eligibility" value="Professional / institutional investor">Professional / institutional investor</div>
+        <p>I am a professional client or eligible counterparty, or a person to whom this offer may otherwise lawfully be made.</p>
+      </div>
+      <div class="err-msg" id="elig-err">Please select your investor category.</div>
+    </fieldset>
+
+    <fieldset>
+      <legend>4 · Bank details for return payments</legend>
+      <div class="grid2">
+        <div class="fg"><label>Account holder name <span class="req">*</span></label><input name="bank_name" required></div>
+        <div class="fg"><label>Bank <span class="req">*</span></label><input name="bank" required></div>
+      </div>
+      <div class="grid2">
+        <div class="fg"><label>IBAN / account number <span class="req">*</span></label><input name="iban" required></div>
+        <div class="fg"><label>SWIFT / sort code <span class="req">*</span></label><input name="swift" required></div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>5 · Identity &amp; address (KYC)</legend>
+      <p class="hint">Required for anti-money-laundering checks. After you submit this form, please send the following two documents to MlimaLoop on WhatsApp <b>+971 528166070</b> or by email to <b>graham@mlimaloop.com</b>:</p>
+      <div class="note" style="margin-top:.8rem">
+        1. A clear photo or scan of your <b>passport or photo ID</b>.<br>
+        2. A <b>proof of address</b> dated within the last 3 months (utility bill or bank statement).
+        <br><br>We will confirm receipt. Your subscription is completed once your identity is verified and cleared funds are received.
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>6 · Declarations</legend>
+      <label class="ack"><input type="checkbox" name="ack1" required> I have read and understood the Confidential Information Memorandum and the risk warning, and I understand this is a high-risk, illiquid investment.</label>
+      <label class="ack"><input type="checkbox" name="ack2" required> I understand I may lose some or all of the money I invest, and that I am unlikely to have access to the Financial Services Compensation Scheme or the Financial Ombudsman Service.</label>
+      <label class="ack"><input type="checkbox" name="ack3" required> The information I have provided is true, accurate and complete, and I will notify the Issuer of any change.</label>
+      <label class="ack"><input type="checkbox" name="ack4" required> I consent to Vitpi - FZCO (the Issuer) and MlimaLoop Ltd processing my personal data for this subscription and for identity and anti-money-laundering checks, in accordance with the privacy notice.</label>
+      <label class="ack"><input type="checkbox" name="ack5" required> I agree to be bound by the terms of the Placement Notes and the Subscription Agreement.</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>7 · Signature</legend>
+      <div class="grid2">
+        <div class="fg"><label>Signed name (type) <span class="req">*</span></label><input name="signname" required></div>
+        <div class="fg"><label>Date</label><input name="signdate" readonly></div>
+      </div>
+      <div class="sigwrap">
+        <label style="font-size:.78rem;font-weight:700;color:#3a3f40">Draw your signature <span class="req">*</span></label>
+        <canvas id="sigpad"></canvas>
+        <div class="sigrow"><span class="hint">Sign with your mouse or finger.</span><button type="button" class="linkbtn" id="clearsig">Clear</button></div>
+        <div class="err-msg" id="sig-err">Please sign in the box above.</div>
+      </div>
+    </fieldset>
+
+    <button type="submit" class="submit">Sign &amp; submit application</button>
+    <p class="note"><b>What happens next:</b> when you submit, a signed PDF copy of this application is generated for your records, and we email you a confirmation with the bank details for your chosen currency so you can transfer your funds. The Issuer will confirm receipt and the next steps. Your data is handled confidentially and used only for this subscription and required checks.</p>
+  </form>
+  <p class="riskfoot">Don't invest unless you're prepared to lose all the money you invest. This investment carries a degree of risk and you are unlikely to be protected if something goes wrong. The Notes are secured against the Operating Company's feedstock inventory and machinery, which reduces but does not remove this risk.</p>
+</div>
+
+<div class="wrap" id="done">
+  <div class="fig">Thank you.</div>
+  <h1 style="margin-top:.4rem">Your application is signed.</h1>
+  <p class="sub" style="margin:0 auto 1rem">A signed PDF copy has downloaded to your device. If it didn't start, <button type="button" class="linkbtn" id="redl">click here</button>.</p>
+  <div class="note" style="text-align:left">
+    <b>Check your email.</b> We've sent a confirmation to the address you provided, with the bank details for your chosen currency and your payment reference. If it doesn't arrive within a few minutes, check your spam folder or email <b>graham@mlimaloop.com</b>.<br><br>
+    <b>To complete your subscription:</b><br>
+    1. Send your passport and a proof of address (dated within 3 months) on WhatsApp <b>+971 528166070</b> or to <b>graham@mlimaloop.com</b>.<br>
+    2. Transfer your investment to the account in your confirmation email, using <b>your name</b> as the payment reference.<br><br>
+    <b>Security:</b> our bank details will not change. If anything ever asks you to send funds to a different account, do not act on it, contact us first to verify.
+  </div>
+</div>
+
+<script>
+/* signature pad */
+var cv=document.getElementById('sigpad'),cx=cv.getContext('2d'),drawing=false,dirty=false;
+function resize(){var r=cv.getBoundingClientRect(),d=window.devicePixelRatio||1;cv.width=r.width*d;cv.height=r.height*d;cx.scale(d,d);cx.lineWidth=2;cx.lineCap='round';cx.strokeStyle='#1A1C1B';}
+resize();addEventListener('resize',function(){var data=cv.toDataURL();resize();});
+function pos(e){var r=cv.getBoundingClientRect(),t=e.touches?e.touches[0]:e;return{x:t.clientX-r.left,y:t.clientY-r.top};}
+function start(e){drawing=true;dirty=true;var p=pos(e);cx.beginPath();cx.moveTo(p.x,p.y);e.preventDefault();}
+function move(e){if(!drawing)return;var p=pos(e);cx.lineTo(p.x,p.y);cx.stroke();e.preventDefault();}
+function end(){drawing=false;}
+cv.addEventListener('mousedown',start);cv.addEventListener('mousemove',move);addEventListener('mouseup',end);
+cv.addEventListener('touchstart',start);cv.addEventListener('touchmove',move);cv.addEventListener('touchend',end);
+document.getElementById('clearsig').onclick=function(){cx.clearRect(0,0,cv.width,cv.height);dirty=false;};
+/* date */
+var today=new Date().toISOString().slice(0,10);
+document.querySelector('[name=signdate]').value=today;
+/* eligibility UI */
+document.querySelectorAll('.choice').forEach(function(c){c.addEventListener('click',function(e){
+  var radio=c.querySelector('input[type=radio]');if(e.target.type!=='checkbox'){radio.checked=true;}
+  document.querySelectorAll('.choice').forEach(function(x){x.classList.remove('sel');});
+  document.querySelector('.choice[data-elig="'+ ({'High-net-worth individual':'hnw','Self-certified sophisticated investor':'soph','Professional / institutional investor':'prof'}[document.querySelector('input[name=eligibility]:checked').value]) +'"]').classList.add('sel');
+  document.getElementById('sophconds').classList.toggle('show',radio.value.indexOf('sophisticated')>-1);
+});});
+/* submit */
+var lastPdf=null;
+document.getElementById('appform').addEventListener('submit',function(e){
+  e.preventDefault();var f=e.target,ok=true;
+  document.querySelectorAll('.err').forEach(function(x){x.classList.remove('err');});
+  document.getElementById('elig-err').style.display='none';document.getElementById('sig-err').style.display='none';
+  // required native fields
+  f.querySelectorAll('[required]').forEach(function(el){
+    if((el.type==='checkbox'&&!el.checked)||(el.type==='file'&&!el.files.length)||(el.value+'').trim()===''){el.closest('.fg,.ack,fieldset').classList.add('err');ok=false;}
+  });
+  var elig=f.querySelector('input[name=eligibility]:checked');
+  if(!elig){document.getElementById('elig-err').style.display='block';ok=false;}
+  if(elig&&elig.value.indexOf('sophisticated')>-1&&!f.querySelector('input[name=soph_cond]:checked')){document.getElementById('elig-err').textContent='Please tick at least one sophisticated-investor condition.';document.getElementById('elig-err').style.display='block';ok=false;}
+  if(!dirty){document.getElementById('sig-err').style.display='block';document.getElementById('sigpad').classList.add('err');ok=false;}
+  if(!ok){window.scrollTo({top:document.querySelector('.err,.err-msg[style*="block"]').offsetTop-120,behavior:'smooth'});return;}
+  buildPDF(f);
+  // send everything to the email function, which emails the investor the bank details for their currency and emails MlimaLoop the application + signed PDF
+  var payload={pdf:(lastPdf?lastPdf.output('datauristring'):'')};
+  ['fullname','dob','nationality','country','address','email','phone','amount','currency','bank_name','bank','iban','swift','signname','signdate'].forEach(function(n){var el=f.querySelector('[name='+n+']');payload[n]=el?el.value:'';});
+  payload.eligibility=(f.querySelector('input[name=eligibility]:checked')||{}).value||'';
+  payload.soph_cond=[].map.call(f.querySelectorAll('input[name=soph_cond]:checked'),function(x){return x.value;}).join(', ');
+  var ENDPOINT='/.netlify/functions/send-application';
+  fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).catch(function(){});
+  document.getElementById('formzone').style.display='none';
+  document.getElementById('done').style.display='block';window.scrollTo({top:0,behavior:'smooth'});
+});
+function line(doc,y,label,val){doc.setFont('helvetica','bold');doc.text(label,20,y);doc.setFont('helvetica','normal');doc.text(String(val||'-'),90,y);return y+7;}
+function buildPDF(f){
+  var jsPDF=window.jspdf.jsPDF,doc=new jsPDF({unit:'mm',format:'a4'});var y=20;var g=function(n){var el=f.querySelector('[name='+n+']');return el?el.value:'';};
+  doc.setFillColor(44,10,5);doc.rect(0,0,210,16,'F');doc.setTextColor(246,239,232);doc.setFont('helvetica','bold');doc.setFontSize(12);doc.text('MLIMALOOP  ·  Investor Application & Subscription',14,10);
+  doc.setTextColor(26,28,27);doc.setFontSize(10);y=28;
+  doc.setFont('helvetica','bold');doc.setFontSize(11);doc.text('Secured Convertible Placement Notes',20,y);y+=9;doc.setFontSize(10);
+  y=line(doc,y,'Full legal name',g('fullname'));y=line(doc,y,'Date of birth',g('dob'));y=line(doc,y,'Nationality',g('nationality'));
+  y=line(doc,y,'Country of residence',g('country'));var addr=doc.splitTextToSize(g('address'),100);doc.setFont('helvetica','bold');doc.text('Residential address',20,y);doc.setFont('helvetica','normal');doc.text(addr,90,y);y+=7*addr.length;
+  y=line(doc,y,'Email',g('email'));y=line(doc,y,'Phone',g('phone'));y+=2;
+  y=line(doc,y,'Investment amount',g('amount')+' '+g('currency'));
+  var soph=[].map.call(f.querySelectorAll('input[name=soph_cond]:checked'),function(x){return x.value;}).join(', ');
+  y=line(doc,y,'Investor category',(f.querySelector('input[name=eligibility]:checked')||{}).value+(soph?(' ('+soph+')'):''));y+=2;
+  y=line(doc,y,'Account holder',g('bank_name'));y=line(doc,y,'Bank',g('bank'));y=line(doc,y,'IBAN / account',g('iban'));y=line(doc,y,'SWIFT / sort code',g('swift'));y+=2;
+  y=line(doc,y,'KYC documents','To follow by WhatsApp / email');y+=3;
+  doc.setFont('helvetica','bold');doc.text('Declarations',20,y);y+=6;doc.setFont('helvetica','normal');doc.setFontSize(9);
+  ['Read & understood the Memorandum and risk warning','Understands risk of total loss; no FSCS/FOS','Information true and complete','Consents to data processing for KYC/AML','Agrees to the Notes & Subscription Agreement'].forEach(function(t){doc.text('[x]  '+t,20,y);y+=5;});
+  y+=4;doc.setFontSize(10);doc.setFont('helvetica','bold');doc.text('Signature',20,y);
+  try{var sig=document.getElementById('sigpad').toDataURL('image/png');doc.addImage(sig,'PNG',20,y+3,70,26);}catch(e){}
+  doc.setFont('helvetica','normal');doc.text('Signed: '+g('signname'),110,y+12);doc.text('Date: '+g('signdate'),110,y+20);
+  y+=36;doc.setFontSize(7.5);doc.setTextColor(120,120,120);
+  doc.text(doc.splitTextToSize('Issued by Vitpi - FZCO (the Issuer), the MlimaLoop group holding company, in reliance on the high-net-worth and self-certified sophisticated investor exemptions under the Financial Promotion Order. This investment carries a degree of risk: capital at risk, illiquid, no FSCS/FOS. This is not advice.',175),20,y);
+  lastPdf=doc;doc.save('MlimaLoop_Subscription_'+(g('fullname')||'application').replace(/[^a-z0-9]/gi,'_')+'.pdf');
+}
+document.getElementById('redl').onclick=function(){if(lastPdf)lastPdf.save('MlimaLoop_Subscription.pdf');};
+</script>
+</body>
+</html>
