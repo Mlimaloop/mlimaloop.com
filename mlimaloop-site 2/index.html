@@ -17,210 +17,206 @@
 <meta property="og:description" content="Certified food-grade recycled PET, built in Arusha, Tanzania. Fair livelihoods, a national rollout, and a real circular-economy business.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.mlimaloop.com/">
-<meta name="theme-color" content="#0C3020">
+<meta name="theme-color" content="#2C0A05">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --green:#1B5E41; --green-d:#0C3020; --green-dd:#071c13; --green-l:#2E8B5E;
-  --gold:#D8AE3A; --gold-l:#E9C46A; --cream:#F5F2EB;
-  --mut:#9db4a6; --line:rgba(216,174,58,.26); --panel:#0C3020;
+  --ground:#2C0A05; --oxblood:#4E1710; --machine:#131614;
+  --flake:#F6F7F5; --bone:#F6EFE8; --ink:#1A1C1B;
+  --bottle:#79B2BD; --bottle-d:#3E7885;
+  --line:rgba(26,28,27,.14); --line-d:rgba(246,239,232,.16);
+  --mut:#6b6560;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--green-dd);color:var(--cream);font-weight:300;line-height:1.6;overflow-x:hidden}
-h1,h2,h3,h4,.disp{font-family:'Space Grotesk',sans-serif;letter-spacing:-.01em;line-height:1.03}
+body{font-family:'Lato',system-ui,sans-serif;background:var(--flake);color:var(--ink);font-weight:400;line-height:1.65;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Lato',sans-serif;font-weight:900;line-height:1.02;letter-spacing:-.01em}
 a{color:inherit}
-::selection{background:var(--gold);color:var(--green-dd)}
-.wrap{width:min(1180px,92vw);margin:0 auto}
 img{max-width:100%;display:block}
+::selection{background:var(--oxblood);color:var(--flake)}
+.wrap{width:min(1180px,92vw);margin:0 auto}
+.fig{font-family:'Playfair Display',serif;font-weight:400;font-variant-numeric:lining-nums}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
-  padding:1rem 2.4rem;background:rgba(7,28,19,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.logo{font-family:'Space Grotesk';font-weight:700;font-size:1.35rem;letter-spacing:.02em;text-decoration:none}
-.logo .a{color:var(--cream)} .logo .b{color:var(--gold)}
+  padding:1rem 2.4rem;background:rgba(246,239,232,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.logo{font-family:'Lato';font-weight:900;font-size:1.3rem;letter-spacing:.02em;text-decoration:none;color:var(--ink)}
+.logo .b{color:var(--oxblood)}
 .nlinks{display:flex;gap:2rem;list-style:none;align-items:center}
-.nlinks a{font-family:'Space Grotesk';font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);text-decoration:none;transition:.2s;font-weight:500}
-.nlinks a:hover{color:var(--gold)}
-.ncta{background:var(--gold);color:var(--green-dd)!important;padding:.55rem 1.15rem;border-radius:100px;font-weight:600!important}
-.ncta:hover{background:var(--gold-l)!important}
+.nlinks a{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);text-decoration:none;transition:.2s;font-weight:700}
+.nlinks a:hover{color:var(--oxblood)}
+.ncta{background:var(--oxblood);color:var(--flake)!important;padding:.55rem 1.15rem;font-weight:700!important;letter-spacing:.1em!important}
+.ncta:hover{background:var(--ground)!important}
 
 /* buttons */
-.btn{font-family:'Space Grotesk';font-weight:600;font-size:.78rem;letter-spacing:.02em;padding:.85rem 1.7rem;border-radius:100px;text-decoration:none;display:inline-block;transition:.25s;cursor:pointer;border:none}
-.btn.p{background:var(--gold);color:var(--green-dd)} .btn.p:hover{transform:translateY(-2px);box-shadow:0 12px 26px -12px var(--gold)}
-.btn.s{border:1px solid var(--line);color:var(--cream);background:transparent} .btn.s:hover{border-color:var(--gold);color:var(--gold)}
+.btn{font-family:'Lato';font-weight:700;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:.9rem 1.7rem;text-decoration:none;display:inline-block;transition:.25s;cursor:pointer;border:1px solid transparent}
+.btn.p{background:var(--oxblood);color:var(--flake)} .btn.p:hover{background:var(--ground)}
+.btn.s{border-color:var(--ink);color:var(--ink);background:transparent} .btn.s:hover{background:var(--ink);color:var(--flake)}
+.btn.pd{background:var(--bottle);color:var(--ground)} .btn.pd:hover{background:var(--flake)}
+.btn.sd{border-color:var(--line-d);color:var(--flake)} .btn.sd:hover{border-color:var(--bottle);color:var(--bottle)}
 
 /* section common */
 section{padding:7rem 0;position:relative}
-.kick{font-family:'Space Grotesk';text-transform:uppercase;letter-spacing:.28em;font-size:.7rem;font-weight:600;color:var(--gold);display:flex;align-items:center;gap:.7rem}
-.kick::before{content:"";width:1.6rem;height:1px;background:var(--gold)}
-h2.big{font-size:clamp(2.2rem,5vw,3.9rem);font-weight:700;color:var(--cream);margin:1rem 0 1.3rem}
-h2.big em{font-style:normal;color:var(--gold)}
-.lead{font-size:clamp(1.02rem,1.5vw,1.2rem);color:#d7e4da;max-width:62ch;font-weight:300}
+.kick{text-transform:uppercase;letter-spacing:.26em;font-size:.7rem;font-weight:700;color:var(--oxblood);display:flex;align-items:center;gap:.7rem}
+.kick::before{content:"";width:1.6rem;height:2px;background:var(--oxblood)}
+.dark .kick{color:var(--bottle)}.dark .kick::before{background:var(--bottle)}
+h2.big{font-size:clamp(2.1rem,5vw,3.7rem);font-weight:900;margin:1.1rem 0 1.2rem;color:var(--ink)}
+h2.big em{font-style:normal;font-weight:300;color:var(--oxblood)}
+.dark h2.big{color:var(--flake)}.dark h2.big em{color:var(--bottle)}
+.lead{font-size:clamp(1.02rem,1.5vw,1.18rem);color:#3a3a37;max-width:64ch;font-weight:400}
+.dark .lead{color:#d9cfc6}
 .mut{color:var(--mut)}
-.divide{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:2rem 0}
+.divide{height:1px;background:var(--line);margin:2.4rem 0}
+.dark .divide{background:var(--line-d)}
 
-/* reveal + counters */
-.rv{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
 .rv.in{opacity:1;transform:none}
 .rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}.rv.d4{transition-delay:.32s}
 
-/* progress + loop ring */
-#bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--green-l),var(--gold));width:0;z-index:200}
+#bar{position:fixed;top:0;left:0;height:3px;background:var(--oxblood);width:0;z-index:200}
 
 /* HERO */
-#hero{min-height:100vh;display:flex;align-items:center;background:radial-gradient(120% 90% at 72% 12%,#12452e 0,var(--green-dd) 60%);overflow:hidden;padding-top:5rem}
-.h-loop{position:absolute;right:-8vw;top:50%;transform:translateY(-50%);width:min(42vw,540px);opacity:.28;z-index:0;pointer-events:none;animation:spin 40s linear infinite}
-@keyframes spin{to{transform:translateY(-50%) rotate(360deg)}}
-#hero .wrap{position:relative;z-index:3}
-.h-kick{color:var(--gold)}
-h1{font-size:clamp(2.8rem,8vw,6rem);font-weight:700;line-height:.98;margin:1.3rem 0 0;max-width:16ch}
-h1 .g{color:var(--gold)}
-.h-sub{margin-top:1.6rem;font-size:clamp(1.05rem,1.7vw,1.35rem);max-width:54ch;color:#dcebe0;font-weight:300;line-height:1.7}
-.h-btns{display:flex;gap:.9rem;margin-top:2.2rem;flex-wrap:wrap}
-.scrollcue{position:absolute;left:0;bottom:1.8rem;font-family:'Space Grotesk';font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);display:flex;align-items:center;gap:.8rem}
-.scrollcue::after{content:"";width:3rem;height:1px;background:var(--mut);animation:sl 2s ease-in-out infinite}
-@keyframes sl{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.4);transform-origin:left}}
+#hero{min-height:100vh;display:flex;align-items:center;background:var(--bone);padding-top:6rem}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:3.2rem;align-items:center}
+h1{font-size:clamp(2.7rem,7.5vw,5.4rem);font-weight:900;line-height:.98;margin:1.3rem 0 0;max-width:14ch;color:var(--ink)}
+h1 .g{font-weight:300;color:var(--oxblood)}
+.h-sub{margin-top:1.6rem;font-size:clamp(1.05rem,1.6vw,1.3rem);max-width:46ch;color:#3a3a37;font-weight:400;line-height:1.7}
+.h-btns{display:flex;gap:.9rem;margin-top:2.1rem;flex-wrap:wrap}
+.h-photo{aspect-ratio:4/5;background:var(--ground) center/cover no-repeat;border:1px solid var(--line);position:relative;display:flex;align-items:flex-end}
+.h-photo .cap{padding:1rem 1.2rem;font-size:.78rem;color:var(--flake);background:rgba(19,22,20,.55);width:100%}
 
 /* ticker */
-.ticker{background:var(--green);padding:.7rem 0;overflow:hidden;white-space:nowrap;border-top:1px solid rgba(0,0,0,.15);border-bottom:1px solid rgba(0,0,0,.15)}
-.ticker-in{display:inline-flex;animation:tick 42s linear infinite}
+.ticker{background:var(--machine);padding:.75rem 0;overflow:hidden;white-space:nowrap}
+.ticker-in{display:inline-flex;animation:tick 46s linear infinite}
 @keyframes tick{to{transform:translateX(-50%)}}
-.ti{font-family:'Space Grotesk';font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;padding:0 2.4rem;color:var(--cream);font-weight:500}
-.ti b{color:var(--gold-l);margin-right:.5rem}
+.ti{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;padding:0 2rem;color:var(--flake);font-weight:700}
+.ti b{color:var(--bottle);margin-right:.55rem;font-weight:400}
 
 /* stats grid */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:2.6rem}
-.stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.5rem 1.3rem}
-.stat .n{font-family:'Space Grotesk';font-weight:700;font-size:clamp(1.9rem,3.4vw,2.9rem);color:var(--gold);line-height:1}
-.stat .l{font-size:.8rem;color:#c6d6cb;margin-top:.5rem;line-height:1.4}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:2.6rem;border-top:1px solid var(--line)}
+.stat{padding:1.8rem 1.4rem 1.6rem;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+.stat:nth-child(4n){border-right:none}
+.dark .stats{border-color:var(--line-d)}.dark .stat{border-color:var(--line-d)}
+.stat .n{font-family:'Playfair Display',serif;font-weight:400;font-size:clamp(2.4rem,4.4vw,3.6rem);color:var(--oxblood);line-height:1;white-space:nowrap}
+.dark .stat .n{color:var(--bottle)}
+.stat .l{font-size:.82rem;color:var(--mut);margin-top:.6rem;line-height:1.45}
+.dark .stat .l{color:#c3b8ae}
 
-/* problem cards */
-.pcards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:2.4rem}
-.pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.6rem 1.7rem;display:flex;gap:1.1rem;transition:.25s}
-.pcard:hover{background:#123f2a;border-color:var(--gold)}
-.pcard .i{font-size:1.5rem;flex-shrink:0}
-.pcard h4{font-family:'Space Grotesk';font-size:1rem;color:var(--cream);margin-bottom:.35rem;font-weight:600}
-.pcard p{font-size:.9rem;color:#b9ccc0}
+/* numbered rows (problem / why) */
+.rows{margin-top:2.6rem;border-top:1px solid var(--line)}
+.nrow{display:grid;grid-template-columns:5rem 1fr;gap:1.4rem;padding:1.7rem 0;border-bottom:1px solid var(--line);align-items:start}
+.nrow .num{font-family:'Playfair Display',serif;font-size:2rem;color:var(--bottle-d);line-height:.9}
+.nrow h4{font-size:1.05rem;font-weight:900;margin-bottom:.3rem;color:var(--ink)}
+.nrow p{font-size:.94rem;color:#4a4a46;max-width:70ch}
+.two-col .nrow{grid-template-columns:4rem 1fr}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 3rem}
+@media(max-width:900px){.grid2{grid-template-columns:1fr;gap:0}}
 
-/* photos */
-.photo{border-radius:16px;border:1px solid var(--line);overflow:hidden;position:relative;background:#0c3020;box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
-.photo img{width:100%;height:100%;object-fit:cover;display:block}
-.photo.sq{aspect-ratio:4/3}.photo.tall{aspect-ratio:4/5}
-.photo .cap{position:absolute;left:0;right:0;bottom:0;padding:.85rem 1.1rem;font-size:.76rem;color:#eaf2ec;background:linear-gradient(0deg,rgba(7,28,19,.92),transparent)}
-.imgband{position:relative;border-radius:16px;overflow:hidden;margin-top:2.4rem;border:1px solid var(--line);min-height:300px;display:flex;align-items:flex-end}
-.imgband img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.imgband::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,28,19,.82),rgba(7,28,19,.2))}
-.imgband .cap{position:relative;z-index:2;padding:1.5rem 1.7rem;font-family:'Space Grotesk';font-weight:500;color:var(--cream);font-size:1.05rem;max-width:34ch;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+/* photo band */
+.imgband{position:relative;overflow:hidden;margin-top:2.4rem;border:1px solid var(--line);min-height:320px;display:flex;align-items:flex-end;background:var(--ground) center/cover no-repeat}
+.imgband::after{content:"";position:absolute;inset:0;background:rgba(19,22,20,.42)}
+.imgband .cap{position:relative;z-index:2;padding:1.6rem 1.8rem;font-weight:700;color:var(--flake);font-size:1.05rem;max-width:36ch}
 
-/* JOURNEY */
-.jflow{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:3rem}
-.jstep{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.5rem 1.2rem;transition:.3s;position:relative}
-.jstep:hover{transform:translateY(-6px);border-color:var(--gold);background:#123f2a}
-.jstep .num{font-family:'Space Grotesk';color:var(--gold);font-weight:700;font-size:.8rem}
-.jstep .ic{font-size:1.7rem;margin:.4rem 0 .6rem}
-.jstep h4{font-family:'Space Grotesk';font-size:.98rem;color:var(--cream);margin-bottom:.4rem;font-weight:600}
-.jstep p{font-size:.82rem;color:#b9ccc0;line-height:1.5}
-.jstep.gate{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold) inset}
+/* journey steps */
+.jflow{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:3rem;border-top:1px solid var(--line)}
+.jstep{padding:1.8rem 1.3rem;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+.jstep:nth-child(5n){border-right:none}
+.jstep .num{font-family:'Playfair Display',serif;color:var(--bottle-d);font-size:1.5rem}
+.jstep h4{font-size:1rem;font-weight:900;margin:.7rem 0 .4rem;color:var(--ink)}
+.jstep p{font-size:.85rem;color:#4a4a46;line-height:1.55}
+.jstep.gate{background:var(--bone);border-top:3px solid var(--oxblood);margin-top:-1px}
+.jstep.gate .num{color:var(--oxblood)}
 
-/* PEOPLE / impact panel */
-#impact{background:linear-gradient(180deg,var(--green-d),#0a2417)}
-.icards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:2.6rem}
-.icard{background:rgba(216,174,58,.06);border:1px solid var(--line);border-radius:16px;padding:2rem 1.7rem}
-.icard .n{font-family:'Space Grotesk';font-weight:700;font-size:clamp(2rem,3.6vw,2.8rem);color:var(--gold)}
-.icard h4{font-family:'Space Grotesk';color:var(--cream);margin:.3rem 0 .5rem;font-size:1.05rem;font-weight:600}
-.icard p{font-size:.9rem;color:#c2d4c8}
-.quote{font-family:'Space Grotesk';font-weight:500;font-size:clamp(1.5rem,3vw,2.4rem);color:var(--cream);line-height:1.2;max-width:22ch}
-.quote .g{color:var(--gold)}
+/* impact (dark) */
+.dark{background:var(--ground);color:var(--flake)}
+.icards{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:2.6rem;border-top:1px solid var(--line-d)}
+.icard{padding:2rem 1.6rem;border-bottom:1px solid var(--line-d);border-right:1px solid var(--line-d)}
+.icard:nth-child(3n){border-right:none}
+.icard .n{font-family:'Playfair Display',serif;font-weight:400;font-size:clamp(2.2rem,3.8vw,3.2rem);color:var(--bottle);line-height:1;white-space:nowrap}
+.icard h4{margin:.5rem 0 .5rem;font-size:1.05rem;font-weight:900;color:var(--flake)}
+.icard p{font-size:.9rem;color:#c3b8ae}
+.quote{font-weight:300;font-size:clamp(1.5rem,3vw,2.3rem);color:var(--flake);line-height:1.25;max-width:24ch}
+.quote .g{color:var(--bottle)}
 .sdg{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
-.sdg span{border:1px solid var(--line);border-radius:100px;padding:.4rem .9rem;font-family:'Space Grotesk';font-size:.68rem;letter-spacing:.06em;color:var(--gold-l);font-weight:500}
-
-/* WHY grid */
-.wgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:2.6rem}
-.wcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:2rem 1.7rem;position:relative;overflow:hidden;transition:.25s}
-.wcard:hover{background:#123f2a}
-.wcard .wn{font-family:'Space Grotesk';font-weight:700;font-size:3rem;color:rgba(216,174,58,.16);line-height:.8;margin-bottom:.3rem}
-.wcard h4{font-family:'Space Grotesk';color:var(--cream);font-size:1.02rem;margin-bottom:.5rem;font-weight:600}
-.wcard p{font-size:.88rem;color:#b9ccc0}
+.sdg span{border:1px solid var(--line-d);padding:.4rem .9rem;font-size:.68rem;letter-spacing:.06em;color:var(--bottle);font-weight:700;text-transform:uppercase}
 
 /* MAP */
-#expansion{background:var(--green-dd)}
 .maprow{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-top:2.4rem}
-#tzmap{width:100%;height:auto;filter:drop-shadow(0 20px 40px rgba(0,0,0,.5))}
+#tzmap{width:100%;height:auto}
 .city{opacity:0;transition:opacity .5s}.city.on{opacity:1}
-.cityname{font-family:'Space Grotesk';font-size:3px;fill:var(--cream);font-weight:500}
+.cityname{font-family:'Lato';font-size:3px;fill:var(--ink);font-weight:700}
 .timeline{display:flex;flex-direction:column;max-height:58vh;overflow:auto}
-.tl{display:grid;grid-template-columns:58px 1fr;gap:12px;padding:.6rem 0;border-bottom:1px solid rgba(216,174,58,.12);opacity:.35;transition:.4s}
+.tl{display:grid;grid-template-columns:58px 1fr;gap:12px;padding:.6rem 0;border-bottom:1px solid var(--line);opacity:.35;transition:.4s}
 .tl.on{opacity:1}
-.tl .yr{font-family:'Space Grotesk';color:var(--gold);font-weight:700;font-size:.9rem}
-.tl .c{font-family:'Space Grotesk';color:var(--cream);font-weight:500;font-size:.95rem}
+.tl .yr{font-family:'Playfair Display',serif;color:var(--oxblood);font-size:1.05rem}
+.tl .c{font-weight:900;color:var(--ink);font-size:.95rem}
 .tl .d{font-size:.78rem;color:var(--mut)}
 
-/* INVEST */
-#invest{background:radial-gradient(120% 100% at 25% 0%,#15492f,var(--green-dd))}
-.invbox{background:var(--panel);border:1px solid var(--gold);border-radius:18px;padding:2.4rem;margin-top:2rem;display:grid;grid-template-columns:1.3fr 1fr;gap:2.4rem;align-items:center}
+/* INVEST (dark) */
+.invbox{border:1px solid var(--line-d);padding:2.4rem;margin-top:2rem;display:grid;grid-template-columns:1.3fr 1fr;gap:2.4rem;align-items:center}
 .invbox .btns{display:flex;flex-direction:column;gap:.8rem}
-.pill{display:inline-block;background:rgba(216,174,58,.12);border:1px solid var(--line);color:var(--gold-l);padding:.35rem .85rem;border-radius:100px;font-size:.72rem;margin:.25rem .3rem 0 0;font-family:'Space Grotesk';font-weight:500}
+.pill{display:inline-block;border:1px solid var(--line-d);color:var(--bottle);padding:.35rem .85rem;font-size:.72rem;margin:.25rem .3rem 0 0;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
 
 /* ROADMAP */
 .timeline2{margin-top:2.6rem;position:relative}
 .timeline2::before{content:"";position:absolute;left:.6rem;top:.4rem;bottom:.4rem;width:1px;background:var(--line)}
 .ti2{display:flex;gap:1.4rem;padding-bottom:2rem;position:relative}
-.ti2 .dot{width:1.25rem;height:1.25rem;border-radius:50%;background:var(--green-dd);border:2px solid var(--gold);flex-shrink:0;margin-top:.2rem;z-index:1}
-.ti2 .dot.done{background:var(--gold)}
-.ti2 .date{font-family:'Space Grotesk';font-size:.68rem;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;margin-bottom:.3rem}
-.ti2 h4{font-family:'Space Grotesk';color:var(--cream);font-size:1.02rem;margin-bottom:.3rem;font-weight:600}
-.ti2 p{font-size:.88rem;color:#b9ccc0;max-width:60ch}
+.ti2 .dot{width:1.25rem;height:1.25rem;border-radius:50%;background:var(--flake);border:2px solid var(--bottle-d);flex-shrink:0;margin-top:.2rem;z-index:1}
+.ti2 .dot.done{background:var(--oxblood);border-color:var(--oxblood)}
+.ti2 .date{font-size:.68rem;letter-spacing:.12em;color:var(--oxblood);text-transform:uppercase;margin-bottom:.3rem;font-weight:700}
+.ti2 h4{font-size:1.02rem;font-weight:900;margin-bottom:.3rem;color:var(--ink)}
+.ti2 p{font-size:.9rem;color:#4a4a46;max-width:62ch}
 
 /* NEWS */
-#news{background:var(--green-d)}
-.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:2.4rem}
-.ncard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.7rem;transition:.25s}
-.ncard:hover{border-color:var(--gold);background:#123f2a}
-.ncard .tag{font-family:'Space Grotesk';font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem}
-.ncard h4{font-family:'Space Grotesk';font-size:1rem;color:var(--cream);margin-bottom:.5rem;line-height:1.3;font-weight:600}
-.ncard p{font-size:.86rem;color:#b9ccc0;margin-bottom:1rem}
-.ncard a.rd{font-family:'Space Grotesk';font-size:.72rem;letter-spacing:.06em;color:var(--gold);text-decoration:none}
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:2.4rem;border-top:1px solid var(--line)}
+.ncard{padding:1.9rem 1.6rem;border-bottom:1px solid var(--line);border-right:1px solid var(--line);transition:.25s;text-decoration:none;color:inherit;display:block}
+.ncard:nth-child(3n){border-right:none}
+.ncard:hover{background:var(--bone)}
+.ncard .tag{font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--oxblood);margin-bottom:.7rem;font-weight:700}
+.ncard h4{font-size:1.02rem;font-weight:900;margin-bottom:.5rem;line-height:1.3;color:var(--ink)}
+.ncard p{font-size:.86rem;color:#4a4a46;margin-bottom:1rem}
+.ncard .rd{font-size:.72rem;letter-spacing:.06em;color:var(--bottle-d);text-transform:uppercase;font-weight:700}
 
 /* CONTACT */
-#contact{background:linear-gradient(180deg,#0a2417,var(--green-dd))}
 .crow{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start;margin-top:1rem}
 .cdetail{display:flex;gap:1rem;margin-bottom:1rem}
-.cdetail .k{font-family:'Space Grotesk';font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);min-width:5rem;padding-top:.15rem}
-.cdetail .v{color:var(--cream);font-size:.95rem}
+.cdetail .k{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--oxblood);min-width:5rem;padding-top:.15rem;font-weight:700}
+.cdetail .v{color:var(--ink);font-size:.95rem}
 .cform{display:flex;flex-direction:column;gap:.9rem}
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
 .fg{display:flex;flex-direction:column;gap:.35rem}
-.fg label{font-family:'Space Grotesk';font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
-.fg input,.fg select,.fg textarea{background:var(--green-dd);border:1px solid var(--line);color:var(--cream);padding:.75rem .9rem;font-family:'Inter';font-size:.92rem;border-radius:8px;outline:none;transition:.2s;resize:vertical}
-.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold)}
-.fg select option{background:var(--green-dd)}
+.fg label{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);font-weight:700}
+.fg input,.fg select,.fg textarea{background:var(--flake);border:1px solid var(--line);color:var(--ink);padding:.75rem .9rem;font-family:'Lato';font-size:.92rem;outline:none;transition:.2s;resize:vertical}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--oxblood)}
 
 /* FOOTER */
-footer{background:var(--green-dd);border-top:1px solid var(--line);padding:3rem 0 1rem}
+footer{background:var(--machine);color:var(--flake);border-top:1px solid var(--line-d);padding:3rem 0 1.4rem}
 .fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.4rem}
-.flogo{font-family:'Space Grotesk';font-weight:700;font-size:1.5rem;margin-bottom:.6rem}
-.flogo .a{color:var(--cream)}.flogo .b{color:var(--gold)}
-.ftag{font-size:.86rem;color:var(--mut);max-width:26ch;line-height:1.6;margin-bottom:1.2rem}
+.flogo{font-family:'Lato';font-weight:900;font-size:1.5rem;margin-bottom:.6rem}
+.flogo .b{color:var(--bottle)}
+.ftag{font-size:.86rem;color:#c3b8ae;max-width:26ch;line-height:1.6;margin-bottom:1.2rem}
 .fsoc{display:flex;gap:.6rem;flex-wrap:wrap}
-.fsoc a{border:1px solid var(--line);border-radius:100px;padding:.35rem .8rem;font-family:'Space Grotesk';font-size:.66rem;letter-spacing:.08em;color:var(--mut);text-decoration:none;transition:.2s}
-.fsoc a:hover{border-color:var(--gold);color:var(--gold)}
-.fcol h4{font-family:'Space Grotesk';font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.fsoc a{border:1px solid var(--line-d);padding:.35rem .8rem;font-size:.66rem;letter-spacing:.08em;color:#c3b8ae;text-decoration:none;transition:.2s;text-transform:uppercase;font-weight:700}
+.fsoc a:hover{border-color:var(--bottle);color:var(--bottle)}
+.fcol h4{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--bottle);margin-bottom:1rem;font-weight:700}
 .fcol ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
-.fcol a{font-size:.86rem;color:var(--mut);text-decoration:none;transition:.2s}
-.fcol a:hover{color:var(--cream)}
-.fbottom{border-top:1px solid var(--line);margin-top:2.4rem;padding-top:1.2rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-.fbottom p{font-family:'Space Grotesk';font-size:.66rem;letter-spacing:.06em;color:var(--mut)}
+.fcol a{font-size:.86rem;color:#c3b8ae;text-decoration:none;transition:.2s}
+.fcol a:hover{color:var(--flake)}
+.fbottom{border-top:1px solid var(--line-d);margin-top:2.4rem;padding-top:1.2rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.fbottom p{font-size:.66rem;letter-spacing:.06em;color:#8a8078}
 
 @media(max-width:900px){
   nav{padding:.9rem 1.3rem}.nlinks{display:none}
   h1{max-width:100%}
-  .stats{grid-template-columns:1fr 1fr}.pcards,.crow,.maprow,.invbox{grid-template-columns:1fr;gap:1.6rem}
-  .jflow{grid-template-columns:1fr 1fr}.icards,.wgrid,.news-grid{grid-template-columns:1fr}
+  .hero-grid,.stats,.crow,.maprow,.invbox{grid-template-columns:1fr;gap:1.6rem}
+  .stat{border-right:none}
+  .jflow,.icards,.news-grid{grid-template-columns:1fr}
+  .jstep,.icard,.ncard{border-right:none}
   .fgrid{grid-template-columns:1fr 1fr}.frow{grid-template-columns:1fr}
-  .h-loop{display:none}.invbox .btns{flex-direction:column}
+  .h-photo{aspect-ratio:16/10}.invbox .btns{flex-direction:column}
 }
 </style>
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
@@ -230,100 +226,99 @@ footer{background:var(--green-dd);border-top:1px solid var(--line);padding:3rem 
 
 <!-- NAV -->
 <nav>
-  <a href="#hero" class="logo"><span class="a">MLIMA</span><span class="b">LOOP</span></a>
+  <a href="#hero" class="logo">MLIMA<span class="b">LOOP</span></a>
   <ul class="nlinks">
     <li><a href="#story">Story</a></li>
     <li><a href="#journey">The loop</a></li>
     <li><a href="#impact">Impact</a></li>
     <li><a href="#expansion">Expansion</a></li>
     <li><a href="/blog/">News</a></li>
-    <li><a href="#invest" class="ncta">Investors</a></li>
+    <li><a href="/invest/" class="ncta">Invest</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
-  <svg class="h-loop" viewBox="0 0 400 400" fill="none">
-    <circle cx="200" cy="200" r="180" stroke="#D8AE3A" stroke-width="1"/>
-    <circle cx="200" cy="200" r="140" stroke="#D8AE3A" stroke-width=".5" stroke-dasharray="4 5"/>
-    <circle cx="200" cy="200" r="100" stroke="#D8AE3A" stroke-width="1"/>
-    <path d="M200 20 L220 60 L180 60 Z" fill="#D8AE3A"/><path d="M380 200 L340 180 L340 220 Z" fill="#D8AE3A"/>
-    <path d="M200 380 L180 340 L220 340 Z" fill="#D8AE3A"/><path d="M20 200 L60 220 L60 180 Z" fill="#D8AE3A"/>
-  </svg>
   <div class="wrap">
-    <div class="kick h-kick rv in">Arusha, Tanzania · Est. 2026</div>
-    <h1 class="rv in d1">Closing the <span class="g">loop</span> on plastic.</h1>
-    <p class="h-sub rv in d2">MlimaLoop collects post-consumer plastic across Tanzania and turns it into certified, food-grade recycled material for global brands, while building fair, formal livelihoods for the people who collect it. This is not charity. This is industry.</p>
-    <div class="h-btns rv in d3">
-      <a href="#invest" class="btn p">For investors</a>
-      <a href="#journey" class="btn s">Follow the loop</a>
+    <div class="hero-grid">
+      <div>
+        <div class="kick rv in">Arusha, Tanzania · Est. 2026</div>
+        <h1 class="rv in d1">Closing the loop <span class="g">on plastic.</span></h1>
+        <p class="h-sub rv in d2">MlimaLoop collects post-consumer plastic across Tanzania and turns it into certified, food-grade recycled material for global brands, while building fair, formal livelihoods for the people who collect it. This is not charity. This is industry.</p>
+        <div class="h-btns rv in d3">
+          <a href="/invest/" class="btn p">For investors</a>
+          <a href="#journey" class="btn s">Follow the loop</a>
+        </div>
+      </div>
+      <div class="h-photo rv in d2" style="background-image:url('/images/hero.jpg')">
+        <div class="cap">Buying material at a mobile station in Arusha.</div>
+      </div>
     </div>
   </div>
-  <div class="wrap"><div class="scrollcue">Scroll to explore</div></div>
 </section>
 
 <!-- TICKER -->
 <div class="ticker"><div class="ticker-in" id="ticker">
-  <span class="ti"><b>◆</b> Food-grade rPET</span><span class="ti"><b>◆</b> East Africa's first integrated recycler</span><span class="ti"><b>◆</b> Fair, formal livelihoods</span><span class="ti"><b>◆</b> Ocean-bound plastic credits</span><span class="ti"><b>◆</b> Circular economy</span><span class="ti"><b>◆</b> Twelve sites across Tanzania</span><span class="ti"><b>◆</b> Arusha, Tanzania</span>
+  <span class="ti"><b>·</b> Food-grade rPET</span><span class="ti"><b>·</b> East Africa's first integrated recycler</span><span class="ti"><b>·</b> Fair, formal livelihoods</span><span class="ti"><b>·</b> Ocean-bound plastic credits</span><span class="ti"><b>·</b> Circular economy</span><span class="ti"><b>·</b> Twelve sites across Tanzania</span><span class="ti"><b>·</b> Arusha, Tanzania</span>
 </div></div>
 
 <!-- STORY / PROBLEM -->
 <section id="story">
   <div class="wrap">
     <div class="kick rv">The problem</div>
-    <h2 class="big rv d1">A continent drowning<br>in its own <em>plastic.</em></h2>
+    <h2 class="big rv d1">A continent drowning <em>in its own plastic.</em></h2>
     <p class="lead rv d2">East Africa recycles less than three per cent of its plastic. The rest chokes waterways, cities and soil. Arusha alone throws out eight to twelve tonnes of collectable PET every day, and the city's Sakina landfill holds a stockpile of more than fifty thousand tonnes. The bottles are already here. So is the global demand for certified recycled material, driven hard by EU recycled-content law. What is missing is the infrastructure, and a fair, formal chain, to connect the two. That gap is the opportunity, and MlimaLoop is built to close it.</p>
     <div class="stats">
-      <div class="stat rv d1"><div class="n" data-target="3" data-suffix="%" data-prefix="<">0</div><div class="l">of East Africa's plastic is recycled today</div></div>
-      <div class="stat rv d2"><div class="n" data-target="8" data-suffix="–12t">0</div><div class="l">collectable PET generated in Arusha every day</div></div>
-      <div class="stat rv d3"><div class="n" data-target="50" data-suffix="k t">0</div><div class="l">plastic stockpiled at Arusha's Sakina landfill</div></div>
-      <div class="stat rv d4"><div class="n" data-target="16" data-suffix="bn">0</div><div class="l">bottles discarded across Africa every year</div></div>
+      <div class="stat rv d1"><div class="n">3%</div><div class="l">of East Africa's plastic is recycled today</div></div>
+      <div class="stat rv d2"><div class="n">8-12t</div><div class="l">collectable PET generated in Arusha every day</div></div>
+      <div class="stat rv d3"><div class="n">50k t</div><div class="l">plastic stockpiled at Arusha's Sakina landfill</div></div>
+      <div class="stat rv d4"><div class="n">16bn</div><div class="l">bottles discarded across Africa every year</div></div>
     </div>
-    <div class="pcards">
-      <div class="pcard rv d1"><div class="i">🌊</div><div><h4>Ocean &amp; waterway pollution</h4><p>Arusha drains via the Pangani river to the Indian Ocean, so material collected here qualifies as high-value ocean-bound plastic.</p></div></div>
-      <div class="pcard rv d1"><div class="i">🏭</div><div><h4>No local processing</h4><p>Despite huge collection potential, the region has almost no industrial capacity to process PET at scale. Bottles are landfilled or shipped out raw.</p></div></div>
-      <div class="pcard rv d2"><div class="i">📦</div><div><h4>Brand demand is surging</h4><p>Mandatory recycled-content targets mean global packaging and fashion brands urgently need verified, traceable recycled supply.</p></div></div>
-      <div class="pcard rv d2"><div class="i">🤝</div><div><h4>No formal waste economy</h4><p>Thousands of informal collectors work with no structure, no fair pricing and no protection. MlimaLoop formalises and rewards the chain.</p></div></div>
+    <div class="rows grid2">
+      <div class="nrow rv d1"><div class="num fig">01</div><div><h4>Ocean and waterway pollution</h4><p>Arusha drains via the Pangani river to the Indian Ocean, so material collected here qualifies as high-value ocean-bound plastic.</p></div></div>
+      <div class="nrow rv d1"><div class="num fig">02</div><div><h4>No local processing</h4><p>Despite huge collection potential, the region has almost no industrial capacity to process PET at scale. Bottles are landfilled or shipped out raw.</p></div></div>
+      <div class="nrow rv d2"><div class="num fig">03</div><div><h4>Brand demand is surging</h4><p>Mandatory recycled-content targets mean global packaging and fashion brands urgently need verified, traceable recycled supply.</p></div></div>
+      <div class="nrow rv d2"><div class="num fig">04</div><div><h4>No formal waste economy</h4><p>Thousands of informal collectors work with no structure, no fair pricing and no protection. MlimaLoop formalises and rewards the chain.</p></div></div>
     </div>
   </div>
 </section>
 
 <!-- JOURNEY -->
-<section id="journey" style="background:linear-gradient(180deg,var(--green-dd),#0a2417)">
+<section id="journey" style="background:var(--bone)">
   <div class="wrap">
     <div class="kick rv">The loop</div>
     <h2 class="big rv d1">Follow one <em>bottle.</em></h2>
     <p class="lead rv d2">From a street in Arusha to a global brand, and back again. Because we stockpile feedstock during build-out, the plant runs two shifts from day one, and every kilo is logged, named and traceable through the MlimaLoop app.</p>
-    <div class="imgband rv d2"><img src="/investors/collectors-fleet.jpg" alt="MlimaLoop collectors with the green collection fleet in Arusha" loading="lazy"><div class="cap">The green fleet brings mobile buying stations to the community.</div></div>
+    <div class="imgband rv d2" style="background-image:url('/images/fleet.jpg')"><div class="cap">The fleet brings mobile buying stations to the community.</div></div>
     <div class="jflow">
-      <div class="jstep rv d1"><div class="num">01</div><div class="ic">📲</div><h4>The collector</h4><p>A bottle is picked up, scanned into the app and paid for instantly, fairly, on the spot. A dedicated collector earns around three times the local minimum wage.</p></div>
-      <div class="jstep rv d1"><div class="num">02</div><div class="ic">🛺</div><h4>The fleet</h4><p>Green mobile buying stations bring the depot to the community, so collectors never travel far and can sell a whole basket of materials.</p></div>
-      <div class="jstep rv d2"><div class="num">03</div><div class="ic">💧</div><h4>The plant</h4><p>Sorted, shredded and hot-washed to food-contact cleanliness, then extruded into clean rPET pellet.</p></div>
-      <div class="jstep gate rv d2"><div class="num">04</div><div class="ic">🧪</div><h4>Food grade</h4><p>A solid-state reactor lifts the pellet to food-grade quality, the highest-value, most defensible product in the market.</p></div>
-      <div class="jstep rv d3"><div class="num">05</div><div class="ic">♻️</div><h4>The loop closes</h4><p>Pellet and fibre go to global brands. What can't be recycled becomes bricks, roofing and community products. Nothing is wasted.</p></div>
+      <div class="jstep rv d1"><div class="num fig">01</div><h4>The collector</h4><p>A bottle is picked up, scanned into the app and paid for instantly, fairly, on the spot. A dedicated collector earns around three times the local minimum wage.</p></div>
+      <div class="jstep rv d1"><div class="num fig">02</div><h4>The fleet</h4><p>Mobile buying stations bring the depot to the community, so collectors never travel far and can sell a whole basket of materials.</p></div>
+      <div class="jstep rv d2"><div class="num fig">03</div><h4>The plant</h4><p>Sorted, shredded and hot-washed to food-contact cleanliness, then extruded into clean rPET pellet.</p></div>
+      <div class="jstep gate rv d2"><div class="num fig">04</div><h4>Food grade</h4><p>A solid-state reactor lifts the pellet to food-grade quality, the highest-value, most defensible product in the market.</p></div>
+      <div class="jstep rv d3"><div class="num fig">05</div><h4>The loop closes</h4><p>Pellet and fibre go to global brands. What cannot be recycled becomes bricks, roofing and community products. Nothing is wasted.</p></div>
     </div>
   </div>
 </section>
 
-<!-- IMPACT / PEOPLE -->
-<section id="impact">
+<!-- IMPACT / PEOPLE (dark) -->
+<section id="impact" class="dark">
   <div class="wrap">
     <div class="kick rv">Why it matters</div>
-    <h2 class="big rv d1">Every loop closed<br><em>changes a life.</em></h2>
-    <p class="lead rv d2">The community isn't a side-project bolted onto a plant, it is the business. Collectors are paid fairly and instantly through the app. Each site creates around forty skilled, safe jobs, from managers and operators to drivers and security. Cities get cleaner, worker housing gets built from recycled bricks, and a formal economy grows where there was none. As MlimaLoop scales across the country, so do the people and the towns around it.</p>
+    <h2 class="big rv d1">Every loop closed <em>changes a life.</em></h2>
+    <p class="lead rv d2">The community is not a side-project bolted onto a plant, it is the business. Collectors are paid fairly and instantly through the app. Each site creates around forty skilled, safe jobs, from managers and operators to drivers and security. Cities get cleaner, worker housing gets built from recycled bricks, and a formal economy grows where there was none. As MlimaLoop scales across the country, so do the people and the towns around it.</p>
     <div class="icards">
-      <div class="icard rv d1"><div class="n" data-target="500" data-suffix="+">0</div><h4>Skilled plant jobs</h4><p>Forty fair, safe jobs per site across the network at full national scale, plus a growing head-office team.</p></div>
-      <div class="icard rv d2"><div class="n" data-target="1000" data-suffix="s">0</div><h4>Collector livelihoods</h4><p>Informal collectors formalised, paid fairly and on time, building loyal income that spreads through communities.</p></div>
-      <div class="icard rv d3"><div class="n" data-target="0" data-suffix="→landfill">0</div><h4>Waste, not wasted</h4><p>Every bottle diverted is revenue earned. The business model aligns financial returns with cleaner cities and rivers.</p></div>
+      <div class="icard rv d1"><div class="n">500+</div><h4>Skilled plant jobs</h4><p>Forty fair, safe jobs per site across the network at full national scale, plus a growing head-office team.</p></div>
+      <div class="icard rv d2"><div class="n">1,000s</div><h4>Collector livelihoods</h4><p>Informal collectors formalised, paid fairly and on time, building loyal income that spreads through communities.</p></div>
+      <div class="icard rv d3"><div class="n">200k t</div><h4>Waste, not wasted</h4><p>Tonnes diverted from landfill, rivers and the Indian Ocean, the Pangani basin cleaned at its source.</p></div>
     </div>
     <div class="divide"></div>
     <div class="maprow" style="grid-template-columns:.85fr 1.15fr;margin-top:1rem">
-      <div class="photo tall rv"><img src="/investors/collector-woman.jpg" alt="A MlimaLoop collector logging a pickup on the app in Arusha" loading="lazy"><div class="cap">Paid instantly, fairly, every time.</div></div>
+      <div class="h-photo rv" style="aspect-ratio:4/5;background-image:url('/images/collector.jpg')"><div class="cap">Paid instantly, fairly, every time.</div></div>
       <div>
         <p class="quote rv d1">"Every bottle is a resource. Every loop closed is a <span class="g">profit,</span> and a livelihood."</p>
         <div class="rv d2" style="margin-top:1.6rem">
-          <p class="mut" style="font-family:'Space Grotesk';font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.8rem">UN Sustainable Development Goals aligned</p>
-          <div class="sdg"><span>SDG 8 · Decent Work</span><span>SDG 12 · Responsible Production</span><span>SDG 13 · Climate Action</span><span>SDG 14 · Life Below Water</span><span>SDG 17 · Partnerships</span></div>
+          <p class="mut" style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.8rem;color:#c3b8ae;font-weight:700">UN Sustainable Development Goals aligned</p>
+          <div class="sdg"><span>SDG 8 Decent Work</span><span>SDG 12 Responsible Production</span><span>SDG 13 Climate Action</span><span>SDG 14 Life Below Water</span><span>SDG 17 Partnerships</span></div>
         </div>
       </div>
     </div>
@@ -331,32 +326,32 @@ footer{background:var(--green-dd);border-top:1px solid var(--line);padding:3rem 
 </section>
 
 <!-- WHY -->
-<section id="why" style="background:var(--green-d)">
+<section id="why">
   <div class="wrap">
     <div class="kick rv">Why MlimaLoop</div>
     <h2 class="big rv d1">The competitive <em>advantage.</em></h2>
-    <div class="imgband rv d1"><img src="/investors/sorting-facility.jpg" alt="Workers sorting recovered plastics and cardboard at a MlimaLoop facility" loading="lazy"><div class="cap">First integrated recycler of its kind in East Africa.</div></div>
-    <div class="wgrid">
-      <div class="wcard rv d1"><div class="wn">01</div><h4>First-mover infrastructure</h4><p>No integrated rPET operation of this kind exists in East Africa. We are building the infrastructure the region's circular economy depends on, first to build, first to scale.</p></div>
-      <div class="wcard rv d1"><div class="wn">02</div><h4>Food-grade is the prize</h4><p>Food-grade pellet commands premium, long-term offtake from beverage and FMCG brands, the most defensible position in the market.</p></div>
-      <div class="wcard rv d2"><div class="wn">03</div><h4>Ocean-bound credits</h4><p>Collecting within a river system draining to the Indian Ocean qualifies our material for the highest-value plastic-credit category.</p></div>
-      <div class="wcard rv d2"><div class="wn">04</div><h4>Embedded feedstock</h4><p>Owned collector networks and buying stations mean cost-controlled, reliable supply, not spot purchasing, and a feedstock stockpile that grows daily.</p></div>
-      <div class="wcard rv d3"><div class="wn">05</div><h4>Regulatory tailwinds</h4><p>EU recycled-content mandates are driving unprecedented demand for verified rPET, and African supply is under-explored and undersupplied.</p></div>
-      <div class="wcard rv d3"><div class="wn">06</div><h4>Diversified revenue</h4><p>Food-grade and non-food pellet, plastic credits, recycled yarn, by-products, and, in time, licensing the proven model and app to other cities.</p></div>
+    <div class="imgband rv d1" style="background-image:url('/images/facility.jpg')"><div class="cap">First integrated recycler of its kind in East Africa.</div></div>
+    <div class="rows grid2 two-col">
+      <div class="nrow rv d1"><div class="num fig">01</div><div><h4>First-mover infrastructure</h4><p>No integrated rPET operation of this kind exists in East Africa. We are building the infrastructure the region's circular economy depends on, first to build, first to scale.</p></div></div>
+      <div class="nrow rv d1"><div class="num fig">02</div><div><h4>Food-grade is the prize</h4><p>Food-grade pellet commands premium, long-term offtake from beverage and FMCG brands, the most defensible position in the market.</p></div></div>
+      <div class="nrow rv d2"><div class="num fig">03</div><div><h4>Ocean-bound credits</h4><p>Collecting within a river system draining to the Indian Ocean qualifies our material for the highest-value plastic-credit category.</p></div></div>
+      <div class="nrow rv d2"><div class="num fig">04</div><div><h4>Embedded feedstock</h4><p>Owned collector networks and buying stations mean cost-controlled, reliable supply, not spot purchasing, and a feedstock stockpile that grows daily.</p></div></div>
+      <div class="nrow rv d3"><div class="num fig">05</div><div><h4>Regulatory tailwinds</h4><p>EU recycled-content mandates are driving unprecedented demand for verified rPET, and African supply is under-explored and undersupplied.</p></div></div>
+      <div class="nrow rv d3"><div class="num fig">06</div><div><h4>Diversified revenue</h4><p>Food-grade and non-food pellet, plastic credits, recycled yarn, by-products, and, in time, licensing the proven model and app to other cities.</p></div></div>
     </div>
   </div>
 </section>
 
 <!-- EXPANSION MAP -->
-<section id="expansion">
+<section id="expansion" style="background:var(--bone)">
   <div class="wrap">
     <div class="kick rv">The expansion</div>
-    <h2 class="big rv d1">Prove Arusha.<br>Then replicate a <em>nation.</em></h2>
+    <h2 class="big rv d1">Prove Arusha. Then replicate <em>a nation.</em></h2>
     <p class="lead rv d2">One proven model, rolled out city by city. Arusha is the blueprint; every site after it copies a system that already works, reaching twelve operating sites across Tanzania.</p>
     <div class="maprow">
       <div class="rv d2">
         <svg id="tzmap" viewBox="0 0 100 92">
-          <path d="M8,40 L14,24 L26,15 L40,12 L58,10 L64,14 L70,12 L74,18 L82,26 L86,34 L84,44 L88,50 L82,58 L78,66 L70,74 L58,80 L44,82 L34,80 L26,74 L18,64 L12,54 Z" fill="#0f3a26" stroke="rgba(216,174,58,.3)" stroke-width=".6"/>
+          <path d="M8,40 L14,24 L26,15 L40,12 L58,10 L64,14 L70,12 L74,18 L82,26 L86,34 L84,44 L88,50 L82,58 L78,66 L70,74 L58,80 L44,82 L34,80 L26,74 L18,64 L12,54 Z" fill="#e7ddd2" stroke="var(--bottle-d)" stroke-width=".6"/>
           <g id="cities"></g>
         </svg>
       </div>
@@ -365,29 +360,29 @@ footer{background:var(--green-dd);border-top:1px solid var(--line);padding:3rem 
   </div>
 </section>
 
-<!-- INVEST -->
-<section id="invest">
+<!-- INVEST (dark) -->
+<section id="invest" class="dark" style="background:var(--oxblood)">
   <div class="wrap">
     <div class="kick rv">Investors</div>
     <h2 class="big rv d1">Build the loop <em>with us.</em></h2>
-    <p class="lead rv d2">A current investment round is open to partners who back real infrastructure and real impact in Africa, a business already in motion, with the collection network, the app and the licences in place and feedstock stockpiling on site. Explore the full opportunity.</p>
+    <p class="lead rv d2">A private placement is open to high-net-worth and sophisticated investors who back real infrastructure and real impact in Africa, a business already in motion, with the collection network, the app and the licences in place and feedstock stockpiling on site.</p>
     <div class="invbox rv d2">
       <div>
-        <div style="font-family:'Space Grotesk';font-weight:600;color:var(--cream);font-size:1.15rem;margin-bottom:.6rem">The full investor picture</div>
-        <p class="mut" style="font-size:.95rem">A guided walk through the journey, the people, the national rollout and the numbers, one for the loan-note route, one for the equity offering. Everything sensitive sits behind these pages and a conversation.</p>
-        <div style="margin-top:1rem"><span class="pill">Asset-backed</span><span class="pill">Founder co-invested</span><span class="pill">Impact + return</span></div>
+        <div style="font-weight:900;color:var(--flake);font-size:1.15rem;margin-bottom:.6rem">The investment opportunity</div>
+        <p style="font-size:.95rem;color:#e6dcd3">A guided walk through the journey, the people, the national rollout and the numbers. Read the terms, confirm your eligibility, and apply, entirely online.</p>
+        <div style="margin-top:1rem"><span class="pill">Asset-backed</span><span class="pill">Founder co-invested</span><span class="pill">Impact plus return</span></div>
       </div>
       <div class="btns">
-        <a href="/investors/" class="btn p">Investor overview →</a>
-        <a href="/investors-equity/" class="btn s">Equity offering →</a>
-        <a href="#contact" class="btn s">Talk to us →</a>
+        <a href="/invest/" class="btn pd">Invest now &rarr;</a>
+        <a href="/investors/" class="btn sd">Investment overview &rarr;</a>
+        <a href="#contact" class="btn sd">Talk to us &rarr;</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ROADMAP -->
-<section id="roadmap" style="background:var(--green-d)">
+<section id="roadmap">
   <div class="wrap">
     <div class="kick rv">Roadmap</div>
     <h2 class="big rv d1">Built on <em>evidence.</em></h2>
@@ -403,17 +398,17 @@ footer{background:var(--green-dd);border-top:1px solid var(--line);padding:3rem 
 </section>
 
 <!-- NEWS -->
-<section id="news">
+<section id="news" style="background:var(--bone)">
   <div class="wrap">
-    <div class="kick rv">News &amp; insights</div>
+    <div class="kick rv">News and insights</div>
     <h2 class="big rv d1">Latest from <em>MlimaLoop.</em></h2>
     <p class="lead rv d2">Updates, milestones and thinking from the team building East Africa's circular economy, published directly from Arusha.</p>
     <div class="news-grid">
-      <div class="ncard rv d1"><div class="tag">Insight</div><h4>Why East Africa is the next frontier for the circular economy</h4><p>The infrastructure gap, the regulatory tailwinds, and why 2026 is the moment to build.</p><a class="rd" href="/blog/2026-03-29-why-east-africa-circular-economy/">Read article →</a></div>
+      <a class="ncard rv d1" href="/blog/2026-03-29-why-east-africa-circular-economy/"><div class="tag">Insight</div><h4>Why East Africa is the next frontier for the circular economy</h4><p>The infrastructure gap, the regulatory tailwinds, and why 2026 is the moment to build.</p><span class="rd">Read article &rarr;</span></a>
       <div class="ncard rv d2"><div class="tag">Coming soon</div><h4>From bottle to fibre: what rPET processing actually looks like</h4><p>A behind-the-scenes look at the stages of our processing pipeline.</p></div>
       <div class="ncard rv d3"><div class="tag">Coming soon</div><h4>The collectors: the people who make the loop possible</h4><p>Formalising the collection economy, and why it matters commercially and socially.</p></div>
     </div>
-    <div style="margin-top:2rem"><a href="/blog/" class="btn p">Read all articles →</a></div>
+    <div style="margin-top:2rem"><a href="/blog/" class="btn p">Read all articles &rarr;</a></div>
   </div>
 </section>
 
@@ -449,7 +444,7 @@ footer{background:var(--green-dd);border-top:1px solid var(--line);padding:3rem 
           </select>
         </div>
         <div class="fg"><label>Message</label><textarea name="message" rows="4" placeholder="Tell us about your interest in MlimaLoop..."></textarea></div>
-        <button type="submit" class="btn p" style="align-self:flex-start">Send enquiry →</button>
+        <button type="submit" class="btn p" style="align-self:flex-start">Send enquiry &rarr;</button>
       </form>
     </div>
   </div>
@@ -460,7 +455,7 @@ footer{background:var(--green-dd);border-top:1px solid var(--line);padding:3rem 
   <div class="wrap">
     <div class="fgrid">
       <div>
-        <div class="flogo"><span class="a">MLIMA</span><span class="b">LOOP</span></div>
+        <div class="flogo">MLIMA<span class="b">LOOP</span></div>
         <p class="ftag">Closing the loop on plastic in East Africa. Certified recycled material, built for the circular economy.</p>
         <div class="fsoc">
           <a href="https://www.linkedin.com/company/mlimaloop" target="_blank" rel="noopener">LinkedIn</a>
@@ -469,7 +464,7 @@ footer{background:var(--green-dd);border-top:1px solid var(--line);padding:3rem 
         </div>
       </div>
       <div class="fcol"><h4>Company</h4><ul><li><a href="#story">Story</a></li><li><a href="#journey">The loop</a></li><li><a href="#impact">Impact</a></li><li><a href="#expansion">Expansion</a></li></ul></div>
-      <div class="fcol"><h4>Partners</h4><ul><li><a href="#invest">Investors</a></li><li><a href="/investors/">Investor overview</a></li><li><a href="#contact">Brand partners</a></li><li><a href="#contact">NGOs &amp; media</a></li></ul></div>
+      <div class="fcol"><h4>Investors</h4><ul><li><a href="/invest/">Invest now</a></li><li><a href="/investors/">Investment overview</a></li><li><a href="#contact">Talk to us</a></li></ul></div>
       <div class="fcol"><h4>More</h4><ul><li><a href="/blog/">News</a></li><li><a href="#roadmap">Roadmap</a></li><li><a href="#why">Why us</a></li><li><a href="#contact">Contact</a></li></ul></div>
     </div>
     <div class="fbottom">
@@ -482,16 +477,12 @@ footer{background:var(--green-dd);border-top:1px solid var(--line);padding:3rem 
 <script>
 /* progress bar */
 addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-innerHeight;document.getElementById('bar').style.width=(Math.min(scrollY/h,1)*100)+'%';});
-/* reveal + counters */
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');if(e.target.dataset&&e.target.dataset.target!==undefined)count(e.target);io.unobserve(e.target);}});},{threshold:.2});
+/* reveal */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.18});
 document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
-document.querySelectorAll('[data-target]').forEach(function(el){io.observe(el);});
-function count(el){var t=parseFloat(el.dataset.target),pre=el.dataset.prefix||'',suf=el.dataset.suffix||'',s=null,dur=1300;
-  function fr(ts){if(!s)s=ts;var p=Math.min((ts-s)/dur,1),v=t*(1-Math.pow(1-p,3));el.textContent=pre+(t>=100?Math.round(v):Math.round(v*10)/10)+suf;if(p<1)requestAnimationFrame(fr);}
-  requestAnimationFrame(fr);}
 /* nav highlight */
 var secs=document.querySelectorAll('section[id]'),nl=document.querySelectorAll('.nlinks a');
-addEventListener('scroll',function(){var cur='';secs.forEach(function(s){if(scrollY>=s.offsetTop-180)cur=s.id;});nl.forEach(function(a){a.style.color=a.getAttribute('href')==='#'+cur?'var(--gold)':'';});});
+addEventListener('scroll',function(){var cur='';secs.forEach(function(s){if(scrollY>=s.offsetTop-180)cur=s.id;});nl.forEach(function(a){var h=a.getAttribute('href')||'';a.style.color=h==='#'+cur?'var(--oxblood)':'';});});
 /* expansion map */
 var cities=[
  {n:'Arusha',x:60,y:18,yr:1,d:'HQ · prove the model'},{n:'Arusha+',x:57,y:22,yr:3,d:'Expansion · larger yarn line'},
@@ -502,16 +493,16 @@ var cities=[
  {n:'Kigoma',x:10,y:46,yr:12,d:'West'},{n:'Iringa',x:46,y:62,yr:13,d:'Southern'},{n:'Dar es Salaam 2',x:80,y:57,yr:14,d:'Second Dar plant · 12 sites'}];
 var g=document.getElementById('cities'),tl=document.getElementById('timeline'),NS='http://www.w3.org/2000/svg',ax=60,ay=18;
 cities.forEach(function(c,i){
-  if(i>0){var ln=document.createElementNS(NS,'line');ln.setAttribute('x1',ax);ln.setAttribute('y1',ay);ln.setAttribute('x2',c.x);ln.setAttribute('y2',c.y);ln.setAttribute('stroke','rgba(216,174,58,.35)');ln.setAttribute('stroke-width','.35');ln.setAttribute('class','city cc'+i);g.appendChild(ln);}
+  if(i>0){var ln=document.createElementNS(NS,'line');ln.setAttribute('x1',ax);ln.setAttribute('y1',ay);ln.setAttribute('x2',c.x);ln.setAttribute('y2',c.y);ln.setAttribute('stroke','#3E7885');ln.setAttribute('stroke-width','.35');ln.setAttribute('stroke-opacity','.55');ln.setAttribute('class','city cc'+i);g.appendChild(ln);}
   var gr=document.createElementNS(NS,'g');gr.setAttribute('class','city cc'+i);
-  var ci=document.createElementNS(NS,'circle');ci.setAttribute('cx',c.x);ci.setAttribute('cy',c.y);ci.setAttribute('r',i===0?'2.3':'1.7');ci.setAttribute('fill',i===0?'#D8AE3A':'#E9C46A');
-  var pu=document.createElementNS(NS,'circle');pu.setAttribute('cx',c.x);pu.setAttribute('cy',c.y);pu.setAttribute('r','2');pu.setAttribute('fill','none');pu.setAttribute('stroke','#D8AE3A');pu.setAttribute('stroke-width','.4');
+  var ci=document.createElementNS(NS,'circle');ci.setAttribute('cx',c.x);ci.setAttribute('cy',c.y);ci.setAttribute('r',i===0?'2.3':'1.7');ci.setAttribute('fill',i===0?'#4E1710':'#79B2BD');
+  var pu=document.createElementNS(NS,'circle');pu.setAttribute('cx',c.x);pu.setAttribute('cy',c.y);pu.setAttribute('r','2');pu.setAttribute('fill','none');pu.setAttribute('stroke','#4E1710');pu.setAttribute('stroke-width','.4');
   pu.innerHTML='<animate attributeName="r" from="2" to="6" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" from="1" to="0" dur="2s" repeatCount="indefinite"/>';
   var tx=document.createElementNS(NS,'text');tx.setAttribute('x',c.x+2.6);tx.setAttribute('y',c.y+1);tx.setAttribute('class','cityname');tx.textContent=c.n.replace('Arusha+','');
   gr.appendChild(ci);gr.appendChild(pu);gr.appendChild(tx);g.appendChild(gr);
   var row=document.createElement('div');row.className='tl t'+i;row.innerHTML='<div class="yr">Yr '+c.yr+'</div><div><div class="c">'+c.n+'</div><div class="d">'+c.d+'</div></div>';tl.appendChild(row);});
 var played=false;
-new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!played){played=true;cities.forEach(function(c,i){setTimeout(function(){document.querySelectorAll('.cc'+i).forEach(function(el){el.classList.add('on');});var r=document.querySelector('.t'+i);if(r)r.classList.add('on');},i*380);});}});},{threshold:.4}).observe(document.getElementById('tzmap'));
+new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!played){played=true;cities.forEach(function(c,i){setTimeout(function(){document.querySelectorAll('.cc'+i).forEach(function(el){el.classList.add('on');});var r=document.querySelector('.t'+i);if(r)r.classList.add('on');},i*360);});}});},{threshold:.4}).observe(document.getElementById('tzmap'));
 </script>
 
 <!-- Netlify Identity / CMS (do not remove) -->
