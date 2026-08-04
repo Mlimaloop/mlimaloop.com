@@ -1,0 +1,6 @@
+[build]
+  publish = "mlimaloop-site 2"
+
+[functions]
+  directory = "mlimaloop-site 2/netlify/functions"
+  node_bundler = "esbuild"
