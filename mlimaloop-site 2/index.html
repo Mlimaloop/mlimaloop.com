@@ -3,1010 +3,251 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ELXHHKK2RY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-ELXHHKK2RY');
-</script>
-<title>MlimaLoop · Closing the Loop on Plastic in East Africa</title>
-<meta name="description" content="MlimaLoop closes the plastic loop in northern Tanzania. Food-grade rPET from Arusha, built on a named, traceable collection network.">
-<meta property="og:title" content="MlimaLoop · Closing the Loop on Plastic in East Africa">
-<meta property="og:description" content="Certified food-grade recycled PET, built in Arusha, Tanzania. A named, traceable collection network.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.mlimaloop.com/">
-<meta name="theme-color" content="#2C0A05">
+<title>MlimaLoop · Investor Application</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:wght@400;500&family=Montserrat:wght@900&family=Anton&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
-/* ═══════════════════════════════════════════════════════════════════
-   MLIMALOOP — Investor Journey
-   Type      Lock Sans — CoType Foundry. Licensable as a webfont; until
-             licensed, Lato stands in (humanist, matches the specimen).
-             Numerals follow Meru's 5895 treatment — Playfair Display.
-   Depth     Hard-stop colour bands + triangle-mesh texture. No grading.
-   Colour    Laterite / Machine / Flake / Bottle. Flat only, no gradients.
-   ═══════════════════════════════════════════════════════════════════ */
-  :root{
-  --oxblood:#4E1710;     /* accent blocks only — never a full page */
-  --ground:#2C0A05;      /* the brand dark — carries the colour pages */
-  --machine:#131614;     /* plant floor */
-  --machine-l:#1D2320;
-  --flake:#F6F7F5;       /* washed flake — near-white */
-  --ink:#1A1C1B;         /* neutral ink for light pages */
-  --bottle:#79B2BD;      /* PET bottle tint */
-  --bottle-d:#3E7885;
-  --rail:72px;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:'Lato',system-ui,sans-serif;font-weight:400;background:var(--flake);color:var(--ink);
-  line-height:1.6;overflow-x:hidden}
-img{max-width:100%;display:block}
-::selection{background:var(--bottle);color:var(--machine)}
-:focus-visible{outline:2px solid var(--bottle);outline-offset:3px}
-
-/* ── section themes: flat colour only, no texture, no banding ────── */
-.sec{
-  --bg:var(--flake); --fg:var(--ink); --dim:rgba(26,28,27,.64);
-  --hair:rgba(26,28,27,.16); --acc:var(--bottle-d);
-  background:var(--bg);color:var(--fg);position:relative;
-  padding:12vh 0;min-height:100vh;display:flex;align-items:center;
-}
-
-/* ── triangle mesh: opening and closing pages only ───────────────── */
-#hero::before,#close::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='16' viewBox='0 0 18 16'%3E%3Cpath d='M9 0 L18 16 L0 16 Z' fill='%23ffffff' fill-opacity='0.03'/%3E%3C/svg%3E");
-  background-size:18px 16px}
-.sec>*{position:relative;z-index:2}
-.sec.dark{--bg:var(--ground);--fg:#F6EFE8;--dim:rgba(246,239,232,.7);--hair:rgba(246,239,232,.24);--acc:var(--bottle)}
-
-
-
-.wrap{width:min(1200px,90vw);margin:0 auto;padding-left:var(--rail)}
-@media(max-width:900px){:root{--rail:0px}.wrap{padding-left:0}}
-
-/* ── type system ──────────────────────────────────────────────────── */
-h1,h2,h3,h4{font-family:'Lato',sans-serif;font-weight:900;letter-spacing:-.03em;line-height:1.0}
-.label{font-weight:300;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--acc)}
-h2.head{font-size:clamp(38px,6.4vw,80px);margin:22px 0 26px;max-width:17ch}
-h2.head em{font-style:normal;font-weight:300;color:var(--acc)}
-.lead{font-size:clamp(17px,1.85vw,21px);color:var(--dim);max-width:56ch;font-weight:300;line-height:1.62}
-.lead b,.lead strong{color:var(--fg);font-weight:700}
-/* every figure on this site is a fine serif */
-.num{font-family:'Playfair Display',Georgia,serif;font-weight:400;font-variant-numeric:lining-nums;
-  line-height:.9;letter-spacing:-.01em;color:var(--acc)}
-.hair{height:1px;background:var(--hair);border:0}
-
-
-
-/* ── fixed chrome ─────────────────────────────────────────────────── */
-body{--chrome:#1A1C1B}
-body.on-dark{--chrome:#F6EFE8}
-#prog{position:fixed;top:0;left:0;height:2px;width:0;background:var(--bottle);z-index:200}
-.mark{position:fixed;top:22px;left:26px;z-index:200;display:flex;align-items:center;gap:11px;text-decoration:none}
-.mark{color:var(--chrome);transition:color .3s}
-.mark .wm{font-weight:900;font-size:16px;letter-spacing:.06em;color:var(--chrome);text-transform:uppercase}
-.mark .wm span{font-weight:300}
-.state{position:fixed;top:24px;right:26px;z-index:200;text-align:right;
-  font-weight:300;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--chrome);line-height:1.9;transition:color .3s}
-.state b{font-weight:700}
-#spine{position:fixed;left:0;top:0;bottom:0;width:var(--rail);z-index:150;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;pointer-events:none}
-#spine a{pointer-events:auto;text-decoration:none;display:flex;align-items:center;padding:7px 0;position:relative}
-#spine .tick{width:14px;height:1px;background:var(--chrome);opacity:.32;transition:width .35s,opacity .35s}
-#spine a.on .tick{width:34px;opacity:1}
-#spine .lbl{position:absolute;left:52px;white-space:nowrap;font-weight:300;font-size:10.5px;letter-spacing:.24em;
-  text-transform:uppercase;color:var(--chrome);opacity:0;transform:translateX(-5px);transition:.3s}
-#spine a:hover .lbl{opacity:1;transform:none}
-@media(max-width:900px){#spine,.state{display:none}.mark{top:16px;left:18px}}
-
-/* ── reveal ───────────────────────────────────────────────────────── */
-.rv{opacity:0;transform:translateY(22px);transition:opacity .85s cubic-bezier(.16,.84,.3,1),transform .85s cubic-bezier(.16,.84,.3,1)}
-.rv.in{opacity:1;transform:none}
-.d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}.d4{transition-delay:.28s}.d5{transition-delay:.35s}
-
-/* ── hero ─────────────────────────────────────────────────────────── */
-#hero{background:var(--ground);--fg:#EDF0F0;--dim:rgba(237,240,240,.68);--hair:rgba(237,240,240,.2);--acc:var(--bottle);
-  color:var(--fg);overflow:hidden;padding-top:16vh;padding-bottom:14vh}
-#hero .wrap{position:relative;z-index:3}
-.hero-h{font-size:clamp(46px,10.2vw,148px);font-weight:900;line-height:.94;letter-spacing:-.032em;margin-top:26px;max-width:12ch}
-.hero-h em{font-style:normal;font-weight:300;color:var(--bottle)}
-.hero-sub{margin-top:28px;font-size:clamp(17px,1.95vw,21px);max-width:44ch;color:var(--dim);font-weight:300}
-.cta{display:flex;gap:10px;margin-top:38px;flex-wrap:wrap}
-.btn{font-weight:400;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;padding:17px 28px;
-  text-decoration:none;transition:background .25s,color .25s,border-color .25s;border:1px solid transparent;display:inline-block}
-.btn.p{background:var(--bottle);color:var(--machine)}
-.btn.p:hover{background:#fff}
-.btn.s{border-color:var(--hair);color:var(--fg)}
-.btn.s:hover{border-color:var(--acc);color:var(--acc)}
-.herofoot{position:absolute;left:0;bottom:5vh;width:100%;z-index:3}
-.herofoot .in{width:min(1200px,90vw);margin:0 auto;padding-left:var(--rail);padding-top:16px;
-  border-top:1px solid rgba(247,241,235,.2);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
-  font-weight:300;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:rgba(247,241,235,.55)}
-
-/* ── the ledger: figure + caption ─────────────────────────────────── */
-.ledger{margin-top:52px;border-top:1px solid var(--hair)}
-.lrow{display:grid;grid-template-columns:minmax(180px,.52fr) 1fr;gap:40px;padding:30px 0;
-  border-bottom:1px solid var(--hair);align-items:center}
-.lrow .num{font-size:clamp(54px,8.6vw,120px)}
-.lrow .cap{font-size:16px;font-weight:300;color:var(--dim);max-width:34ch}
-.lrow .cap b{color:var(--fg);font-weight:700}
-
-/* ── journey rows ─────────────────────────────────────────────────── */
-.jrow{display:grid;grid-template-columns:1.04fr .96fr;gap:60px;align-items:center}
-.jrow.flip>.col-img{order:-1}
-.step{display:flex;align-items:baseline;gap:14px}
-.step .n{font-family:'Playfair Display',serif;font-weight:400;font-size:34px;color:var(--acc);line-height:1}
-.step .t{font-weight:300;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--acc)}
-.pts{margin-top:30px}
-.pts li{list-style:none;padding:18px 0;border-bottom:1px solid var(--hair);color:var(--dim);font-weight:300;font-size:16px}
-.pts li:first-child{border-top:1px solid var(--hair)}
-.pts li b{color:var(--fg);font-weight:700}
-.photo{border:1px solid var(--hair);background-color:#20231F;aspect-ratio:4/5;
-  background-size:cover;background-position:center;display:flex;align-items:flex-end}
-.photo .cap{width:100%;background:var(--ground);color:var(--flake);padding:14px 16px;
-  font-weight:300;font-size:11px;letter-spacing:.24em;text-transform:uppercase}
-.metrics{display:flex;gap:56px;flex-wrap:wrap;margin-top:38px}
-.metrics .num{font-size:clamp(44px,5.6vw,76px)}
-.metrics .l{font-weight:300;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--dim);margin-top:12px}
-
-/* ── flat callout ─────────────────────────────────────────────────── */
-.callout{margin-top:56px;background:var(--ground);color:var(--flake);padding:38px 40px;
-  display:grid;grid-template-columns:auto 1fr;gap:52px;align-items:center}
-.callout .num{font-size:clamp(56px,8vw,108px);color:var(--bottle)}
-.callout .l{font-weight:300;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:rgba(228,230,223,.6);margin-top:10px}
-.callout h4{font-size:clamp(21px,2.3vw,28px);font-weight:700;margin-bottom:12px}
-.callout p{color:rgba(228,230,223,.66);font-weight:300;font-size:16px;max-width:52ch}
-.callout p b{color:var(--flake);font-weight:700}
-
-/* ── plant pipeline ───────────────────────────────────────────────── */
-.pipe{display:grid;grid-template-columns:repeat(6,1fr);margin-top:52px;gap:1px;background:var(--hair)}
-.stage{background:var(--bg);padding:26px 20px 30px;transition:background .3s}
-.stage .n{font-family:'Playfair Display',serif;font-weight:400;font-size:30px;color:var(--dim);line-height:1}
-.stage h4{font-size:17px;font-weight:700;margin:16px 0 10px;letter-spacing:-.01em}
-.stage p{font-size:13.5px;color:var(--dim);font-weight:300;line-height:1.5}
-.stage:hover{background:rgba(121,178,189,.07)}
-.stage.gate{background:var(--bottle);color:var(--machine)}
-.stage.gate:hover{background:var(--bottle)}
-.stage.gate .n,.stage.gate p{color:rgba(20,23,26,.7)}
-.stage.gate h4{color:var(--machine)}
-.stage .flag{display:inline-block;margin-top:16px;background:var(--oxblood);color:var(--bottle);
-  padding:5px 10px;font-weight:400;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase}
-
-/* ── output ───────────────────────────────────────────────────────── */
-.outs{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--hair);margin-top:52px}
-.out{background:var(--bg);padding:32px 24px 38px}
-.out h4{font-family:'Playfair Display',serif;font-weight:400;font-size:clamp(30px,3.6vw,46px);color:var(--acc);letter-spacing:0}
-.out p{font-size:14px;color:var(--dim);font-weight:300;margin-top:18px;line-height:1.5}
-
-/* ── people ───────────────────────────────────────────────────────── */
-.pcards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hair);margin-top:48px}
-.pcard{background:var(--bg);padding:34px 28px 40px}
-.pcard .num{font-size:clamp(48px,5.4vw,72px)}
-.pcard h4{font-size:17px;font-weight:700;margin:18px 0 12px}
-.pcard p{font-size:14px;color:var(--dim);font-weight:300;line-height:1.55}
-.pull{font-weight:300;font-size:clamp(26px,4vw,50px);line-height:1.12;max-width:20ch;letter-spacing:-.022em}
-.pull em{font-style:normal;color:var(--acc)}
-
-/* ── map ──────────────────────────────────────────────────────────── */
-.maprow{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:48px}
-#tzmap{width:100%;height:auto}
-.city{opacity:0;transition:opacity .45s}
-.city.on{opacity:1}
-.cityname{font-family:'Lato',sans-serif;font-size:2.7px;fill:#F7F1EB;font-weight:300;letter-spacing:.05px}
-.timeline{display:flex;flex-direction:column;max-height:56vh;overflow:auto;padding-right:12px;border-top:1px solid var(--hair)}
-.timeline::-webkit-scrollbar{width:2px}
-.timeline::-webkit-scrollbar-thumb{background:var(--hair)}
-.tl{display:grid;grid-template-columns:64px 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--hair);opacity:.3;transition:opacity .5s}
-.tl.on{opacity:1}
-.tl .yr{font-family:'Playfair Display',serif;font-weight:400;font-size:26px;color:var(--acc);line-height:1}
-.tl .c{font-weight:700;font-size:15.5px}
-.tl .d{font-size:13px;color:var(--dim);font-weight:300}
-
-/* ── financials ───────────────────────────────────────────────────── */
-.two{display:grid;grid-template-columns:1.5fr 1fr;gap:1px;background:var(--hair);margin-top:48px}
-.chartcard{background:var(--bg);padding:32px 34px 24px}
-.chartcard h4{font-size:17px;font-weight:700}
-.chartcard .sub{font-weight:300;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--dim);margin:10px 0 24px}
-.streams{background:var(--bg);display:flex;flex-direction:column;justify-content:center}
-.stream{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:19px 28px;
-  border-bottom:1px solid var(--hair);font-size:15px;font-weight:300}
-.stream:last-child{border-bottom:0}
-.stream b{font-weight:300;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--acc);flex:none}
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--hair);margin-top:1px}
-.kpi{background:var(--bg);padding:32px 24px 38px}
-.kpi .num{font-size:clamp(46px,5.4vw,74px)}
-.kpi .l{font-size:14px;color:var(--dim);font-weight:300;margin-top:16px;line-height:1.45}
-
-/* ── ask ──────────────────────────────────────────────────────────── */
-.askgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:start;margin-top:40px}
-.askbox{background:var(--ground);color:var(--flake);padding:40px 38px}
-.askbox .l{font-weight:300;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:rgba(228,230,223,.6)}
-.askbox .num{font-size:clamp(72px,10vw,132px);color:var(--bottle);display:block;margin:10px 0 4px}
-.askbox .note{font-weight:300;font-size:15px;color:rgba(228,230,223,.62);margin-bottom:28px}
-.askrow{display:flex;justify-content:space-between;gap:18px;padding:16px 0;
-  border-bottom:1px solid rgba(228,230,223,.16);font-size:15px;font-weight:300;color:rgba(228,230,223,.66)}
-.askrow:last-child{border-bottom:0}
-.askrow b{font-weight:700;color:var(--flake);text-align:right}
-.uses li{list-style:none;padding:18px 0;border-bottom:1px solid var(--hair);color:var(--dim);font-weight:300;font-size:16px}
-.uses li:first-child{border-top:1px solid var(--hair)}
-.uses li b{color:var(--fg);font-weight:700}
-.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
-.pill{border:1px solid var(--hair);color:var(--acc);padding:9px 15px;font-weight:300;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
-
-/* ── close ────────────────────────────────────────────────────────── */
-#close{background:var(--ground);--fg:#FBF4EC;--dim:rgba(251,244,236,.72);--hair:rgba(251,244,236,.28);--acc:var(--bottle);
-  text-align:center;flex-direction:column;justify-content:center;min-height:94vh}
-.closeh{font-size:clamp(42px,8.4vw,112px);font-weight:900;line-height:.98;letter-spacing:-.032em;margin:30px 0 26px}
-.closeh em{font-style:normal;font-weight:300;color:var(--bottle)}
-#close .lead{margin:0 auto}
-#close .cta{justify-content:center}
-footer{background:var(--ground);padding:36px 0;border-top:1px solid rgba(228,230,223,.16)}
-footer .in{width:min(1200px,90vw);margin:0 auto;padding-left:var(--rail);display:flex;justify-content:space-between;
-  gap:20px;flex-wrap:wrap;font-weight:300;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(228,230,223,.45)}
-
-/* ── responsive ───────────────────────────────────────────────────── */
-@media(max-width:900px){
-  .sec{padding:9vh 0;min-height:auto}
-  .jrow,.maprow,.askgrid,.two{grid-template-columns:1fr;gap:36px}
-  .jrow.flip>.col-img{order:0}
-  .pipe,.outs,.pcards,.kpis{grid-template-columns:1fr 1fr}
-  .callout{grid-template-columns:1fr;gap:24px;padding:30px 26px}
-  .lrow{grid-template-columns:1fr;gap:10px;padding:26px 0}
-  .photo{aspect-ratio:4/3}
-  .herofoot{position:static;margin-top:48px}
-  #hero{padding-bottom:7vh}
-  .metrics{gap:36px}
-}
-@media(prefers-reduced-motion:reduce){
-  *{animation:none!important;transition-duration:.01ms!important}
-  .rv{opacity:1;transform:none}
-  html{scroll-behavior:auto}
-}
-
-/* ── news ─────────────────────────────────────────────────────────── */
-.newsgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hair);margin-top:48px}
-.ncard{background:var(--bg);padding:32px 26px 34px;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:background .25s}
-.ncard:hover{background:rgba(121,178,189,.06)}
-.ncard .tag{font-weight:300;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--acc)}
-.ncard h4{font-size:19px;font-weight:900;letter-spacing:-.02em;line-height:1.2;margin:16px 0 12px;max-width:24ch}
-.ncard p{font-size:14px;color:var(--dim);font-weight:300;line-height:1.55;flex:1}
-.ncard .rd{font-weight:300;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--acc);margin-top:20px}
-@media(max-width:900px){.newsgrid{grid-template-columns:1fr}}
-
-/* ── contact ──────────────────────────────────────────────────────── */
-.crow{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:start;margin-top:44px}
-.cdetail{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--hair)}
-.cdetail:first-of-type{border-top:1px solid var(--hair)}
-.cdetail .k{font-weight:300;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);min-width:6rem;padding-top:3px}
-.cdetail .v{font-size:15px;color:var(--fg);font-weight:300}
-.cform{display:flex;flex-direction:column;gap:16px}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.fg{display:flex;flex-direction:column;gap:7px}
-.fg label{font-weight:300;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
-.fg input,.fg select,.fg textarea{background:transparent;border:0;border-bottom:1px solid var(--hair);color:var(--fg);
-  padding:11px 2px;font-family:'Lato',sans-serif;font-weight:300;font-size:15px;outline:none;transition:border-color .2s;resize:vertical}
-.fg input::placeholder,.fg textarea::placeholder{color:rgba(26,28,27,.34)}
-.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--acc)}
-.fg select{appearance:none}
-@media(max-width:900px){.crow{grid-template-columns:1fr;gap:36px}.frow{grid-template-columns:1fr}}
-
-/* ── site footer ──────────────────────────────────────────────────── */
-.sfoot{background:var(--machine);color:#EDF0F0;padding:64px 0 26px}
-.sfgrid{width:min(1200px,90vw);margin:0 auto;padding-left:var(--rail);display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
-.sfoot .wm{font-family:'Lato';font-weight:900;font-size:22px;letter-spacing:.02em;text-transform:uppercase}
-.sfoot .wm span{font-weight:300}
-.sftag{font-weight:300;font-size:14px;color:rgba(237,240,240,.62);max-width:28ch;line-height:1.6;margin:14px 0 18px}
-.sfsoc{display:flex;gap:8px;flex-wrap:wrap}
-.sfsoc a{border:1px solid rgba(237,240,240,.2);padding:7px 13px;font-weight:300;font-size:10px;letter-spacing:.14em;
-  text-transform:uppercase;color:rgba(237,240,240,.7);text-decoration:none;transition:.2s}
-.sfsoc a:hover{border-color:var(--bottle);color:var(--bottle)}
-.sfcol h5{font-weight:300;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--bottle);margin-bottom:16px}
-.sfcol ul{list-style:none;display:flex;flex-direction:column;gap:11px}
-.sfcol a{font-weight:300;font-size:14px;color:rgba(237,240,240,.66);text-decoration:none;transition:.2s}
-.sfcol a:hover{color:#EDF0F0}
-.sfbottom{width:min(1200px,90vw);margin:44px auto 0;padding-left:var(--rail);padding-top:20px;
-  border-top:1px solid rgba(237,240,240,.16);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
-  font-weight:300;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(237,240,240,.42)}
-@media(max-width:900px){.sfgrid{grid-template-columns:1fr 1fr;gap:28px}}
+:root{--ground:#2C0A05;--oxblood:#4E1710;--flake:#F6F7F5;--ink:#1A1C1B;--bone:#F6EFE8;--bottle:#79B2BD;--bottle-d:#3E7885;--machine:#131614;--err:#A8321C;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',system-ui,sans-serif;font-weight:300;background:var(--flake);color:var(--ink);line-height:1.6;padding:0 0 4rem}
+.fig{font-family:'Playfair Display',serif}
+.wrap{width:min(760px,92vw);margin:0 auto}
+header{background:var(--ground);color:var(--bone);padding:1.4rem 0}
+.brand{font-family:'Lato';font-weight:900;font-size:1.2rem;letter-spacing:.02em}
+.brand .l{font-weight:300;color:var(--bottle)}
+.riskfoot{font-size:.72rem;font-weight:300;color:#8a8a86;line-height:1.55;margin:2.4rem 0 0}
+h1{font-family:'Lato';font-weight:900;letter-spacing:-.02em;font-size:2rem;margin:2rem 0 .4rem}
+.sub{color:#555;max-width:60ch;margin-bottom:.6rem}
+.label{font-family:'Lato';font-weight:700;text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;color:var(--bottle-d)}
+fieldset{border:1px solid #d8cfc4;border-radius:2px;padding:1.4rem 1.5rem 1.6rem;margin-top:1.6rem}
+legend{font-family:'Lato';font-weight:900;font-size:1.05rem;padding:0 .5rem;color:var(--oxblood)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fg{display:flex;flex-direction:column;gap:.35rem;margin-top:1rem}
+.fg>label{font-size:.78rem;font-weight:700;color:#3a3f40}
+.fg .req{color:var(--err)}
+input,select,textarea{font-family:'Lato';font-weight:300;font-size:.95rem;padding:.7rem .8rem;border:1px solid #cfc7bc;background:#fff;color:var(--ink);border-radius:2px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--bottle-d)}
+input[type=file]{padding:.5rem;font-size:.85rem}
+.hint{font-size:.76rem;color:#777}
+.choice{border:1px solid #d8cfc4;border-radius:2px;padding:1rem 1.1rem;margin-top:.8rem;cursor:pointer;transition:.15s;background:#fff}
+.choice:hover{border-color:var(--bottle-d)}
+.choice.sel{border-color:var(--oxblood);box-shadow:0 0 0 1px var(--oxblood) inset}
+.choice .t{font-weight:700}
+.choice p{font-size:.85rem;color:#555;margin-top:.3rem}
+.choice input[type=radio]{margin-right:.5rem}
+.subconds{margin-top:.7rem;padding-left:1.6rem;display:block}
+.subconds label{display:block;font-size:.85rem;margin:.35rem 0;font-weight:300}
+.ack{display:flex;gap:.7rem;align-items:flex-start;margin-top:.9rem;font-size:.88rem}
+.ack input{margin-top:.25rem;width:16px;height:16px}
+.sigwrap{margin-top:1rem}
+#sigpad{border:1px dashed #b9b0a4;border-radius:2px;background:#fff;width:100%;height:180px;touch-action:none;display:block}
+.sigrow{display:flex;justify-content:space-between;align-items:center;margin-top:.5rem}
+.linkbtn{background:none;border:0;color:var(--bottle-d);font-family:'Lato';font-weight:700;font-size:.8rem;cursor:pointer;text-decoration:underline}
+.submit{margin-top:2rem;background:var(--oxblood);color:#fff;border:0;font-family:'Lato';font-weight:700;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase;padding:1.1rem 2.4rem;border-radius:2px;cursor:pointer}
+.submit:hover{background:#61201a}
+.err-msg{color:var(--err);font-size:.78rem;display:none;margin-top:.2rem}
+.err input,.err select,.err textarea,.err #sigpad{border-color:var(--err)!important}
+#done{display:none;text-align:center;padding:3rem 1rem}
+#done .fig{font-size:2.4rem;color:var(--oxblood)}
+.note{background:#f0e9e2;border-left:3px solid var(--oxblood);padding:1rem 1.2rem;font-size:.85rem;margin-top:1.4rem;color:#4a4038}
+@media(max-width:640px){.grid2{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+<header><div class="wrap"><span class="brand">MLIMA<span class="l">LOOP</span></span> &nbsp; · &nbsp; Investor Application &amp; Subscription</div></header>
 
-<div id="prog"></div>
+<div class="wrap" id="formzone">
+  <h1>Application &amp; Subscription</h1>
+  <p class="sub">Secured Convertible Placement Notes, issued by Vitpi - FZCO (the MlimaLoop group holding company). Please complete every required field, then sign at the bottom. You will receive a signed PDF copy of your application.</p>
 
-<a class="mark" href="#hero" aria-label="MlimaLoop home">
-  <svg width="19" height="25" viewBox="0 0 20 26" fill="none" aria-hidden="true">
-    <circle cx="10" cy="7.4" r="6.1" stroke="currentColor" stroke-width="1.9"/>
-    <circle cx="10" cy="18.6" r="6.1" stroke="currentColor" stroke-width="1.9"/>
-  </svg>
-  <span class="wm">Mlima<span>Loop</span></span>
-</a>
-<div class="state">Material state<br><b id="state-word">Street</b></div>
-<nav id="spine" aria-label="Section navigation"></nav>
-
-<!-- ══ HERO ══ -->
-<section id="hero" class="sec" data-theme="dark" data-name="Start" data-state="Street">
-  <div class="wrap">
-    <p class="label rv in">MlimaLoop Ltd &nbsp;·&nbsp; Arusha, Tanzania &nbsp;·&nbsp; Est. 2026</p>
-    <h1 class="hero-h rv in d1">From the mountain to the world <em>and back.</em></h1>
-    <p class="hero-sub rv in d2">Sixteen billion bottles a year. Three per cent come back. MlimaLoop is the infrastructure that closes the gap — and the people paid, by name, to close it.</p>
-    <div class="cta rv in d3">
-      <a class="btn p" href="/invest/">For investors</a>
-      <a class="btn s" href="#gap">Follow the loop</a>
-    </div>
-  </div>
-  <div class="herofoot rv in d4"><div class="in"><span>Food-grade rPET · Northern Tanzania</span><span>Scroll to begin</span></div></div>
-</section>
-
-<!-- ══ THE GAP ══ -->
-<section id="gap" class="sec" data-name="The gap" data-state="Street">
-  <div class="wrap">
-    <p class="label rv">The problem is not demand</p>
-    <h2 class="head rv d1">A continent drowning in <em>its own plastic.</em></h2>
-    <p class="lead rv d2">East Africa generates millions of tonnes of plastic waste a year and almost none of it comes back. It chokes waterways, cities and soil — while the world's brands are paying a premium for exactly this material, certified and traceable.</p>
-    <div class="ledger">
-      <div class="lrow rv d1"><div class="num" data-target="16" data-suffix="B">0</div><div class="cap">plastic bottles discarded across Africa every year</div></div>
-      <div class="lrow rv d2"><div class="num" data-target="3" data-suffix="%">0</div><div class="cap">currently recycled in East Africa</div></div>
-      <div class="lrow rv d3"><div class="num" data-target="8" data-suffix="–12t">0</div><div class="cap">collectable PET generated in <b>Arusha</b>, every day</div></div>
-      <div class="lrow rv d4"><div class="num" data-target="50" data-suffix="k t">0</div><div class="cap">plastic already stockpiled at Arusha's <b>Sakina landfill</b></div></div>
-    </div>
-    <p class="lead rv d5" style="margin-top:42px;max-width:54ch"><b style="color:var(--acc);font-weight:400">The infrastructure gap is the opportunity.</b> The bottles are there. The demand is there. What is missing is the loop that connects them — and the people paid fairly to close it.</p>
-  </div>
-</section>
-
-<!-- ══ THE LOOPER ══ -->
-<section id="looper" class="sec" data-name="The collector" data-state="Street">
-  <div class="wrap">
-    <div class="jrow">
-      <div>
-        <div class="step rv"><span class="n">01</span><span class="t">The collector</span></div>
-        <h2 class="head rv d1">It starts with one bottle, and <em>one person.</em></h2>
-        <p class="lead rv d2">A collector picks a bottle off a roadside in Arusha, scans it into the app, drops it at a mobile buying station, and is paid on the spot. Every time. No middleman, no waiting, no discretion.</p>
-        <ul class="pts rv d3">
-          <li><b>$0.165 / kg</b>, paid instantly through the app to mobile money.</li>
-          <li>A dedicated collector earns around <b>$210 a month</b> — roughly <b>3× Tanzania's minimum wage</b>.</li>
-          <li>Every kilo GPS-stamped and named: the chain of custody that unlocks premium ocean-bound plastic credits.</li>
-        </ul>
+  <form id="appform" novalidate>
+    <fieldset>
+      <legend>1 · About you</legend>
+      <div class="grid2">
+        <div class="fg"><label>Full legal name <span class="req">*</span></label><input name="fullname" required></div>
+        <div class="fg"><label>Date of birth <span class="req">*</span></label><input name="dob" type="date" required></div>
       </div>
-      <div class="col-img rv d2">
-        <div class="photo" style="background-image:url('/images/collector.jpg')"><div class="cap">A collector logs a pickup · Arusha</div></div>
+      <div class="grid2">
+        <div class="fg"><label>Nationality <span class="req">*</span></label><input name="nationality" required></div>
+        <div class="fg"><label>Country of residence <span class="req">*</span></label><input name="country" required></div>
       </div>
-    </div>
-  </div>
-</section>
+      <div class="fg"><label>Residential address <span class="req">*</span></label><textarea name="address" rows="2" required></textarea></div>
+      <div class="grid2">
+        <div class="fg"><label>Email <span class="req">*</span></label><input name="email" type="email" required></div>
+        <div class="fg"><label>Phone <span class="req">*</span></label><input name="phone" required></div>
+      </div>
+    </fieldset>
 
-<!-- ══ THE APP — LOOP, all three views. Markup and tokens from loop-all-views ══ -->
-<style>
-.loopui{--disp:'Montserrat',system-ui,sans-serif;--shout:'Anton',Impact,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
-  --red:#A81226;--black:#101010;--gold:#FFB400;--blue:#1D3FA8}
-.appgrid{display:grid;grid-template-columns:1fr .78fr;gap:56px;align-items:center}
-.phonewrap{display:flex;flex-direction:column;align-items:center;gap:16px}
-.ph{border:1px solid rgba(228,230,223,.24);padding:6px;background:#000;width:300px}
-.scr{height:648px;display:flex;flex-direction:column;overflow:hidden;position:relative;
-  --gr:#FFFFFF;--ik:#101010;--ln:rgba(16,16,16,.15);--sf:rgba(16,16,16,.52);--tr:rgba(16,16,16,.11)}
-.pindo{flex-shrink:0;background:var(--black);height:10px;border-top:3px solid var(--red)}
-.status{flex-shrink:0;background:var(--gr);color:var(--sf);font-family:var(--mono);font-size:6.6px;
-  letter-spacing:.1em;display:flex;justify-content:space-between;padding:6px 12px 0}
-.lpview{flex:1;display:none;flex-direction:column;overflow:hidden}
-.lpview.on{display:flex}
-.body{flex:1;padding:9px 12px 10px;display:flex;flex-direction:column;overflow:hidden;background:var(--gr);color:var(--ik)}
-.hem{flex-shrink:0;background:var(--black);color:#fff;font-family:var(--shout);font-size:9px;letter-spacing:.09em;
-  text-transform:uppercase;text-align:center;padding:5px}
-.nav{flex-shrink:0;background:var(--black);display:flex}
-.nav div{flex:1;text-align:center;padding:8px 1px 9px;font-family:var(--mono);font-size:6.6px;letter-spacing:.09em;
-  text-transform:uppercase;color:rgba(255,255,255,.42)}
-.nav div.on{color:var(--gold)}
-.h1{font-family:var(--disp);font-weight:900;font-size:21px;letter-spacing:-.03em;line-height:1}
-.h1.big{font-size:25px}
-.eyeb{font-family:var(--mono);font-size:7px;letter-spacing:.13em;text-transform:uppercase;color:var(--sf)}
-.rankrow{display:flex;align-items:center;gap:5px;margin-top:5px}
-.rankrow b{font-family:var(--mono);font-size:6.8px;letter-spacing:.14em;text-transform:uppercase;color:var(--red);font-weight:700}
-.avatar{width:34px;height:34px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;
-  justify-content:center;font-family:var(--disp);font-weight:900;font-size:11px;flex-shrink:0}
-.money{background:var(--gold);color:#101010;padding:12px;margin-top:10px}
-.money .l{font-family:var(--mono);font-size:6.6px;letter-spacing:.14em;text-transform:uppercase;opacity:.72}
-.money .amt{font-family:var(--shout);font-size:36px;line-height:.95;margin-top:3px}
-.money .sub{font-family:var(--mono);font-size:6.2px;letter-spacing:.08em;margin-top:3px;opacity:.72}
-.money .sp{display:flex;gap:5px;margin-top:9px}
-.money .sp div{flex:1;background:rgba(16,16,16,.1);padding:7px 8px}
-.money .sp s{text-decoration:none;font-family:var(--mono);font-size:5.8px;letter-spacing:.09em;display:block;opacity:.7}
-.money .sp b{font-family:var(--shout);font-size:15px;display:block;margin-top:2px}
-.act{font-family:var(--shout);font-size:14.5px;text-transform:uppercase;letter-spacing:.03em;text-align:center;
-  padding:10px;margin-top:7px;flex-shrink:0}
-.a-red{background:var(--red);color:#fff}
-.a-black{background:var(--black);color:#fff}
-.a-out{border-top:1px solid var(--ln);border-bottom:1px solid var(--ln);color:var(--ik)}
-.cells{display:flex;gap:16px;margin-top:9px;border-top:1px solid var(--ln);padding-top:8px}
-.cell{flex:1}
-.cell b{display:block;font-family:var(--shout);font-size:16px;line-height:1}
-.cell s{text-decoration:none;font-family:var(--mono);font-size:5.8px;letter-spacing:.1em;text-transform:uppercase;
-  display:block;margin-top:3px;color:var(--sf)}
-.link{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--ln);
-  padding:10px 0 0;margin-top:9px;font-family:var(--shout);font-size:12.5px;text-transform:uppercase}
-.link em{font-style:normal;color:var(--red)}
-.secl{font-family:var(--mono);font-size:6.2px;letter-spacing:.14em;text-transform:uppercase;color:var(--sf);
-  margin-top:10px;padding-bottom:4px;border-bottom:1px solid var(--ln)}
-.row{display:flex;gap:6px;align-items:center;padding:7px 0;border-bottom:1px solid var(--ln)}
-.row .bar{width:3px;align-self:stretch;flex-shrink:0}
-.row .t{font-family:var(--mono);font-size:5.8px;letter-spacing:.1em;color:var(--sf)}
-.row .d{font-size:9px;margin-top:1px;line-height:1.3}
-.row .dt{font-family:var(--shout);font-size:13px;text-transform:uppercase;line-height:1}
-.row .v{font-family:var(--shout);font-size:13.5px;margin-left:auto}
-.bigfig{font-family:var(--shout);font-size:45px;line-height:.9;margin-top:10px}
-.bigfig small{font-size:15px;color:var(--sf)}
-.bigsub{font-family:var(--mono);font-size:6.4px;letter-spacing:.13em;text-transform:uppercase;color:var(--sf);margin-top:4px}
-.track{height:5px;background:var(--tr);margin-top:5px}
-.track i{display:block;height:100%;background:var(--red)}
-.vswitch{display:flex;gap:0;border:1px solid var(--hair);width:300px}
-.vswitch button{flex:1;background:none;border:0;padding:11px 4px;cursor:pointer;color:var(--dim);
-  font-family:'Lato',sans-serif;font-weight:300;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;transition:.2s}
-.vswitch button.on{background:var(--acc);color:var(--bg);font-weight:700}
-.taphint{font-weight:300;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-top:18px;display:block}
-@media(max-width:900px){.appgrid{grid-template-columns:1fr;gap:40px}}
-</style>
-<section id="app" class="sec dark" data-theme="dark" data-name="The Loop app" data-state="Station">
-  <div class="wrap">
-    <div class="appgrid">
-      <div>
-        <p class="label rv">The technology</p>
-        <h2 class="head rv d1">One product. <em>Three views of the same record.</em></h2>
-        <p class="lead rv d2">LOOP is the street-facing brand collectors actually use. Every weigh-in lands once and is read three ways — as a collector's earnings, as a depot officer's queue and batch, and as an investor's provenance trail. Same data, same ground, different density.</p>
-        <ul class="pts rv d3">
-          <li><b>Collector</b> — paid to M-Pesa at the scale; red is what you collected, blue is what your team collected.</li>
-          <li><b>Officer</b> — certified scale, GPS, reference and batch code captured at the point of weigh-in.</li>
-          <li><b>Investor</b> — <b>98.2% traceable</b>, every kilo attributed to a named collector, a certified scale and a timestamp.</li>
-        </ul>
-        <div class="rv d4" style="margin-top:30px">
-          <a class="btn p" href="https://mlimaloop-loop.netlify.app" target="_blank" rel="noopener">Open the live app</a>
-          <span class="taphint">Or switch views on the phone</span>
+    <fieldset>
+      <legend>2 · Your investment</legend>
+      <div class="grid2">
+        <div class="fg"><label>Amount <span class="req">*</span></label><input name="amount" type="number" min="50000" step="1000" placeholder="Minimum 50,000" required><span class="hint">Minimum US$50,000 (or currency equivalent).</span></div>
+        <div class="fg"><label>Currency <span class="req">*</span></label><select name="currency" required><option value="">Select</option><option>USD</option><option>GBP</option><option>EUR</option><option>AED</option><option>Other</option></select></div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>3 · Investor eligibility (self-certification)</legend>
+      <p class="hint">This placement is available only to the following investors. Select the one that applies to you. This is required for the offer to be lawfully made to you.</p>
+      <div class="choice" data-elig="hnw">
+        <div class="t"><input type="radio" name="eligibility" value="High-net-worth individual" required>Certified / self-certified high-net-worth individual</div>
+        <p>I declare that in the last financial year I had either an annual income of £100,000 or more, or net assets of £250,000 or more (excluding my primary residence and any loan secured on it, qualifying insurance contracts, and pension/retirement benefits).</p>
+      </div>
+      <div class="choice" data-elig="soph">
+        <div class="t"><input type="radio" name="eligibility" value="Self-certified sophisticated investor">Self-certified sophisticated investor</div>
+        <p>I meet at least one of the conditions below (tick which applies):</p>
+        <div class="subconds" id="sophconds">
+          <label><input type="checkbox" name="soph_cond" value="business-angel-network"> Member of a network/syndicate of business angels for 6+ months</label>
+          <label><input type="checkbox" name="soph_cond" value="multiple-investments"> Made more than one investment in an unlisted company in the last 2 years</label>
+          <label><input type="checkbox" name="soph_cond" value="finance-professional"> Work / worked in the last 2 years in private equity or SME finance</label>
+          <label><input type="checkbox" name="soph_cond" value="company-director"> Director in the last 2 years of a company with £1.6m+ turnover</label>
         </div>
       </div>
-      <div class="phonewrap rv d2 loopui">
-        <div class="vswitch" id="lp-switch">
-          <button class="on" data-go="collector">Collector</button>
-          <button data-go="officer">Officer</button>
-          <button data-go="investor">Investor</button>
-        </div>
-        <div class="ph"><div class="scr">
-          <div class="pindo"></div>
-
-          <!-- COLLECTOR · HOME -->
-          <div class="lpview on" data-view="collector">
-            <div class="status"><span>17:47</span><span>VODACOM TZ · 5G · 96%</span></div>
-            <div class="body">
-              <div style="display:flex;justify-content:space-between;align-items:flex-start">
-                <div>
-                  <div class="eyeb">Karibu tena,</div>
-                  <div class="h1 big" style="margin-top:3px">Amani</div>
-                  <div class="rankrow"><span data-rank data-size="16" data-lit="2"></span><b>Lava</b></div>
-                </div>
-                <div class="avatar">AM</div>
-              </div>
-              <div class="money">
-                <div class="l">The Loop wallet</div>
-                <div class="amt">$571.38</div>
-                <div class="sub">≈ TSH 1,485,588 · PAID VIA M-PESA</div>
-                <div class="sp">
-                  <div><s>From your collections</s><b style="color:#A81226">$257.60</b></div>
-                  <div><s>From your team</s><b style="color:#1D3FA8">$313.78</b></div>
-                </div>
-              </div>
-              <div class="act a-red">Register collection</div>
-              <div class="act a-black">Start a collection round</div>
-              <div class="act a-out">Request a pickup · 100 kg+</div>
-              <div class="cells">
-                <div class="cell"><b>48</b><s>your team</s></div>
-                <div class="cell"><b>20.5<span style="font-size:9px"> t</span></b><s>team collected</s></div>
-              </div>
-              <div class="link">See your Loop network <em>›</em></div>
-              <div class="secl">Recent collections</div>
-              <div class="row"><div class="bar" style="background:#A81226"></div><div><div class="t">TODAY · 14:32</div><div class="d">22.0 kg · PET clear</div></div><div class="v" style="color:#A81226">$4.24</div></div>
-              <div class="row"><div class="bar" style="background:#1D3FA8"></div><div><div class="t">TODAY · 11:04</div><div class="d">Team · Baraka M.</div></div><div class="v" style="color:#1D3FA8">$0.31</div></div>
-            </div>
-            <div class="hem">TUNASONGA MBELE</div>
-            <div class="nav"><div class="on">Home</div><div>Collect</div><div>My Loop</div><div>Wallet</div></div>
-          </div>
-
-          <!-- OFFICER · TODAY -->
-          <div class="lpview" data-view="officer">
-            <div class="status"><span>17:47</span><span>OFFICER · MOSHI NORTH</span></div>
-            <div class="body">
-              <div style="display:flex;justify-content:space-between;align-items:center">
-                <div class="h1">Today</div>
-                <div style="font-family:var(--mono);font-size:6.4px;letter-spacing:.12em;color:#A81226">● OPEN</div>
-              </div>
-              <div class="bigfig">1,284<small> KG</small></div>
-              <div class="bigsub">TAKEN IN TODAY · 41 COLLECTIONS</div>
-              <div class="cells">
-                <div class="cell"><b>41</b><s>weigh-ins</s></div>
-                <div class="cell"><b style="color:#FFB400">$247</b><s>paid out</s></div>
-                <div class="cell"><b>3</b><s>new today</s></div>
-              </div>
-              <div class="secl">At the scale</div>
-              <div class="row"><div class="bar" style="background:#A81226"></div><div><div class="t">14:41 · #0112</div><div class="d">Amani M. · weighing</div></div><div class="v" style="color:#A81226">22.0 kg</div></div>
-              <div class="secl">Queue</div>
-              <div class="row"><div><div class="dt">#4821 Baraka M.</div><div class="t">WAITING 4 MIN</div></div><div class="v" style="color:var(--sf)">~18 kg</div></div>
-              <div class="row"><div><div class="dt">#5119 Neema S.</div><div class="t">WAITING 1 MIN</div></div><div class="v" style="color:var(--sf)">~31 kg</div></div>
-              <div class="secl">Batch in progress</div>
-              <div class="row"><div style="flex:1"><div class="dt">TZ-ARU-0417</div><div class="t">PET CLEAR · 62% FULL</div><div class="track"><i style="width:62%"></i></div></div><div class="v">618 kg</div></div>
-              <div class="act a-red" style="margin-top:auto">Open the scale</div>
-            </div>
-            <div class="hem">MOSHI NORTH · 08:00–18:00</div>
-            <div class="nav"><div class="on">Today</div><div>Scan</div><div>Batches</div><div>Points</div></div>
-          </div>
-
-          <!-- INVESTOR · OVERVIEW -->
-          <div class="lpview" data-view="investor">
-            <div class="status"><span>17:47</span><span>INVESTOR · ARUSHA PILOT</span></div>
-            <div class="body">
-              <div style="display:flex;justify-content:space-between;align-items:center">
-                <div class="h1">Overview</div>
-                <div style="font-family:var(--mono);font-size:6.4px;letter-spacing:.12em;color:#A81226">→ LIVE</div>
-              </div>
-              <div class="bigfig">142.6<small> T</small></div>
-              <div class="bigsub">DIVERTED · LIFETIME · GRS TRACKED</div>
-              <div class="cells">
-                <div class="cell"><b>124</b><s>collectors</s></div>
-                <div class="cell"><b>4</b><s>points</s></div>
-                <div class="cell"><b>98.2<span style="font-size:9px">%</span></b><s>traceable</s></div>
-              </div>
-              <div class="secl">This month</div>
-              <div class="row"><div><div class="dt">Volume</div><div class="t">VS 17.2 T LAST MONTH</div></div><div class="v">20.5<span style="font-size:8px"> t</span></div></div>
-              <div class="row"><div><div class="dt">Paid to collectors</div><div class="t">DIRECT + CASCADE</div></div><div class="v" style="color:#FFB400">$3,890</div></div>
-              <div class="row"><div><div class="dt">Cost per tonne</div><div class="t">ALL-IN, INCLUDING DEPOT</div></div><div class="v" style="color:#FFB400">$285</div></div>
-              <div class="secl">Growth</div>
-              <div style="display:flex;align-items:flex-end;gap:3px;height:44px;margin-top:6px" data-spark></div>
-              <div style="font-family:var(--mono);font-size:5.8px;letter-spacing:.11em;color:var(--sf);margin-top:5px">TONNES PER MONTH · 10 MONTHS</div>
-              <div class="link" style="margin-top:auto">Full data room <em>›</em></div>
-            </div>
-            <div class="hem">EVERY BOTTLE. EVERY KILO. TRACKED.</div>
-            <div class="nav"><div class="on">Overview</div><div>Provenance</div><div>Impact</div></div>
-          </div>
-
-        </div></div>
+      <div class="choice" data-elig="prof">
+        <div class="t"><input type="radio" name="eligibility" value="Professional / institutional investor">Professional / institutional investor</div>
+        <p>I am a professional client or eligible counterparty, or a person to whom this offer may otherwise lawfully be made.</p>
       </div>
-    </div>
-  </div>
-</section>
+      <div class="err-msg" id="elig-err">Please select your investor category.</div>
+    </fieldset>
 
-<!-- ══ FLEET ══ -->
-<section id="fleet" class="sec" data-name="The fleet" data-state="Station">
-  <div class="wrap">
-    <div class="jrow flip">
-      <div>
-        <div class="step rv"><span class="n">02</span><span class="t">The network</span></div>
-        <h2 class="head rv d1">Bring the depot <em>to the community.</em></h2>
-        <p class="lead rv d2"><b>Five vehicles run scheduled mobile buying stations today</b>, so collectors never travel far — scaling toward a fleet of <b>120</b> as sites roll out. At every visit they sell a basket of materials — PET, HDPE, aluminium, cardboard — at published, honest prices.</p>
-        <div class="metrics rv d3">
-          <div><div class="num" data-target="5">0</div><div class="l">vehicles today</div></div>
-          <div><div class="num" data-target="120">0</div><div class="l">fleet target</div></div>
-          <div><div class="num" data-target="15" data-suffix="km">0</div><div class="l">catchment per depot</div></div>
-        </div>
+    <fieldset>
+      <legend>4 · Bank details for return payments</legend>
+      <div class="grid2">
+        <div class="fg"><label>Account holder name <span class="req">*</span></label><input name="bank_name" required></div>
+        <div class="fg"><label>Bank <span class="req">*</span></label><input name="bank" required></div>
       </div>
-      <div class="col-img rv d2">
-        <div class="photo" style="background-image:url('/images/fleet.jpg')"><div class="cap">Mobile buying station · scheduled route</div></div>
+      <div class="grid2">
+        <div class="fg"><label>IBAN / account number <span class="req">*</span></label><input name="iban" required></div>
+        <div class="fg"><label>SWIFT / sort code <span class="req">*</span></label><input name="swift" required></div>
       </div>
-    </div>
-    <div class="callout rv d3">
-      <div>
-        <div class="num" data-target="0.40" data-prefix="$">0</div>
-        <div class="l">Market value / kg, today</div>
-      </div>
-      <div>
-        <h4>The surplus is already growing.</h4>
-        <p>Feedstock is being collected and stored on site right now — bought at <b>$0.165/kg</b>, already worth <b>$0.40/kg</b> at today's market price. The stockpile grows every day: an appreciating asset on the balance sheet before the plant switches on.</p>
-      </div>
-    </div>
-  </div>
-</section>
+    </fieldset>
 
-<!-- ══ PLANT ══ -->
-<section id="plant" class="sec" data-name="The plant" data-state="Plant">
-  <div class="wrap">
-    <p class="label rv">Inside the plant</p>
-    <h2 class="head rv d1">From bottle to <em>food-grade pellet.</em></h2>
-    <p class="lead rv d2">Because feedstock stockpiles during build-out, the plant runs <b>two shifts from day one</b> — around 7–8 tonnes processed daily. Six stages, fully traceable, through to a food-grade reactor and a pilot yarn line.</p>
-    <div class="pipe">
-      <div class="stage rv d1"><div class="n">01</div><h4>Collect<br>&amp; sort</h4><p>Named collectors, app-logged, sorted by resin and colour.</p></div>
-      <div class="stage rv d1"><div class="n">02</div><h4>Shred<br>to flake</h4><p>Granulated and friction-washed; caps float off for PP recovery.</p></div>
-      <div class="stage rv d2"><div class="n">03</div><h4>Hot<br>wash</h4><p>Caustic hot-wash to food-contact cleanliness; water recycled.</p></div>
-      <div class="stage rv d2"><div class="n">04</div><h4>Extrude<br>to pellet</h4><p>Twin-screw extrusion into uniform, sellable rPET pellet.</p></div>
-      <div class="stage gate rv d3"><div class="n">05</div><h4>SSP<br>reactor</h4><p>Solid-state upgrade to food-grade IV.</p><span class="flag">Value gate</span></div>
-      <div class="stage rv d3"><div class="n">06</div><h4>Pilot<br>yarn</h4><p>Sample yarn for brand qualification and the textile route.</p></div>
-    </div>
-    <p class="lead rv d4" style="margin-top:40px">Non-food pellet sells <b>immediately</b>. Food-grade follows once certified — commanding premium, long-term offtake from beverage and FMCG brands.</p>
-  </div>
-</section>
-
-<!-- ══ OUTPUT ══ -->
-<section id="output" class="sec" data-name="The output" data-state="Pellet">
-  <div class="wrap">
-    <p class="label rv">The loop closes</p>
-    <h2 class="head rv d1">Nothing is <em>wasted.</em></h2>
-    <p class="lead rv d2">The bottle becomes food-grade pellet and recycled fibre. What cannot be recycled becomes something else entirely — and the value keeps circulating in the community that collected it.</p>
-    <div class="outs">
-      <div class="out rv d1"><h4>rPET</h4><p>Food-grade pellet and yarn for global brands.</p></div>
-      <div class="out rv d2"><h4>HDPE</h4><p>Jerricans and containers as a second product line.</p></div>
-      <div class="out rv d3"><h4>Bricks</h4><p>Non-recyclable plastic plus sand, pressed into interlocking bricks.</p></div>
-      <div class="out rv d4"><h4>Roofing</h4><p>Recycled composite sheets that outlast corrugated iron.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ PEOPLE ══ -->
-<section id="people" class="sec dark" data-theme="dark" data-name="The people" data-state="Pellet">
-  <div class="wrap">
-    <p class="label rv">Why it holds</p>
-    <h2 class="head rv d1">Every loop closed <em>changes a life.</em></h2>
-    <p class="lead rv d2">MlimaLoop is not a plant with a community programme bolted on. The community <b>is</b> the business — its collectors, its operators, its pride. As the network grows, so do the people and the cities around it.</p>
-    <div class="pcards">
-      <div class="pcard rv d1"><div class="num" data-target="500" data-suffix="+">0</div><h4>Skilled plant jobs</h4><p>42 fair, safe jobs per site — managers, operators, QC, drivers, security — across the network at full scale.</p></div>
-      <div class="pcard rv d2"><div class="num" data-target="1000" data-suffix="s">0</div><h4>Collector livelihoods</h4><p>Informal collectors formalised, paid fairly and on time, building loyal income that spreads through tight communities.</p></div>
-      <div class="pcard rv d3"><div class="num" data-target="200" data-suffix="k t">0</div><h4>Plastic diverted</h4><p>Tonnes kept out of landfill, rivers and the Indian Ocean over 15 years — the Pangani basin cleaned at source.</p></div>
-    </div>
-    <hr class="hair" style="margin:56px 0">
-    <div class="rv">
-      <p class="pull">The waste becomes the bricks. The bricks become the <em>homes.</em> The homes keep the collectors who brought the waste in.</p>
-      <p class="lead" style="margin-top:28px">Worker housing built from recycled bricks. School chairs and desks from bottle caps. A formal economy where there was none.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ══ EXPANSION ══ -->
-<section id="expansion" class="sec" data-name="Expansion" data-state="World">
-  <div class="wrap">
-    <p class="label rv">The roll-out</p>
-    <h2 class="head rv d1">Prove Arusha. Then <em>replicate a nation.</em></h2>
-    <p class="lead rv d2">One proven model, rolled out city by city. Arusha is the blueprint; every site after it is a copy of a system that already works — reaching <b>12 operating sites</b> across Tanzania.</p>
-    <div class="maprow">
-      <div class="rv d2">
-        <svg id="tzmap" viewBox="0 0 100 92" role="img" aria-label="Map of Tanzania showing planned MlimaLoop sites">
-          <path d="M8,40 L14,24 L26,15 L40,12 L58,10 L64,14 L70,12 L74,18 L82,26 L86,34 L84,44 L88,50 L82,58 L78,66 L70,74 L58,80 L44,82 L34,80 L26,74 L18,64 L12,54 Z"
-            fill="#4E1710" stroke="rgba(228,230,223,.3)" stroke-width=".45"/>
-          <g id="cities"></g>
-        </svg>
+    <fieldset>
+      <legend>5 · Identity &amp; address (KYC)</legend>
+      <p class="hint">Required for anti-money-laundering checks. After you submit this form, please send the following two documents to MlimaLoop on WhatsApp <b>+971 528166070</b> or by email to <b>graham@mlimaloop.com</b>:</p>
+      <div class="note" style="margin-top:.8rem">
+        1. A clear photo or scan of your <b>passport or photo ID</b>.<br>
+        2. A <b>proof of address</b> dated within the last 3 months (utility bill or bank statement).
+        <br><br>We will confirm receipt. Your subscription is completed once your identity is verified and cleared funds are received.
       </div>
-      <div class="timeline rv d3" id="timeline"></div>
-    </div>
-  </div>
-</section>
+    </fieldset>
 
-<!-- ══ NUMBERS ══ -->
-<section id="numbers" class="sec" data-name="The numbers" data-state="World">
-  <div class="wrap">
-    <p class="label rv">The economics</p>
-    <h2 class="head rv d1">A business that funds <em>its own expansion.</em></h2>
-    <p class="lead rv d2">After Arusha is proven, each new site is paid for out of cash flow. The investor funds the first plant; the model does the rest.</p>
-    <div class="two">
-      <div class="chartcard rv d2">
-        <h4>Revenue &amp; EBITDA · 15 years</h4>
-        <div class="sub">Base case, USD · from the full financial model</div>
-        <canvas id="revChart" height="150"></canvas>
-      </div>
-      <div class="streams rv d3">
-        <div class="stream">Food-grade &amp; non-food pellet <b>Core</b></div>
-        <div class="stream">Ocean-bound plastic credits <b>Premium</b></div>
-        <div class="stream">Recycled yarn &amp; fibre <b>Textile</b></div>
-        <div class="stream">HDPE, bricks, roofing, caps <b>By-product</b></div>
-        <div class="stream">Licensing the model &amp; app <b>Platform</b></div>
-      </div>
-    </div>
-    <div class="kpis">
-      <div class="kpi rv d1"><div class="num" data-target="82" data-prefix="$" data-suffix="M">0</div><div class="l">annual revenue by Year 15</div></div>
-      <div class="kpi rv d2"><div class="num" data-target="53" data-prefix="$" data-suffix="M">0</div><div class="l">annual EBITDA by Year 15</div></div>
-      <div class="kpi rv d3"><div class="num" data-target="12">0</div><div class="l">operating sites across Tanzania</div></div>
-      <div class="kpi rv d4"><div class="num" data-target="7" data-prefix="$" data-suffix="M">0</div><div class="l">EBITDA already by Year 5</div></div>
-    </div>
-  </div>
-</section>
+    <fieldset>
+      <legend>6 · Declarations</legend>
+      <label class="ack"><input type="checkbox" name="ack1" required> I have read and understood the Confidential Information Memorandum and the risk warning, and I understand this is an illiquid investment that carries a degree of risk.</label>
+      <label class="ack"><input type="checkbox" name="ack2" required> I understand I may lose some or all of the money I invest, and that I am unlikely to have access to the Financial Services Compensation Scheme or the Financial Ombudsman Service.</label>
+      <label class="ack"><input type="checkbox" name="ack3" required> The information I have provided is true, accurate and complete, and I will notify the Issuer of any change.</label>
+      <label class="ack"><input type="checkbox" name="ack4" required> I consent to Vitpi - FZCO (the Issuer) and MlimaLoop Ltd processing my personal data for this subscription and for identity and anti-money-laundering checks, in accordance with the privacy notice.</label>
+      <label class="ack"><input type="checkbox" name="ack5" required> I agree to be bound by the terms of the Placement Notes and the Subscription Agreement.</label>
+    </fieldset>
 
-<!-- ══ NEWS ══ -->
-<section id="news" class="sec" data-name="News" data-state="World">
-  <div class="wrap">
-    <p class="label rv">News &amp; insights</p>
-    <h2 class="head rv d1">Latest from <em>MlimaLoop.</em></h2>
-    <p class="lead rv d2">Updates, milestones and thinking from the team building East Africa's circular economy — published from Arusha.</p>
-    <div class="newsgrid">
-      <a class="ncard rv d1" href="/blog/2026-03-29-why-east-africa-circular-economy/"><span class="tag">Insight</span><h4>Why East Africa is the next frontier for the circular economy</h4><p>The infrastructure gap, the regulatory tailwinds, and why 2026 is the moment to build.</p><span class="rd">Read article ›</span></a>
-      <div class="ncard rv d2"><span class="tag">Coming soon</span><h4>From bottle to fibre: what rPET processing actually looks like</h4><p>A walk through the stages of the pipeline, from flake to food-grade pellet.</p></div>
-      <div class="ncard rv d3"><span class="tag">Coming soon</span><h4>The collectors: the people who make the loop possible</h4><p>Formalising the collection economy — why it matters commercially and socially.</p></div>
-    </div>
-    <div class="rv d4" style="margin-top:34px"><a class="btn s" href="/blog/">Read all articles</a></div>
-  </div>
-</section>
-
-<!-- ══ CONTACT ══ -->
-<section id="contact" class="sec" data-name="Contact" data-state="World">
-  <div class="wrap">
-    <p class="label rv">Contact</p>
-    <h2 class="head rv d1">Partner <em>with us.</em></h2>
-    <div class="crow">
-      <div class="rv d1">
-        <p class="lead">We are actively speaking with investors, ESG-aligned funds, NGO partners and global brands verifying their recycled supply. If you are serious about the circular economy in Africa, we want to hear from you.</p>
-        <div style="margin-top:26px">
-          <div class="cdetail"><span class="k">Location</span><span class="v">Arusha, Tanzania</span></div>
-          <div class="cdetail"><span class="k">Entity</span><span class="v">MlimaLoop Ltd · Registered in Tanzania · Est. 2026</span></div>
-          <div class="cdetail"><span class="k">Focus</span><span class="v">rPET recycling · circular economy · East Africa</span></div>
-        </div>
+    <fieldset>
+      <legend>7 · Signature</legend>
+      <div class="grid2">
+        <div class="fg"><label>Signed name (type) <span class="req">*</span></label><input name="signname" required></div>
+        <div class="fg"><label>Date</label><input name="signdate" readonly></div>
       </div>
-      <form class="cform rv d2" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="contact">
-        <p style="display:none"><label>Do not fill this in: <input name="bot-field"></label></p>
-        <div class="frow">
-          <div class="fg"><label>First name</label><input type="text" name="first-name" placeholder="Jane" required></div>
-          <div class="fg"><label>Last name</label><input type="text" name="last-name" placeholder="Smith"></div>
-        </div>
-        <div class="fg"><label>Organisation</label><input type="text" name="organisation" placeholder="Company / fund / NGO"></div>
-        <div class="fg"><label>Email</label><input type="email" name="email" placeholder="jane@organisation.com" required></div>
-        <div class="fg"><label>Enquiry type</label>
-          <select name="enquiry-type"><option value="">Select one</option><option>Investment</option><option>ESG / supply-chain partnership</option><option>NGO / development partner</option><option>Media enquiry</option><option>Other</option></select>
-        </div>
-        <div class="fg"><label>Message</label><textarea name="message" rows="4" placeholder="Tell us about your interest in MlimaLoop…"></textarea></div>
-        <button type="submit" class="btn p" style="align-self:flex-start;border:0;cursor:pointer">Send enquiry</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- ══ THE ASK ══ -->
-<section id="ask" class="sec dark" data-theme="dark" data-name="The ask" data-state="World">
-  <div class="wrap">
-    <p class="label rv">The ask</p>
-    <h2 class="head rv d1">Fund the first plant. Own a piece of <em>the loop.</em></h2>
-    <div class="askgrid">
-      <div>
-        <p class="lead rv d2">The collection network, the app and the licences are built and paid for, and feedstock is stockpiling on site. The founder has already deployed <b>$750,000</b>. The placement funds the equipment order and running costs through build-out — then the business funds its own national roll-out.</p>
-        <ul class="uses rv d3">
-          <li><b>Equipment order</b> — full line to the SSP reactor, plus pilot yarn line and on-site QC lab.</li>
-          <li><b>Pre-launch operations</b> — collection, rent and crew while the feedstock surplus builds.</li>
-          <li>Then <b>two shifts from day one</b>: non-food sales immediately, food-grade within roughly 14 months.</li>
-        </ul>
-        <div class="pills rv d4">
-          <span class="pill">Secured convertible notes</span><span class="pill">10% per annum · 3-year term</span>
-          <span class="pill">Convert or redeem at 36 months</span><span class="pill">HNW &amp; sophisticated only</span>
-        </div>
-        <div class="rv d5" style="margin-top:30px"><a class="btn p" href="/invest/">For investors</a></div>
+      <div class="sigwrap">
+        <label style="font-size:.78rem;font-weight:700;color:#3a3f40">Draw your signature <span class="req">*</span></label>
+        <canvas id="sigpad"></canvas>
+        <div class="sigrow"><span class="hint">Sign with your mouse or finger.</span><button type="button" class="linkbtn" id="clearsig">Clear</button></div>
+        <div class="err-msg" id="sig-err">Please sign in the box above.</div>
       </div>
-      <div class="askbox rv d3">
-        <div class="l">Placement</div>
-        <span class="num" data-target="10" data-prefix="$" data-suffix="M">0</span>
-        <p class="note">First close $3M, rolling to a $10M cap. Minimum $25,000.</p>
-        <div class="askrow"><span>Instrument</span><b>Secured convertible notes</b></div>
-        <div class="askrow"><span>Return</span><b>10% p.a. · 3-year term</b></div>
-        <div class="askrow"><span>At 36 months</span><b>Convert or redeem</b></div>
-        <div class="askrow"><span>Founder already deployed</span><b>$750k</b></div>
-        <div class="askrow"><span>Secured against</span><b>Feedstock surplus<br>&amp; machinery</b></div>
-        <div class="askrow"><span>Issued by</span><b>Vitpi - FZCO</b></div>
-      </div>
-    </div>
-  </div>
-</section>
+    </fieldset>
 
-<!-- ══ CLOSE ══ -->
-<section id="close" class="sec" data-theme="dark" data-name="Join us" data-state="World">
-  <div class="wrap" style="text-align:center">
-    <svg width="32" height="42" viewBox="0 0 20 26" fill="none" style="margin:0 auto" class="rv" aria-hidden="true">
-      <circle cx="10" cy="7.4" r="6.1" stroke="#79B2BD" stroke-width="1.7"/>
-      <circle cx="10" cy="18.6" r="6.1" stroke="#79B2BD" stroke-width="1.7"/>
-    </svg>
-    <p class="label rv d1" style="margin-top:28px">From the mountain to the world</p>
-    <h2 class="closeh rv d2">This is not charity.<br>This is <em>industry.</em></h2>
-    <p class="lead rv d3">Every bottle is a resource. Every loop closed is a profit and a livelihood. If you are serious about the circular economy in Africa, build it with us.</p>
-    <div class="cta rv d4">
-      <a class="btn p" href="#contact">Partner with us</a>
-      <a class="btn s" href="/invest/">For investors</a>
-    </div>
-  </div>
-</section>
+    <button type="submit" class="submit">Sign &amp; submit application</button>
+    <p class="note"><b>What happens next:</b> when you submit, a signed PDF copy of this application is generated for your records, and we email you a confirmation with the bank details for your chosen currency so you can transfer your funds. The Issuer will confirm receipt and the next steps. Your data is handled confidentially and used only for this subscription and required checks.</p>
+  </form>
+  <p class="riskfoot">Don't invest unless you're prepared to lose all the money you invest. This investment carries a degree of risk and you are unlikely to be protected if something goes wrong. The Notes are secured against the Operating Company's feedstock inventory and machinery, which reduces but does not remove this risk.</p>
+</div>
 
-<footer class="sfoot">
-  <div class="sfgrid">
-    <div>
-      <div class="wm">Mlima<span>Loop</span></div>
-      <p class="sftag">Closing the loop on plastic in East Africa. Certified recycled material, built for the circular economy.</p>
-      <div class="sfsoc">
-        <a href="https://www.linkedin.com/company/mlimaloop" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://www.instagram.com/mlimaloop" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.facebook.com/mlimaloop" target="_blank" rel="noopener">Facebook</a>
-      </div>
-    </div>
-    <div class="sfcol"><h5>Company</h5><ul><li><a href="#gap">The gap</a></li><li><a href="#looper">The collector</a></li><li><a href="#people">The people</a></li><li><a href="#expansion">Expansion</a></li></ul></div>
-    <div class="sfcol"><h5>Investors</h5><ul><li><a href="/invest/">Invest now</a></li><li><a href="/investors/">Investment overview</a></li><li><a href="#contact">Talk to us</a></li></ul></div>
-    <div class="sfcol"><h5>More</h5><ul><li><a href="/blog/">News</a></li><li><a href="#numbers">The numbers</a></li><li><a href="#ask">The ask</a></li><li><a href="#contact">Contact</a></li></ul></div>
+<div class="wrap" id="done">
+  <div class="fig">Thank you.</div>
+  <h1 style="margin-top:.4rem">Your application is signed.</h1>
+  <p class="sub" style="margin:0 auto 1rem">A signed PDF copy has downloaded to your device. If it didn't start, <button type="button" class="linkbtn" id="redl">click here</button>.</p>
+  <div class="note" style="text-align:left">
+    <b>Check your email.</b> We've sent a confirmation to the address you provided, with the bank details for your chosen currency and your payment reference. If it doesn't arrive within a few minutes, check your spam folder or email <b>graham@mlimaloop.com</b>.<br><br>
+    <b>To complete your subscription:</b><br>
+    1. Send your passport and a proof of address (dated within 3 months) on WhatsApp <b>+971 528166070</b> or to <b>graham@mlimaloop.com</b>.<br>
+    2. Transfer your investment to the account in your confirmation email, using <b>your name</b> as the payment reference.<br><br>
+    <b>Security:</b> our bank details will not change. If anything ever asks you to send funds to a different account, do not act on it, contact us first to verify.
   </div>
-  <div class="sfbottom">
-    <span>© 2026 MlimaLoop Ltd · Arusha, Tanzania</span>
-    <span>Registered in Tanzania · Projections, not guarantees</span>
-  </div>
-</footer>
+</div>
 
 <script>
-(function(){
-  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function fmt(v,dec){return dec? v.toFixed(dec) : Math.round(v).toLocaleString();}
-  function runCount(el){
-    var t=parseFloat(el.dataset.target),pre=el.dataset.prefix||'',suf=el.dataset.suffix||'';
-    var dec=(String(el.dataset.target).indexOf('.')>-1)?(String(el.dataset.target).split('.')[1].length):0;
-    if(reduce){el.textContent=pre+t.toFixed(dec)+suf;return;}
-    var st=null,dur=1300;
-    function fr(ts){
-      if(!st)st=ts;
-      var p=Math.min((ts-st)/dur,1),v=t*(1-Math.pow(1-p,3));
-      if(p>=1)v=t;
-      el.textContent=pre+fmt(v,dec)+suf;
-      if(p<1)requestAnimationFrame(fr);
-    }
-    requestAnimationFrame(fr);
-  }
-  var io=new IntersectionObserver(function(es){
-    es.forEach(function(e){
-      if(!e.isIntersecting)return;
-      e.target.classList.add('in');
-      e.target.querySelectorAll('[data-target]').forEach(runCount);
-      if(e.target.dataset.target)runCount(e.target);
-      io.unobserve(e.target);
-    });
-  },{threshold:.25});
-  document.querySelectorAll('.rv,[data-target]').forEach(function(el){io.observe(el);});
-
-
-  var secs=[].slice.call(document.querySelectorAll('.sec'));
-  var spine=document.getElementById('spine'),stateWord=document.getElementById('state-word');
-  secs.forEach(function(s){
-    var a=document.createElement('a');
-    a.href='#'+s.id;
-    a.innerHTML='<span class="tick"></span><span class="lbl">'+s.dataset.name+'</span>';
-    spine.appendChild(a);
+/* signature pad */
+var cv=document.getElementById('sigpad'),cx=cv.getContext('2d'),drawing=false,dirty=false;
+function resize(){var r=cv.getBoundingClientRect(),d=window.devicePixelRatio||1;cv.width=r.width*d;cv.height=r.height*d;cx.scale(d,d);cx.lineWidth=2;cx.lineCap='round';cx.strokeStyle='#1A1C1B';}
+resize();addEventListener('resize',function(){var data=cv.toDataURL();resize();});
+function pos(e){var r=cv.getBoundingClientRect(),t=e.touches?e.touches[0]:e;return{x:t.clientX-r.left,y:t.clientY-r.top};}
+function start(e){drawing=true;dirty=true;var p=pos(e);cx.beginPath();cx.moveTo(p.x,p.y);e.preventDefault();}
+function move(e){if(!drawing)return;var p=pos(e);cx.lineTo(p.x,p.y);cx.stroke();e.preventDefault();}
+function end(){drawing=false;}
+cv.addEventListener('mousedown',start);cv.addEventListener('mousemove',move);addEventListener('mouseup',end);
+cv.addEventListener('touchstart',start);cv.addEventListener('touchmove',move);cv.addEventListener('touchend',end);
+document.getElementById('clearsig').onclick=function(){cx.clearRect(0,0,cv.width,cv.height);dirty=false;};
+/* date */
+var today=new Date().toISOString().slice(0,10);
+document.querySelector('[name=signdate]').value=today;
+/* eligibility UI */
+document.querySelectorAll('.choice').forEach(function(c){c.addEventListener('click',function(e){
+  var radio=c.querySelector('input[type=radio]');if(e.target.type!=='checkbox'){radio.checked=true;}
+  document.querySelectorAll('.choice').forEach(function(x){x.classList.remove('sel');});
+  document.querySelector('.choice[data-elig="'+ ({'High-net-worth individual':'hnw','Self-certified sophisticated investor':'soph','Professional / institutional investor':'prof'}[document.querySelector('input[name=eligibility]:checked').value]) +'"]').classList.add('sel');
+  document.getElementById('sophconds').classList.toggle('show',radio.value.indexOf('sophisticated')>-1);
+});});
+/* submit */
+var lastPdf=null;
+document.getElementById('appform').addEventListener('submit',function(e){
+  e.preventDefault();var f=e.target,ok=true;
+  document.querySelectorAll('.err').forEach(function(x){x.classList.remove('err');});
+  document.getElementById('elig-err').style.display='none';document.getElementById('sig-err').style.display='none';
+  // required native fields
+  f.querySelectorAll('[required]').forEach(function(el){
+    if((el.type==='checkbox'&&!el.checked)||(el.type==='file'&&!el.files.length)||(el.value+'').trim()===''){el.closest('.fg,.ack,fieldset').classList.add('err');ok=false;}
   });
-  var links=[].slice.call(spine.children);
-  var so=new IntersectionObserver(function(es){
-    es.forEach(function(e){
-      if(!e.isIntersecting)return;
-      var i=secs.indexOf(e.target);
-      links.forEach(function(l){l.classList.remove('on');});
-      if(links[i])links[i].classList.add('on');
-      if(e.target.dataset.state)stateWord.textContent=e.target.dataset.state;
-      document.body.classList.toggle('on-dark',e.target.dataset.theme==='dark');
-    });
-  },{threshold:.4});
-  secs.forEach(function(s){so.observe(s);});
-
-  var prog=document.getElementById('prog');
-  addEventListener('scroll',function(){
-    var h=document.documentElement.scrollHeight-innerHeight;
-    prog.style.width=(Math.min(scrollY/Math.max(h,1),1)*100)+'%';
-  },{passive:true});
-
-  /* ── LOOP: rank ring + growth spark + view switch (from loop-all-views) ── */
-  function pol(c,r,d){var a=(d-90)*Math.PI/180;return[c+r*Math.cos(a),c+r*Math.sin(a)];}
-  function ap(c,r,a0,a1){var p=pol(c,r,a0),q=pol(c,r,a1),lg=(a1-a0)>180?1:0;
-    return 'M '+p[0].toFixed(2)+' '+p[1].toFixed(2)+' A '+r+' '+r+' 0 '+lg+' 1 '+q[0].toFixed(2)+' '+q[1].toFixed(2);}
-  document.querySelectorAll('[data-rank]').forEach(function(el){
-    var sz=parseFloat(el.dataset.size),lit=parseInt(el.dataset.lit,10);
-    var w=sz*0.26,c=sz/2,r=sz/2-w/2,seg=60,g=10,off='rgba(16,16,16,.3)';
-    var o='<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 '+sz+' '+sz+'" style="display:block" role="img" aria-label="Rank: '+lit+' of 6">';
-    for(var i=0;i<6;i++){var a0=i*seg+g/2,a1=(i+1)*seg-g/2;
-      o+='<path d="'+ap(c,r,a0,a1)+'" fill="none" stroke="'+(i<lit?'#FFB400':off)+'" stroke-width="'+w+'" stroke-linecap="butt"/>';}
-    el.innerHTML=o+'</svg>';
-  });
-  document.querySelectorAll('[data-spark]').forEach(function(el){
-    var v=[6,7.4,8.1,9.8,11.2,12.6,14.9,16.1,17.2,20.5],max=22,h='';
-    v.forEach(function(x,i){
-      var col=i===v.length-1?'#A81226':'rgba(16,16,16,.2)';
-      h+='<i style="flex:1;height:'+((x/max)*100)+'%;background:'+col+';display:block"></i>';
-    });
-    el.innerHTML=h;
-  });
-  document.querySelectorAll('#lp-switch button').forEach(function(btn){
-    btn.addEventListener('click',function(){
-      var v=btn.dataset.go;
-      document.querySelectorAll('#lp-switch button').forEach(function(b){b.classList.toggle('on',b===btn);});
-      document.querySelectorAll('#app .lpview').forEach(function(p){p.classList.toggle('on',p.dataset.view===v);});
-    });
-  });
-
-  /* map */
-  var cities=[
-    {n:'Arusha',x:60,y:18,yr:1,d:'HQ · pilot line · prove the model'},
-    {n:'Arusha II',x:57,y:22,yr:3,d:'Added capacity, larger yarn line'},
-    {n:'Moshi',x:67,y:20,yr:4,d:'Kilimanjaro corridor'},
-    {n:'Dodoma',x:52,y:45,yr:5,d:'Capital city'},
-    {n:'Dar es Salaam',x:78,y:53,yr:6,d:'Largest PET volume in the country'},
-    {n:'Tanga',x:74,y:33,yr:7,d:'Coastal · ocean-bound credits'},
-    {n:'Mwanza',x:28,y:22,yr:8,d:'Lake Victoria zone'},
-    {n:'Morogoro',x:66,y:52,yr:9,d:'Central corridor'},
-    {n:'Mbeya',x:26,y:70,yr:10,d:'Southern highlands'},
-    {n:'Zanzibar',x:84,y:48,yr:11,d:'Island · tourism waste'},
-    {n:'Kigoma',x:10,y:46,yr:12,d:'Lake Tanganyika, west'},
-    {n:'Iringa',x:46,y:62,yr:13,d:'Southern'},
-    {n:'Dar es Salaam II',x:80,y:57,yr:14,d:'Second Dar plant · 12 sites operating'}
-  ];
-  var NS='http://www.w3.org/2000/svg';
-  var g=document.getElementById('cities'),tl=document.getElementById('timeline'),ax=60,ay=18;
-  cities.forEach(function(c,i){
-    if(i>0){
-      var ln=document.createElementNS(NS,'line');
-      ln.setAttribute('x1',ax);ln.setAttribute('y1',ay);ln.setAttribute('x2',c.x);ln.setAttribute('y2',c.y);
-      ln.setAttribute('stroke','rgba(121,178,189,.45)');ln.setAttribute('stroke-width','.28');
-      ln.setAttribute('class','city city-'+i);g.appendChild(ln);
-    }
-    var grp=document.createElementNS(NS,'g');grp.setAttribute('class','city city-'+i);
-    var circ=document.createElementNS(NS,'circle');
-    circ.setAttribute('cx',c.x);circ.setAttribute('cy',c.y);circ.setAttribute('r',i===0?'1.9':'1.3');
-    circ.setAttribute('fill',i===0?'#E4E6DF':'#79B2BD');
-    var tx=document.createElementNS(NS,'text');
-    tx.setAttribute('x',c.x+2.5);tx.setAttribute('y',c.y+1);tx.setAttribute('class','cityname');tx.textContent=c.n;
-    grp.appendChild(circ);grp.appendChild(tx);g.appendChild(grp);
-    var row=document.createElement('div');row.className='tl tl-'+i;
-    row.innerHTML='<div class="yr">'+c.yr+'</div><div><div class="c">'+c.n+'</div><div class="d">'+c.d+'</div></div>';
-    tl.appendChild(row);
-  });
-  var played=false;
-  var mo=new IntersectionObserver(function(es){
-    es.forEach(function(e){
-      if(!e.isIntersecting||played)return;played=true;
-      cities.forEach(function(c,i){
-        setTimeout(function(){
-          document.querySelectorAll('.city-'+i).forEach(function(el){el.classList.add('on');});
-          var r=document.querySelector('.tl-'+i);if(r)r.classList.add('on');
-        },reduce?0:i*380);
-      });
-    });
-  },{threshold:.35});
-  mo.observe(document.getElementById('expansion'));
-
-  /* chart */
-  var charted=false;
-  function chart(){
-    if(charted||typeof Chart==='undefined')return;charted=true;
-    new Chart(document.getElementById('revChart'),{
-      type:'bar',
-      data:{
-        labels:['Y1','Y2','Y3','Y4','Y5','Y6','Y7','Y8','Y9','Y10','Y11','Y12','Y13','Y14','Y15'],
-        datasets:[
-          {type:'line',label:'EBITDA',data:[0.0,1.6,2.7,4.5,7.0,10.2,13.7,17.6,22.0,27.1,31.8,36.8,42.0,47.6,53.1],
-            borderColor:'#3E7885',backgroundColor:'#3E7885',tension:.28,borderWidth:1.8,pointRadius:0,pointHoverRadius:4},
-          {type:'bar',label:'Revenue',data:[0.9,3.2,4.8,8.1,12.5,17.7,23.2,29.2,35.9,43.4,51.8,59.4,66.9,75.1,82.2],
-            backgroundColor:'rgba(62,120,133,.35)',borderColor:'#3E7885',borderWidth:1,borderRadius:0}
-        ]
-      },
-      options:{
-        responsive:true,
-        plugins:{legend:{labels:{color:'rgba(26,28,27,.72)',font:{family:'Lato',size:11,weight:'300'},boxWidth:10,padding:18}}},
-        scales:{
-          x:{ticks:{color:'rgba(26,28,27,.5)',font:{family:'Lato',size:10,weight:'300'}},grid:{display:false}},
-          y:{ticks:{color:'rgba(26,28,27,.5)',font:{family:'Lato',size:10,weight:'300'},callback:function(v){return '$'+v+'M';}},
-             grid:{color:'rgba(26,28,27,.09)'}}
-        },
-        animation:{duration:reduce?0:1400}
-      }
-    });
-  }
-  var co=new IntersectionObserver(function(es){
-    es.forEach(function(e){if(e.isIntersecting){chart();co.disconnect();}});
-  },{threshold:.25});
-  co.observe(document.getElementById('numbers'));
-})();
-</script><!-- Netlify Identity / CMS (do not remove) -->
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<script>
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", user => {
-      if (!user) { window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; }); }
-    });
-  }
-  document.addEventListener("DOMContentLoaded", function() {
-    const hash = window.location.hash;
-    if (hash && (hash.includes('invite_token') || hash.includes('recovery_token'))) {
-      setTimeout(function(){ if (window.netlifyIdentity) { window.netlifyIdentity.open(); } }, 500);
-    }
-  });
+  var elig=f.querySelector('input[name=eligibility]:checked');
+  if(!elig){document.getElementById('elig-err').style.display='block';ok=false;}
+  if(elig&&elig.value.indexOf('sophisticated')>-1&&!f.querySelector('input[name=soph_cond]:checked')){document.getElementById('elig-err').textContent='Please tick at least one sophisticated-investor condition.';document.getElementById('elig-err').style.display='block';ok=false;}
+  if(!dirty){document.getElementById('sig-err').style.display='block';document.getElementById('sigpad').classList.add('err');ok=false;}
+  if(!ok){window.scrollTo({top:document.querySelector('.err,.err-msg[style*="block"]').offsetTop-120,behavior:'smooth'});return;}
+  buildPDF(f);
+  // send everything to the email function, which emails the investor the bank details for their currency and emails MlimaLoop the application + signed PDF
+  var payload={pdf:(lastPdf?lastPdf.output('datauristring'):'')};
+  ['fullname','dob','nationality','country','address','email','phone','amount','currency','bank_name','bank','iban','swift','signname','signdate'].forEach(function(n){var el=f.querySelector('[name='+n+']');payload[n]=el?el.value:'';});
+  payload.eligibility=(f.querySelector('input[name=eligibility]:checked')||{}).value||'';
+  payload.soph_cond=[].map.call(f.querySelectorAll('input[name=soph_cond]:checked'),function(x){return x.value;}).join(', ');
+  var ENDPOINT='/.netlify/functions/send-application';
+  fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).catch(function(){});
+  document.getElementById('formzone').style.display='none';
+  document.getElementById('done').style.display='block';window.scrollTo({top:0,behavior:'smooth'});
+});
+function line(doc,y,label,val){doc.setFont('helvetica','bold');doc.text(label,20,y);doc.setFont('helvetica','normal');doc.text(String(val||'-'),90,y);return y+7;}
+function buildPDF(f){
+  var jsPDF=window.jspdf.jsPDF,doc=new jsPDF({unit:'mm',format:'a4'});var y=20;var g=function(n){var el=f.querySelector('[name='+n+']');return el?el.value:'';};
+  doc.setFillColor(44,10,5);doc.rect(0,0,210,16,'F');doc.setTextColor(246,239,232);doc.setFont('helvetica','bold');doc.setFontSize(12);doc.text('MLIMALOOP  ·  Investor Application & Subscription',14,10);
+  doc.setTextColor(26,28,27);doc.setFontSize(10);y=28;
+  doc.setFont('helvetica','bold');doc.setFontSize(11);doc.text('Secured Convertible Placement Notes',20,y);y+=9;doc.setFontSize(10);
+  y=line(doc,y,'Full legal name',g('fullname'));y=line(doc,y,'Date of birth',g('dob'));y=line(doc,y,'Nationality',g('nationality'));
+  y=line(doc,y,'Country of residence',g('country'));var addr=doc.splitTextToSize(g('address'),100);doc.setFont('helvetica','bold');doc.text('Residential address',20,y);doc.setFont('helvetica','normal');doc.text(addr,90,y);y+=7*addr.length;
+  y=line(doc,y,'Email',g('email'));y=line(doc,y,'Phone',g('phone'));y+=2;
+  y=line(doc,y,'Investment amount',g('amount')+' '+g('currency'));
+  var soph=[].map.call(f.querySelectorAll('input[name=soph_cond]:checked'),function(x){return x.value;}).join(', ');
+  y=line(doc,y,'Investor category',(f.querySelector('input[name=eligibility]:checked')||{}).value+(soph?(' ('+soph+')'):''));y+=2;
+  y=line(doc,y,'Account holder',g('bank_name'));y=line(doc,y,'Bank',g('bank'));y=line(doc,y,'IBAN / account',g('iban'));y=line(doc,y,'SWIFT / sort code',g('swift'));y+=2;
+  y=line(doc,y,'KYC documents','To follow by WhatsApp / email');y+=3;
+  doc.setFont('helvetica','bold');doc.text('Declarations',20,y);y+=6;doc.setFont('helvetica','normal');doc.setFontSize(9);
+  ['Read & understood the Memorandum and risk warning','Understands risk of total loss; no FSCS/FOS','Information true and complete','Consents to data processing for KYC/AML','Agrees to the Notes & Subscription Agreement'].forEach(function(t){doc.text('[x]  '+t,20,y);y+=5;});
+  y+=4;doc.setFontSize(10);doc.setFont('helvetica','bold');doc.text('Signature',20,y);
+  try{var sig=document.getElementById('sigpad').toDataURL('image/png');doc.addImage(sig,'PNG',20,y+3,70,26);}catch(e){}
+  doc.setFont('helvetica','normal');doc.text('Signed: '+g('signname'),110,y+12);doc.text('Date: '+g('signdate'),110,y+20);
+  y+=36;doc.setFontSize(7.5);doc.setTextColor(120,120,120);
+  doc.text(doc.splitTextToSize('Issued by Vitpi - FZCO (the Issuer), the MlimaLoop group holding company, in reliance on the high-net-worth and self-certified sophisticated investor exemptions under the Financial Promotion Order. This investment carries a degree of risk: capital at risk, illiquid, no FSCS/FOS. This is not advice.',175),20,y);
+  lastPdf=doc;doc.save('MlimaLoop_Subscription_'+(g('fullname')||'application').replace(/[^a-z0-9]/gi,'_')+'.pdf');
+}
+document.getElementById('redl').onclick=function(){if(lastPdf)lastPdf.save('MlimaLoop_Subscription.pdf');};
 </script>
-</body></html>
+</body>
+</html>
