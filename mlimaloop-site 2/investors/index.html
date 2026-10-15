@@ -112,6 +112,17 @@ h1 .lt,h2 .lt{font-weight:300}
 .ptabs{display:flex;gap:6px;padding:0 14px 10px}
 .ptab{flex:1;text-align:center;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:7px 0;border-radius:8px;color:#8a8f96;cursor:pointer;background:#f2f3f5}
 .ptab.on{background:var(--loop-red);color:#fff}
+.proute{padding:2px 14px 14px}
+.prhead{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;color:#14171c;padding:4px 0 9px}
+.prdot{width:8px;height:8px;border-radius:50%;background:var(--loop-red);box-shadow:0 0 0 4px rgba(168,18,38,.16);flex-shrink:0}
+.prhead #prtime{margin-left:auto;font-family:monospace;font-size:9px;font-weight:400;letter-spacing:.06em;color:#8a8f96}
+.prmap{border-radius:14px;overflow:hidden;border:1px solid rgba(0,0,0,.08);aspect-ratio:300/190;background:#e9ebee}
+.prmap svg{width:100%;height:100%;display:block}
+.prstats{display:flex;gap:12px;margin-top:12px}
+.prstats>div{flex:1;border-top:1px solid rgba(0,0,0,.1);padding-top:8px}
+.prk{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#8a8f96}
+.prv{font-weight:900;font-size:19px;color:#14171c;margin-top:3px;letter-spacing:-.01em}
+.prnote{font-size:9px;letter-spacing:.06em;color:#8a8f96;margin-top:11px}
 .pbody{padding:4px 16px 18px;min-height:300px}
 .pcard{background:#f6f7f8;border-radius:14px;padding:14px;margin-bottom:10px}
 .pcard .lb{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#8a8f96}
@@ -237,30 +248,40 @@ footer{background:var(--ground);color:#c9bcb0;text-align:center;padding:2rem 0;f
         <div class="label rv">The technology</div>
         <h2 class="rv d1">One product. <span class="lt">Three views of the same record.</span></h2>
         <p class="body rv d2">LOOP is the street-facing brand collectors actually use. Every weigh-in lands once and is read three ways, as a collector's earnings, a depot officer's queue and batch, and an investor's provenance trail. Same data, same ground, different density.</p>
-        <div class="viewtabs rv d2" style="margin-top:1.8rem">
-          <div class="vt on" data-v="collector">Collector</div><div class="vt" data-v="officer">Officer</div><div class="vt" data-v="investor">Investor</div>
-        </div>
-        <p class="body rv d3" id="vdesc" style="font-size:.95rem">Paid to M-Pesa at the scale. Red is what you collected, blue is what your team collected.</p>
+        <p class="body rv d3" style="font-size:.95rem;margin-top:1.4rem">The collector's live view. LOOP tracks the collection round by GPS, red is your own route, and every kilo is logged, named and paid on the spot at the scale.</p>
       </div>
       <div class="appwrap rv d2">
         <div class="phone">
           <div class="pscreen" style="position:relative">
-            <div class="pnote" id="pnote">Registered</div>
             <div class="ptop"><span>17:47</span><span>Vodacom TZ · 5G · 96%</span></div>
             <div class="plogo">THE <b>LOOP</b></div>
-            <div class="ptabs"><div class="ptab on" data-t="wallet">The Loop</div><div class="ptab" data-t="wallet">Wallet</div><div class="ptab" data-t="collect">Collect</div></div>
-            <div class="pbody" id="pbody">
-              <div class="pcard"><div class="lb">The Loop wallet</div><div class="pbal" id="pbal">$571.38</div><div class="psub">≈ TSH 1,485,588 · paid via M-Pesa</div></div>
-              <div class="psplit">
-                <div class="mine"><div class="lb">From your collections</div><div class="amt" id="pmine">$257.60</div></div>
-                <div class="team"><div class="lb">From your team</div><div class="amt">$313.78</div></div>
+            <div class="proute">
+              <div class="prhead"><span class="prdot"></span>Collecting…<span id="prtime">12m · tracking</span></div>
+              <div class="prmap">
+                <svg viewBox="0 0 300 190" preserveAspectRatio="xMidYMid meet" xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="Live collection route">
+                  <rect width="300" height="190" fill="#e9ebee"/>
+                  <g stroke="#d4d7db" stroke-width="6">
+                    <line x1="0" y1="55" x2="300" y2="55"/><line x1="0" y1="128" x2="300" y2="128"/>
+                    <line x1="82" y1="0" x2="82" y2="190"/><line x1="204" y1="0" x2="204" y2="190"/>
+                  </g>
+                  <g stroke="#dfe2e6" stroke-width="2">
+                    <line x1="0" y1="92" x2="300" y2="92"/><line x1="142" y1="0" x2="142" y2="190"/><line x1="252" y1="0" x2="252" y2="190"/>
+                  </g>
+                  <path id="prpath" d="M28,162 C50,150 60,120 92,116 C120,112 128,74 150,72 C176,70 182,108 214,104 C244,100 250,54 276,44"
+                        fill="none" stroke="#A81226" stroke-width="4" stroke-linecap="round"
+                        stroke-dasharray="520" stroke-dashoffset="520">
+                    <animate attributeName="stroke-dashoffset" from="520" to="0" dur="5s" repeatCount="indefinite"/>
+                  </path>
+                  <circle r="5.5" fill="#FFB400" stroke="#fff" stroke-width="2.5">
+                    <animateMotion dur="5s" repeatCount="indefinite"><mpath xlink:href="#prpath"/></animateMotion>
+                  </circle>
+                </svg>
               </div>
-              <button class="pbtn" id="pregister">Register a collection</button>
-              <div style="margin:12px 0 4px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#8a8f96">Recent collections</div>
-              <div id="precent">
-                <div class="prow"><span>22.0 kg · PET clear</span><span class="g">+$4.24</span></div>
-                <div class="prow"><span>18.5 kg · PET clear</span><span class="g">+$3.57</span></div>
+              <div class="prstats">
+                <div><div class="prk">Time collecting</div><div class="prv" id="prmin">12m</div></div>
+                <div><div class="prk">Distance</div><div class="prv" id="prkm">1.84 km</div></div>
               </div>
+              <div class="prnote">Route tracked by GPS · red is your round</div>
             </div>
           </div>
         </div>
@@ -402,22 +423,22 @@ footer{background:var(--ground);color:#c9bcb0;text-align:center;padding:2rem 0;f
           <div><div style="color:var(--bone);font-weight:700;font-size:.95rem">Founder capital already deployed.</div><div style="color:#c9bcb0;font-size:.85rem">At risk, and ranking behind every placement investor. The founder loses first.</div></div>
         </div>
         <div class="return rv d2">
-          <div class="rrow"><span class="yr">Year 1</span><span class="dsc">Paid as one payment at the end of month 12.</span><span class="amt blue">10%</span></div>
-          <div class="rrow"><span class="yr">Year 2</span><span class="dsc">10% per annum, paid 2.5% every quarter.</span><span class="amt blue">10%</span></div>
-          <div class="rrow"><span class="yr">Year 3</span><span class="dsc">10% per annum, paid 2.5% every quarter.</span><span class="amt blue">10%</span></div>
+          <div class="rrow"><span class="yr">Year 1</span><span class="dsc">Paid as one payment at the end of month 12.</span><span class="amt blue">8%</span></div>
+          <div class="rrow"><span class="yr">Year 2</span><span class="dsc">Paid as one payment at the end of month 24.</span><span class="amt blue">8%</span></div>
+          <div class="rrow"><span class="yr">Year 3</span><span class="dsc">Paid as one payment at the end of month 36.</span><span class="amt blue">8%</span></div>
           <div class="rrow"><span class="yr">At 36 months</span><span class="dsc">Your choice: convert to equity in MlimaLoop, or take a full return of capital.</span><span class="amt">Choice</span></div>
         </div>
-        <p class="body rv d3" style="margin-top:1rem;font-size:.9rem;color:#c9bcb0"><b class="step-lead" style="color:var(--bone)">Thirty per cent over three years</b>, plus your capital back or a stake in the business, secured against the feedstock surplus and the machinery.</p>
+        <p class="body rv d3" style="margin-top:1rem;font-size:.9rem;color:#c9bcb0"><b class="step-lead" style="color:var(--bone)">Twenty-four per cent over three years</b>, plus your capital back or a stake in the business, secured against the feedstock surplus and the machinery.</p>
         <div class="tags rv d3">
-          <span class="tag-pill">Private placement</span><span class="tag-pill">3-year term</span><span class="tag-pill">10% p.a.</span><span class="tag-pill">Asset-backed</span><span class="tag-pill">Convert or redeem</span>
+          <span class="tag-pill">Private placement</span><span class="tag-pill">3-year term</span><span class="tag-pill">8% p.a.</span><span class="tag-pill">Asset-backed</span><span class="tag-pill">Convert or redeem</span>
         </div>
       </div>
       <div class="askbox rv d2">
         <div class="label" style="color:var(--bottle)">The placement · up to</div>
         <div class="fig bignum" style="margin:.3rem 0 .1rem">$10M</div>
         <div class="body" style="font-size:.86rem;color:#c9bcb0;margin-bottom:1.2rem"><span class="fig" style="color:var(--bottle);font-size:1.05rem">$3M</span> first close, rolling to a <span class="fig" style="color:var(--bottle);font-size:1.05rem">$10M</span> cap.</div>
-        <div class="arow"><span>Minimum investment</span><b>$25,000 or currency equivalent</b></div>
-        <div class="arow"><span>Return</span><b>10% p.a. · 3-year term</b></div>
+        <div class="arow"><span>Minimum investment</span><b>$50,000 or currency equivalent</b></div>
+        <div class="arow"><span>Return</span><b>8% p.a. · 3-year term</b></div>
         <div class="arow"><span>At 36 months</span><b>Convert to equity or redeem</b></div>
         <div class="arow"><span>Secured against</span><b>Feedstock surplus &amp; machinery</b></div>
         <div class="arow"><span>Backs a business reaching</span><b>$82M revenue</b></div>
@@ -453,17 +474,15 @@ document.querySelectorAll('[data-target]').forEach(function(el){co.observe(el);}
 function count(el){var t=parseFloat(el.dataset.target),s=null,dur=1200;
   function fr(ts){if(!s)s=ts;var p=Math.min((ts-s)/dur,1),v=t*(1-Math.pow(1-p,3));el.textContent=(t>=100?Math.round(v):Math.round(v*10)/10);if(p<1)requestAnimationFrame(fr);}
   requestAnimationFrame(fr);}
-/* app: view tabs + register */
-var vdesc={collector:'Paid to M-Pesa at the scale. Red is what you collected, blue is what your team collected.',
- officer:'Certified scale, GPS, reference and batch code captured at the point of weigh-in.',
- investor:'The same weigh-in, read as a provenance trail: named collector, weight, time and location.'};
-document.querySelectorAll('.vt').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.vt').forEach(function(x){x.classList.remove('on');});b.classList.add('on');document.getElementById('vdesc').textContent=vdesc[b.dataset.v];});});
-document.querySelectorAll('.ptab').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.ptab').forEach(function(x){x.classList.remove('on');});b.classList.add('on');});});
-(function(){var bal=571.38,mine=257.60;var note=document.getElementById('pnote');
- document.getElementById('pregister').addEventListener('click',function(){var kg=Math.round((14+Math.random()*12)*10)/10,pay=Math.round(kg*0.165*100)/100;bal+=pay;mine+=pay;
-  document.getElementById('pbal').textContent='$'+bal.toFixed(2);document.getElementById('pmine').textContent='$'+mine.toFixed(2);
-  var r=document.getElementById('precent');r.innerHTML='<div class="prow"><span>'+kg.toFixed(1)+' kg · PET clear</span><span class="g">+$'+pay.toFixed(2)+'</span></div>'+r.innerHTML;
-  note.textContent='Paid $'+pay.toFixed(2)+' via M-Pesa';note.classList.add('on');setTimeout(function(){note.classList.remove('on');},1400);});})();
+/* app: live collection-round ticker */
+(function(){
+  var minEl=document.getElementById('prmin'),kmEl=document.getElementById('prkm'),tEl=document.getElementById('prtime');
+  if(!minEl)return;
+  var min=12,km=1.84;
+  setInterval(function(){min+=1;km=Math.round((km+0.06)*100)/100;
+    minEl.textContent=min+'m';kmEl.textContent=km.toFixed(2)+' km';
+    if(tEl)tEl.textContent=min+'m · tracking';},2500);
+})();
 /* map */
 var cities=[{n:'Arusha',x:60,y:18,yr:1,d:'HQ · pilot line'},{n:'Arusha II',x:57,y:22,yr:3,d:'Added capacity'},
  {n:'Moshi',x:67,y:20,yr:4,d:'Kilimanjaro corridor'},{n:'Dodoma',x:52,y:45,yr:5,d:'Capital city'},
